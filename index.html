@@ -85,6 +85,8 @@ main { max-width: 1240px; margin: 0 auto; padding-block: 16px 48px;
   background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 12px 14px; }
 .toolbar .hint { margin: 0; color: var(--muted); font-size: .9rem; min-width: 0; flex: 1 1 280px; }
 .toolbar .hint b { color: var(--warm); }
+.grado-bar { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; flex: 1 1 100%; }
+.grado-bar b { color: var(--warm); margin-right: 4px; }
 .opts { display: flex; flex-wrap: wrap; gap: 8px 18px; align-items: center; font-size: .85rem; color: var(--muted); }
 .opts label { display: inline-flex; gap: 6px; align-items: center; }
 .opts input[type="text"] { border: 1px solid var(--line); background: var(--bg); border-radius: 6px; padding: 4px 8px; min-width: 0; width: 200px; }
@@ -112,6 +114,7 @@ table.fmt td p:last-child { margin-bottom: 0; }
 .gap { height: 12px; }
 .cell-input { width: 100%; border: 0; border-bottom: 1px dotted var(--paper-muted); background: transparent; padding: 0; font: inherit; color: var(--paper-ink); }
 .cell-input::placeholder { color: var(--paper-muted); }
+.cell-area { display: block; resize: vertical; min-height: 2.8em; border: 1px dashed var(--paper-pick-line); background: var(--paper-pick); border-radius: 3px; padding: 3px 5px; line-height: 1.35; overflow: hidden; }
 .pick { position: relative; display: block; }
 .pick select { width: 100%; appearance: none; -webkit-appearance: none; border: 1.5px solid var(--paper-pick-line); background: var(--paper-pick); color: var(--paper-ink);
   font: inherit; font-weight: 700; font-size: 12px; padding: 4px 28px 4px 8px; border-radius: 4px; cursor: pointer; }
@@ -164,6 +167,8 @@ table.fmt td p:last-child { margin-bottom: 0; }
 .pcard p { margin: 0; color: var(--muted); font-size: .86rem; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
 .chips { display: flex; flex-wrap: wrap; gap: 4px; }
 .cchip { font-size: .72rem; font-weight: 600; padding: 2px 8px; border-radius: 999px; color: #fff; }
+.cchip.gchip { background: var(--accent); color: var(--accent-ink); }
+.cchip.gchip.sin { background: var(--warm); color: #fff; }
 .meta { font-size: .78rem; color: var(--muted); }
 .pcard .row { margin-top: auto; }
 .empty { text-align: center; padding: 36px 16px; color: var(--muted); background: var(--surface); border: 1px dashed var(--line); border-radius: 12px; }
@@ -234,6 +239,7 @@ table.fmt td p:last-child { margin-bottom: 0; }
   .pick select { border: 0; background: transparent; padding: 0; }
   .pick::after { display: none; }
   .cell-input { border: 0; }
+  .cell-area { border: 0; background: transparent; resize: none; padding: 0; }
   table.fmt td { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
   table.fmt tr { break-inside: avoid; }
 }
@@ -259,7 +265,14 @@ table.fmt td p:last-child { margin-bottom: 0; }
   <!-- FORMATO -->
   <section class="view" id="v-formato">
     <div class="toolbar">
-      <p class="hint" id="fmtHint">Toca el <b>Nombre del proyecto</b> en el formato y elige una planeación de tu banco: todo el formato se llena solo.</p>
+      <div class="grado-bar" role="radiogroup" aria-label="Grado">
+        <b>1. Grado</b>
+        <label class="chk"><input type="radio" name="gsel" value="1"> 1°</label>
+        <label class="chk"><input type="radio" name="gsel" value="2"> 2°</label>
+        <label class="chk"><input type="radio" name="gsel" value="3"> 3°</label>
+        <label class="chk"><input type="radio" name="gsel" value=""> Todos</label>
+      </div>
+      <p class="hint" id="fmtHint"><b>2. Proyecto:</b> toca el <b>Nombre del proyecto</b> en el formato y elige una planeación del grado. Todo el formato se llena solo.</p>
       <div class="row">
         <button class="btn primary" id="btnWord">Descargar Word</button>
         <button class="btn" id="btnPrint" hidden>Imprimir</button>
@@ -284,6 +297,7 @@ table.fmt td p:last-child { margin-bottom: 0; }
       <div class="bank-tools" style="flex:1 1 100%">
         <input type="search" id="q" placeholder="Buscar por proyecto, actividad, contenido…" aria-label="Buscar en el banco">
         <select id="fCampo" aria-label="Filtrar por campo formativo"><option value="">Todos los campos formativos</option></select>
+        <select id="fGrado" aria-label="Filtrar por grado"><option value="">Todos los grados</option><option value="1">1° grado</option><option value="2">2° grado</option><option value="3">3° grado</option></select>
         <select id="fEje" aria-label="Filtrar por eje articulador"><option value="">Todos los ejes</option></select>
       </div>
       <div class="row">
@@ -381,7 +395,7 @@ table.fmt td p:last-child { margin-bottom: 0; }
   // ------------------------------------------------------------------ estado
   let plans = [];
   let currentId = null;
-  let general = { docente: "", grupo: "", periodo: "", firmas: true, directora: "" };
+  let general = { docente: "", grupo: "", periodo: "", firmas: true, directora: "", comunidad: "" };
   let draft = null, draftDirty = false, picker = null;
   let mode = "loading", db = null, downloadsNs = null, loaded = false;
   const inViewer = !!(window.claude && typeof window.claude.use === "function");
@@ -417,6 +431,7 @@ table.fmt td p:last-child { margin-bottom: 0; }
     out.campos = {};
     CAMPOS.forEach((k) => (out.campos[k] = (Array.isArray(c[k]) ? c[k] : []).map((x) => ({ contenido: String(x.contenido || ""), pdas: Array.isArray(x.pdas) ? x.pdas.map(String) : [] }))));
     out.actividades = (Array.isArray(out.actividades) ? out.actividades : []).map((a) => Object.assign(emptyAct(), a));
+    out.grado = ["1", "2", "3"].includes(String(out.grado)) ? String(out.grado) : "";
     return out;
   }
   const current = () => plans.find((p) => p.id === currentId) || null;
@@ -482,7 +497,7 @@ table.fmt td p:last-child { margin-bottom: 0; }
         renderAll();
       }, () => { clearTimeout(timer); loaded = true; setStatus("warn", "No se pudo leer el banco"); renderAll(); });
       db.doc("config/general").onSnapshot((s) => {
-        if (s.exists) { general = Object.assign(general, s.data()); renderGeneralInputs(); renderSheet(); }
+        if (s.exists) { general = Object.assign(general, s.data()); gradoInicial(); renderGeneralInputs(); renderSheet(); }
       }, () => {});
       db.doc("config/pmc").onSnapshot((s) => {
         pmc = normPmc(s.exists ? s.data() : null); renderSheet();
@@ -491,7 +506,7 @@ table.fmt td p:last-child { margin-bottom: 0; }
     } else {
       mode = "local";
       $("#btnPrint").hidden = inViewer;
-      general = Object.assign(general, ls.get(GKEY, {}));
+      general = Object.assign(general, ls.get(GKEY, {})); gradoInicial();
       localPlans = (ls.get(LKEY, []) || []).map(normalize);
       hidden = ls.get(HKEY, []) || [];
       renderGeneralInputs();
@@ -564,6 +579,13 @@ table.fmt td p:last-child { margin-bottom: 0; }
       else ls.set(GKEY, general);
     }, 700);
   }
+  function gradoInicial() { if (general.grado == null) { const m = String(general.grupo || "").match(/[123]/); general.grado = m ? m[0] : ""; } }
+  function setGrado(g) {
+    general.grado = g;
+    if (g) { const gr = String(general.grupo || ""); general.grupo = /[123]\s*°?/.test(gr) ? gr.replace(/[123](\s*°)?/, g + "°") : (g + "° " + gr).trim(); }
+    const p = current(); if (p && !delGrado(p, g)) setCurrent(null);
+    saveGeneralSoon(); renderGeneralInputs(); renderSheet(); renderBank();
+  }
   function setCurrent(id) { currentId = id || null; ls.set(CKEY, currentId); }
 
   // ------------------------------------------------------------------ modelo de la hoja (lo usan la vista y el Word)
@@ -628,16 +650,21 @@ table.fmt td p:last-child { margin-bottom: 0; }
     }
     T.push({ w: [1500, 6900, 1300, 2000, 1300, 1300], head: 1, rows: arows });
     T.push({ gap: true });
-    T.push({ w: [2800, 11500], rows: ABAJO.map(([k, label]) => [H(label, { c: true }), V(k === "pmc" ? pmcDePlan(plan) : plan[k], { minH: true })]) });
+    T.push({ w: [2800, 11500], rows: ABAJO.map(([k, label]) => [H(label, { c: true }),
+      k === "programasExternos" ? V(g.comunidad, { minH: true, area: "comunidad" }) : V(k === "pmc" ? pmcDePlan(plan) : plan[k], { minH: true })]) });
     if (g.firmas) T.push({ firmas: [["Docente frente a grupo " + (g.grupo || ""), g.docente ? "Profra. " + g.docente : ""], ["Directora del plantel", g.directora || "Vo. Bo. Dirección escolar"]] });
     return T;
   }
 
   // ------------------------------------------------------------------ vista HTML de la hoja
+  const delGrado = (p, g) => !g || !p.grado || p.grado === g;
   function projectSelectHtml() {
-    const opts = plans.slice().sort((a, b) => a.proyecto.localeCompare(b.proyecto, "es"))
-      .map((p) => `<option value="${esc(p.id)}"${p.id === currentId ? " selected" : ""}>${esc(p.proyecto || "(sin nombre)")}</option>`).join("");
-    const ph = !loaded ? "Cargando tu banco…" : plans.length ? "▸ Elige un proyecto de tu banco" : "Tu banco está vacío: crea una planeación";
+    const g = general.grado || "";
+    const lista = plans.filter((p) => delGrado(p, g)).sort((a, b) => a.proyecto.localeCompare(b.proyecto, "es"));
+    const op = (p) => `<option value="${esc(p.id)}"${p.id === currentId ? " selected" : ""}>${esc(p.proyecto || "(sin nombre)")}</option>`;
+    const opts = g ? lista.map(op).join("")
+      : ["1", "2", "3", ""].map((k) => { const ps = lista.filter((p) => (p.grado || "") === k); return ps.length ? `<optgroup label="${k ? k + "° grado" : "Sin grado"}">${ps.map(op).join("")}</optgroup>` : ""; }).join("");
+    const ph = !loaded ? "Cargando tu banco…" : lista.length ? (g ? `▸ Elige un proyecto de ${g}°` : "▸ Elige un proyecto de tu banco") : g && plans.length ? `No hay planeaciones de ${g}° en tu banco` : "Tu banco está vacío: crea una planeación";
     return `<label class="pick"><span class="sr" hidden>Proyecto</span><select id="projSel" aria-label="Elegir proyecto del banco"><option value="">${esc(ph)}</option>${opts}</select></label>`;
   }
   function runsHtml(p) {
@@ -656,6 +683,7 @@ table.fmt td p:last-child { margin-bottom: 0; }
     if (c.c) a.push('class="c"');
     let inner;
     if (interactive && c.input) inner = `<input class="cell-input" id="g-${c.input}" data-g="${c.input}" value="${esc(general[c.input] || "")}" placeholder="Escribe aquí" autocomplete="off">`;
+    else if (interactive && c.area) inner = `<textarea class="cell-input cell-area" id="g-${c.area}" data-g="${c.area}" rows="2" placeholder="Escribe aquí las actividades de la comunidad de estas fechas">${esc(general[c.area] || "")}</textarea>`;
     else if (interactive && c.select) inner = projectSelectHtml();
     else inner = c.p.map((p) => `<p>${c.bold ? "<b>" + runsHtml(p) + "</b>" : runsHtml(p)}</p>`).join("");
     return `<td ${a.join(" ")}>${inner}</td>`;
@@ -676,10 +704,13 @@ table.fmt td p:last-child { margin-bottom: 0; }
       h += t.rows.map((r) => `<tr>${r.map((c) => cellHtml(c, true)).join("")}</tr>`).join("") + "</table>";
     });
     $("#sheet").innerHTML = h;
+    ajustaAlto($("#g-comunidad"));
     $("#btnEditCur").disabled = !current();
     $("#btnWord").disabled = !current();
   }
+  function ajustaAlto(el) { if (!el) return; el.style.height = "auto"; el.style.height = el.scrollHeight + 2 + "px"; }
   function renderGeneralInputs() {
+    document.querySelectorAll('input[name="gsel"]').forEach((r) => (r.checked = r.value === (general.grado || "")));
     $("#g-firmas").checked = !!general.firmas;
     $("#g-directora").value = general.directora || "";
     ["docente", "grupo", "periodo"].forEach((k) => { const el = $("#g-" + k); if (el && document.activeElement !== el) el.value = general[k] || ""; });
@@ -927,6 +958,7 @@ table.fmt td p:last-child { margin-bottom: 0; }
     }
     // Contenidos y PDA del formato nuevo: se acomodan en su campo con la clave del Programa Sintético.
     const g = grado || gradeDefault();
+    plan.grado = grado || "";
     const entrada = (campo, texto) => { const k = sinClave(texto); let e = plan.campos[campo].find((x) => sinClave(x.contenido) === k); if (!e) { e = { contenido: texto, pdas: [] }; plan.campos[campo].push(e); } return e; };
     const deCatalogo = (campo, i) => entrada(campo, codeCont(campo, i) + ". " + CAT[campo][i].contenido);
     crudos.forEach((r) => {
@@ -939,6 +971,7 @@ table.fmt td p:last-child { margin-bottom: 0; }
     });
     if (evalViejas.length) plan.observaciones = (plan.observaciones ? plan.observaciones + "\n" : "") + "Estrategias de evaluación: " + evalViejas.join("; ") + ".";
     if (!plan.proyecto && !plan.actividades.length) throw new Error("formato");
+    if (!plan.grado) avisos.push("el grado");
     if (!plan.modalidad.length) avisos.push("la modalidad");
     if (!ejesMarcados) avisos.push("los ejes articuladores");
     if (!crudos.length && !CAMPOS.some((c) => plan.campos[c].length)) avisos.push("los contenidos y PDA");
@@ -977,14 +1010,14 @@ table.fmt td p:last-child { margin-bottom: 0; }
   function startEdit(plan) {
     if (!(plan && !plan.id)) avisoImport = null;
     if (plan) draft = normalize(plan);
-    else { draft = normalize(emptyPlan()); draft.modalidad = ["Proyecto"]; draft.actividades = MOMENTOS["Proyecto"].map((f) => emptyAct(f)); }
+    else { draft = normalize(emptyPlan()); draft.grado = general.grado || ""; draft.modalidad = ["Proyecto"]; draft.actividades = MOMENTOS["Proyecto"].map((f) => emptyAct(f)); }
     draftDirty = false; picker = null;
     showView("editar"); renderEditor();
   }
   const fld = (label, path, val, area, ph) => `<label class="fld"><span>${esc(label)}</span>${area
     ? `<textarea data-path="${path}" rows="${area === true ? 3 : area}" placeholder="${esc(ph || "")}">${esc(val)}</textarea>`
     : `<input type="text" data-path="${path}" value="${esc(val)}" placeholder="${esc(ph || "")}">`}</label>`;
-  function gradeDefault() { const m = String(general.grupo || "").match(/[123]/); return m ? m[0] : "3"; }
+  function gradeDefault() { if (draft && draft.grado) return draft.grado; if (general.grado) return general.grado; const m = String(general.grupo || "").match(/[123]/); return m ? m[0] : "3"; }
 
   function renderEditor() {
     const v = $("#v-editar");
@@ -1007,6 +1040,7 @@ table.fmt td p:last-child { margin-bottom: 0; }
       <li>Vincular el plan con las problemáticas del diagnóstico y con el programa analítico.</li>
       <li>Verificar que la metodología sea adecuada al tema (la NEM recomienda proyectos).</li></ul></details>`;
     h += `<div class="card"><h2>Proyecto</h2><p class="sub">Lo que va en la primera hoja del formato.</p>
+      <div class="fld"><span>Grado de esta planeación</span><div class="checks">${["1", "2", "3"].map((g) => `<label class="chk"><input type="radio" name="dgrado" data-dgrado value="${g}"${d.grado === g ? " checked" : ""}>${g}° grado</label>`).join("")}</div></div>
       ${fld("Nombre del proyecto", "proyecto", d.proyecto, false, "Ej. Alimentarnos bien para crecer mejor")}
       <div class="fld"><span>Modalidad</span><div class="checks">${MODALIDADES.map((m) => `<label class="chk"><input type="checkbox" data-list="modalidad" value="${esc(m)}"${d.modalidad.includes(m) ? " checked" : ""}>${esc(m)}</label>`).join("")}</div></div>
       ${fld("Problemática asociada", "problematica", d.problematica, 4)}
@@ -1048,7 +1082,9 @@ table.fmt td p:last-child { margin-bottom: 0; }
     });
     h += `<div class="row"><button class="btn" data-act="addAct">+ Agregar actividad</button><button class="btn ghost" data-act="addMomentos">+ Agregar una actividad por cada momento de la modalidad</button></div></div>`;
 
-    h += `<div class="card"><h2>Cierre del formato</h2>${ABAJO.map(([k, l]) => (k === "pmc" ? pmcEditorHtml(d) : fld(l.replace("\n", " "), k, d[k], 3))).join("")}</div>`;
+    h += `<div class="card"><h2>Cierre del formato</h2>${ABAJO.map(([k, l]) => (k === "pmc" ? pmcEditorHtml(d)
+      : k === "programasExternos" ? `<div class="fld"><span>Programas externos (Actividades de la comunidad)</span><div class="pmc-auto"><p class="meta">Este espacio no se guarda en el banco: la maestra lo escribe en el formato cada vez que usa la planeación, porque cambia según las fechas.</p></div></div>`
+      : fld(l.replace("\n", " "), k, d[k], 3))).join("")}</div>`;
     h += `<div class="row"><button class="btn primary" data-act="save">Guardar en el banco</button>${isNew ? "" : '<button class="btn" data-act="saveCopy">Guardar como copia nueva</button>'}</div>`;
     v.innerHTML = h;
     updateDirtyDot();
@@ -1084,6 +1120,7 @@ table.fmt td p:last-child { margin-bottom: 0; }
     const d = normalize(draft);
     d.proyecto = d.proyecto.trim().replace(/^[“"]|[”"]$/g, "");
     if (!d.proyecto) { toast("Escribe el nombre del proyecto antes de guardar."); const el = $('[data-path="proyecto"]'); if (el) el.focus(); return; }
+    if (!d.grado) { toast("Elige el grado de la planeación antes de guardar."); const el = $('[data-dgrado]'); if (el) { el.scrollIntoView({ block: "center" }); el.focus(); } return; }
     if (asCopy || !d.id) { d.id = slug(d.proyecto); if (asCopy) d.proyecto += " (copia)"; d.creado = new Date().toISOString(); }
     try { await savePlan(d); } catch (e) { return; }
     draft = d; draftDirty = false; avisoImport = null; setCurrent(d.id);
@@ -1108,6 +1145,7 @@ table.fmt td p:last-child { margin-bottom: 0; }
       if (el.dataset.list === "modalidad") { const dl = $("#fasesList"); if (dl) dl.innerHTML = fasesDe(draft).map((f) => `<option value="${esc(f)}">`).join(""); }
       markDirty(); return;
     }
+    if (el.hasAttribute("data-dgrado")) { draft.grado = el.value; markDirty(); return; }
     if (el.hasAttribute("data-pmcmanual")) {
       draft.pmcManual = el.checked;
       if (el.checked) { const auto = pmcTexto(mesesPlan(draft)); if (auto) draft.pmc = auto; }
@@ -1170,15 +1208,15 @@ table.fmt td p:last-child { margin-bottom: 0; }
     const el = $("#bankList");
     if (!loaded) { el.innerHTML = '<div class="empty"><b>Cargando tu banco…</b>Tus planeaciones aparecerán aquí.</div>'; return; }
     if (!plans.length) { el.innerHTML = '<div class="empty"><b>Tu banco está vacío</b>Pulsa “Subir Word” para agregar una planeación que ya tengas en Word, “Nueva planeación” para capturarla aquí, o “Cargar banco” si tienes un archivo banco.json.</div>'; return; }
-    const q = $("#q").value.trim().toLowerCase(), fc = $("#fCampo").value, fe = $("#fEje").value;
-    const list = plans.filter((p) => (!q || planText(p).includes(q)) && (!fc || (p.campos[fc] || []).some((e) => e.contenido || e.pdas.length)) && (!fe || p.ejes.includes(fe)))
+    const q = $("#q").value.trim().toLowerCase(), fc = $("#fCampo").value, fe = $("#fEje").value, fg = $("#fGrado").value;
+    const list = plans.filter((p) => (!q || planText(p).includes(q)) && (!fg || p.grado === fg) && (!fc || (p.campos[fc] || []).some((e) => e.contenido || e.pdas.length)) && (!fe || p.ejes.includes(fe)))
       .sort((a, b) => a.proyecto.localeCompare(b.proyecto, "es"));
     if (!list.length) { el.innerHTML = '<div class="empty"><b>Sin resultados</b>Prueba con otra palabra o quita los filtros.</div>'; return; }
     el.innerHTML = `<div class="cards">${list.map((p) => {
       const cs = CAMPOS.filter((c) => (p.campos[c] || []).some((e) => e.contenido || e.pdas.length));
       const fechas = p.actividades.map((a) => a.tiempo).filter(Boolean);
       return `<article class="pcard${p.id === currentId ? " current" : ""}"><h3>${esc(p.proyecto)}</h3>
-        <div class="chips">${cs.map((c) => `<span class="cchip" style="background:#${CAMPO_COLOR[c].fill};color:#${CAMPO_COLOR[c].ink}">${esc(c)}</span>`).join("")}</div>
+        <div class="chips">${p.grado ? `<span class="cchip gchip">${p.grado}° grado</span>` : '<span class="cchip gchip sin">Sin grado</span>'}${cs.map((c) => `<span class="cchip" style="background:#${CAMPO_COLOR[c].fill};color:#${CAMPO_COLOR[c].ink}">${esc(c)}</span>`).join("")}</div>
         <p>${esc(p.finalidad || p.problematica || "Sin finalidad escrita.")}</p>
         ${origen[p.id] === "dispositivo" ? '<div class="solo">Nueva · solo en este dispositivo</div>' : origen[p.id] === "modificada" ? '<div class="solo">Con cambios · solo en este dispositivo</div>' : ""}
         <div class="meta">${p.actividades.length} actividades${p.modalidad.length ? " · " + esc(p.modalidad.join(", ")) : ""}${fechas.length ? " · " + esc(fechas[0]) + (fechas.length > 1 ? " a " + esc(fechas[fechas.length - 1]) : "") : ""}</div>
@@ -1202,6 +1240,7 @@ table.fmt td p:last-child { margin-bottom: 0; }
   $("#q").addEventListener("input", renderBank);
   $("#fCampo").addEventListener("change", renderBank);
   $("#fEje").addEventListener("change", renderBank);
+  $("#fGrado").addEventListener("change", renderBank);
 
   $("#btnBackup").addEventListener("click", () => {
     if (!plans.length) { toast("Tu banco está vacío."); return; }
@@ -1235,8 +1274,10 @@ table.fmt td p:last-child { margin-bottom: 0; }
   });
   $("#sheet").addEventListener("input", (ev) => {
     const k = ev.target.dataset.g; if (!k) return;
+    if (k === "comunidad") ajustaAlto(ev.target);
     general[k] = ev.target.value; saveGeneralSoon();
   });
+  document.querySelectorAll('input[name="gsel"]').forEach((r) => r.addEventListener("change", () => { if (r.checked) setGrado(r.value); }));
   $("#g-firmas").addEventListener("change", (ev) => { general.firmas = ev.target.checked; saveGeneralSoon(); renderSheet(); });
   $("#g-directora").addEventListener("change", (ev) => { general.directora = ev.target.value.trim(); saveGeneralSoon(); renderSheet(); });
   $("#btnWord").addEventListener("click", async (ev) => {
@@ -1275,7 +1316,7 @@ table.fmt td p:last-child { margin-bottom: 0; }
   let avGrado = null, avSel = null;
   function coverage(g) {
     const used = {};
-    plans.forEach((p) => CAMPOS.forEach((c) => (p.campos[c] || []).forEach((e) => e.pdas.forEach((x) => {
+    plans.filter((p) => delGrado(p, g)).forEach((p) => CAMPOS.forEach((c) => (p.campos[c] || []).forEach((e) => e.pdas.forEach((x) => {
       const code = matchPda(x, g); if (!code) return;
       (used[code] = used[code] || []); if (!used[code].includes(p.id)) used[code].push(p.id);
     }))));

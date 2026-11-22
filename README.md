@@ -3,10 +3,12 @@
 App para guardar planeaciones exitosas y llenar con un clic el formato de planeación del
 Jardín de Niños “Barbarita Barrera de González” (ciclo 2026-2027).
 
-- **Formato**: toca el *Nombre del proyecto* y elige una planeación del banco; todo el formato se llena solo.
+- **Formato**: primero elige el **grado** (1°, 2° o 3°); luego toca el *Nombre del proyecto* y elige una
+  planeación de ese grado; todo el formato se llena solo. El espacio *Programas externos (Actividades de la
+  comunidad)* no viene del banco: la maestra lo escribe en el formato cada vez, porque cambia según las fechas.
   “Descargar Word” genera el .docx con el mismo encabezado, logos y colores del formato oficial.
   En el sitio también funciona “Imprimir”.
-- **Editar**: captura o modifica una planeación. Los contenidos y PDA se eligen del Programa Sintético
+- **Editar**: captura o modifica una planeación (cada planeación lleva su grado). Los contenidos y PDA se eligen del Programa Sintético
   de la Fase 2 (1°, 2° y 3°) con las claves del cuadernillo; los momentos cambian según la modalidad.
 - **Banco**: busca, filtra por campo formativo o eje, duplica, elimina, descarga o carga el banco.
 - **PMC**: las actividades del Programa de Mejora Continua 2026-2027 por mes. En el formato, “Actividades de PMC”
