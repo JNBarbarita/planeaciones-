@@ -657,13 +657,25 @@ table.fmt td p:last-child { margin-bottom: 0; }
   }
 
   // ------------------------------------------------------------------ vista HTML de la hoja
-  const delGrado = (p, g) => !g || !p.grado || p.grado === g;
+  // Grado de una planeación: el que tiene guardado o, si no tiene, el que se deduce de sus PDA (cada grado tiene los suyos).
+  const sugCache = new Map();
+  function gradoSugerido(p) {
+    const pd = CAMPOS.flatMap((c) => ((p.campos && p.campos[c]) || []).flatMap((e) => e.pdas || []));
+    if (!pd.length) return "";
+    const key = pd.join("|");
+    if (sugCache.has(key)) return sugCache.get(key);
+    const n = ["1", "2", "3"].map((g) => pd.filter((x) => matchPda(x, g)).length);
+    const max = Math.max(...n), r = max > 0 && n.filter((v) => v === max).length === 1 ? String(n.indexOf(max) + 1) : "";
+    sugCache.set(key, r); return r;
+  }
+  const gradoDe = (p) => p.grado || gradoSugerido(p);
+  const delGrado = (p, g) => !g || gradoDe(p) === g;
   function projectSelectHtml() {
     const g = general.grado || "";
     const lista = plans.filter((p) => delGrado(p, g)).sort((a, b) => a.proyecto.localeCompare(b.proyecto, "es"));
     const op = (p) => `<option value="${esc(p.id)}"${p.id === currentId ? " selected" : ""}>${esc(p.proyecto || "(sin nombre)")}</option>`;
     const opts = g ? lista.map(op).join("")
-      : ["1", "2", "3", ""].map((k) => { const ps = lista.filter((p) => (p.grado || "") === k); return ps.length ? `<optgroup label="${k ? k + "° grado" : "Sin grado"}">${ps.map(op).join("")}</optgroup>` : ""; }).join("");
+      : ["1", "2", "3", ""].map((k) => { const ps = lista.filter((p) => gradoDe(p) === k); return ps.length ? `<optgroup label="${k ? k + "° grado" : "Sin grado"}">${ps.map(op).join("")}</optgroup>` : ""; }).join("");
     const ph = !loaded ? "Cargando tu banco…" : lista.length ? (g ? `▸ Elige un proyecto de ${g}°` : "▸ Elige un proyecto de tu banco") : g && plans.length ? `No hay planeaciones de ${g}° en tu banco` : "Tu banco está vacío: crea una planeación";
     return `<label class="pick"><span class="sr" hidden>Proyecto</span><select id="projSel" aria-label="Elegir proyecto del banco"><option value="">${esc(ph)}</option>${opts}</select></label>`;
   }
@@ -890,7 +902,12 @@ table.fmt td p:last-child { margin-bottom: 0; }
       if (!all) continue;
       // Datos generales
       const iGr = row.findIndex((c) => /^grado/.test(N(c.text)));
-      if (iGr >= 0 && /docente/.test(all)) { const m = String(row[iGr + 1] ? row[iGr + 1].text : "").match(/[123]/); if (m) grado = m[0]; modo = null; continue; }
+      if (iGr >= 0 && !grado) {
+        const t = N(row[iGr].text.split(":").slice(1).join(":") + " " + (row[iGr + 1] ? row[iGr + 1].text : ""));
+        const m = t.match(/\b([123])\s*(°|º|o|ro|do|er|ero|\b)/) || t.match(/\b(prim|segu|terc)/);
+        if (m) grado = { prim: "1", segu: "2", terc: "3" }[m[1]] || m[1];
+        if (/docente/.test(all)) { modo = null; continue; }
+      }
       if (/^modalidad/.test(first)) {
         const tras = N(texts[0].split(":").slice(1).join(":"));
         MODALIDADES.forEach((m) => { if (tras && (tras.includes(N(m)) || (m === "Proyecto" && /proyecto/.test(tras)) || (m === "Aprendizaje basado en el juego" && /juego/.test(tras)))) if (!plan.modalidad.includes(m)) plan.modalidad.push(m); });
@@ -971,7 +988,7 @@ table.fmt td p:last-child { margin-bottom: 0; }
     });
     if (evalViejas.length) plan.observaciones = (plan.observaciones ? plan.observaciones + "\n" : "") + "Estrategias de evaluación: " + evalViejas.join("; ") + ".";
     if (!plan.proyecto && !plan.actividades.length) throw new Error("formato");
-    if (!plan.grado) avisos.push("el grado");
+    if (!plan.grado) { plan.grado = gradoSugerido(plan); avisos.push(plan.grado ? "el grado (lo deduje de los PDA: " + plan.grado + "°)" : "el grado"); }
     if (!plan.modalidad.length) avisos.push("la modalidad");
     if (!ejesMarcados) avisos.push("los ejes articuladores");
     if (!crudos.length && !CAMPOS.some((c) => plan.campos[c].length)) avisos.push("los contenidos y PDA");
@@ -1009,7 +1026,7 @@ table.fmt td p:last-child { margin-bottom: 0; }
   // ------------------------------------------------------------------ editor
   function startEdit(plan) {
     if (!(plan && !plan.id)) avisoImport = null;
-    if (plan) draft = normalize(plan);
+    if (plan) { draft = normalize(plan); if (!draft.grado) draft.grado = gradoSugerido(draft); }
     else { draft = normalize(emptyPlan()); draft.grado = general.grado || ""; draft.modalidad = ["Proyecto"]; draft.actividades = MOMENTOS["Proyecto"].map((f) => emptyAct(f)); }
     draftDirty = false; picker = null;
     showView("editar"); renderEditor();
@@ -1209,14 +1226,14 @@ table.fmt td p:last-child { margin-bottom: 0; }
     if (!loaded) { el.innerHTML = '<div class="empty"><b>Cargando tu banco…</b>Tus planeaciones aparecerán aquí.</div>'; return; }
     if (!plans.length) { el.innerHTML = '<div class="empty"><b>Tu banco está vacío</b>Pulsa “Subir Word” para agregar una planeación que ya tengas en Word, “Nueva planeación” para capturarla aquí, o “Cargar banco” si tienes un archivo banco.json.</div>'; return; }
     const q = $("#q").value.trim().toLowerCase(), fc = $("#fCampo").value, fe = $("#fEje").value, fg = $("#fGrado").value;
-    const list = plans.filter((p) => (!q || planText(p).includes(q)) && (!fg || p.grado === fg) && (!fc || (p.campos[fc] || []).some((e) => e.contenido || e.pdas.length)) && (!fe || p.ejes.includes(fe)))
+    const list = plans.filter((p) => (!q || planText(p).includes(q)) && (!fg || gradoDe(p) === fg) && (!fc || (p.campos[fc] || []).some((e) => e.contenido || e.pdas.length)) && (!fe || p.ejes.includes(fe)))
       .sort((a, b) => a.proyecto.localeCompare(b.proyecto, "es"));
     if (!list.length) { el.innerHTML = '<div class="empty"><b>Sin resultados</b>Prueba con otra palabra o quita los filtros.</div>'; return; }
     el.innerHTML = `<div class="cards">${list.map((p) => {
       const cs = CAMPOS.filter((c) => (p.campos[c] || []).some((e) => e.contenido || e.pdas.length));
       const fechas = p.actividades.map((a) => a.tiempo).filter(Boolean);
       return `<article class="pcard${p.id === currentId ? " current" : ""}"><h3>${esc(p.proyecto)}</h3>
-        <div class="chips">${p.grado ? `<span class="cchip gchip">${p.grado}° grado</span>` : '<span class="cchip gchip sin">Sin grado</span>'}${cs.map((c) => `<span class="cchip" style="background:#${CAMPO_COLOR[c].fill};color:#${CAMPO_COLOR[c].ink}">${esc(c)}</span>`).join("")}</div>
+        <div class="chips">${p.grado ? `<span class="cchip gchip">${p.grado}° grado</span>` : gradoSugerido(p) ? `<span class="cchip gchip sin" title="No tiene grado guardado; ábrela en Editar y guárdala">Parece de ${gradoSugerido(p)}° · sin grado guardado</span>` : '<span class="cchip gchip sin" title="Ábrela en Editar y elige el grado">Sin grado</span>'}${cs.map((c) => `<span class="cchip" style="background:#${CAMPO_COLOR[c].fill};color:#${CAMPO_COLOR[c].ink}">${esc(c)}</span>`).join("")}</div>
         <p>${esc(p.finalidad || p.problematica || "Sin finalidad escrita.")}</p>
         ${origen[p.id] === "dispositivo" ? '<div class="solo">Nueva · solo en este dispositivo</div>' : origen[p.id] === "modificada" ? '<div class="solo">Con cambios · solo en este dispositivo</div>' : ""}
         <div class="meta">${p.actividades.length} actividades${p.modalidad.length ? " · " + esc(p.modalidad.join(", ")) : ""}${fechas.length ? " · " + esc(fechas[0]) + (fechas.length > 1 ? " a " + esc(fechas[fechas.length - 1]) : "") : ""}</div>
