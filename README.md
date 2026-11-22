@@ -11,6 +11,14 @@ Jardín de Niños “Barbarita Barrera de González” (ciclo 2026-2027).
 - **Banco**: busca, filtra por campo formativo o eje, duplica, elimina, descarga o carga el banco.
 - **Avance**: muestra qué PDA del grado ya tienen planeación en el banco y cuáles faltan.
 
+## Subir planeaciones que ya tienes en Word
+
+En la pestaña **Banco** pulsa **Subir Word** y elige el archivo `.docx` (en el iPhone, desde *Archivos*).
+La app lee el formato del jardín: nombre del proyecto, modalidad, problemática, finalidad, ejes,
+contenidos y PDA (los acomoda en su campo con la clave del Programa Sintético), actividades por momento
+y la tabla final. Con un solo archivo se abre el editor para revisarla antes de guardar; con varios,
+se guardan todas de una vez. Los PDF y los .doc antiguos no se pueden leer: guárdalos como Word (.docx).
+
 ## Dónde se guardan las planeaciones
 
 - **`banco.json`** es el banco compartido: lo que está ahí aparece en todos tus dispositivos.

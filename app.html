@@ -262,6 +262,8 @@ table.fmt td p:last-child { margin-bottom: 0; }
       </div>
       <div class="row">
         <button class="btn primary" id="btnNew2">Nueva planeación</button>
+        <button class="btn warm" id="btnWordIn">Subir Word</button>
+        <input type="file" id="fileWordIn" accept=".docx,application/vnd.openxmlformats-officedocument.wordprocessingml.document" multiple hidden>
         <button class="btn" id="btnBackup">Descargar banco</button>
         <button class="btn" id="btnRestore">Cargar banco</button>
         <input type="file" id="fileRestore" accept=".json,application/json" hidden>
@@ -682,8 +684,219 @@ table.fmt td p:last-child { margin-bottom: 0; }
   }
   const fileSafe = (s) => String(s || "planeacion").normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/[^A-Za-z0-9 ._()-]+/g, "").replace(/\s+/g, " ").trim().slice(0, 80) || "planeacion";
 
+  // ------------------------------------------------------------------ subir planeaciones en Word (.docx)
+  // Lee un .docx hecho con el formato del jardín (o con el formato anterior de 2020) y arma la planeación.
+  const WNS = "http://schemas.openxmlformats.org/wordprocessingml/2006/main";
+  const wKids = (el, name) => Array.from(el.childNodes).filter((n) => n.nodeType === 1 && n.localName === name);
+  const wAll = (el, name) => Array.from(el.getElementsByTagNameNS(WNS, name));
+  const wVal = (el) => (el && (el.getAttributeNS(WNS, "val") || el.getAttribute("w:val"))) || "";
+  const N = (t) => sinAcentos(t).replace(/\s+/g, " ").trim();
+  const MARCA_RE = /[✓✔☑☒✅]/;
+  function wLines(tc) {
+    // Cada párrafo (y cada salto de línea) es un renglón; guarda el texto en negritas con que empieza.
+    const lines = [];
+    wKids(tc, "p").concat(wKids(tc, "sdt").flatMap((s) => wAll(s, "p"))).forEach((p) => {
+      let cur = { text: "", bold: "", boldOpen: true }; lines.push(cur);
+      wAll(p, "r").forEach((r) => {
+        const rPr = wKids(r, "rPr")[0]; const bEl = rPr && wKids(rPr, "b")[0];
+        const b = !!bEl && !/^(0|false|off)$/i.test(wVal(bEl));
+        Array.from(r.childNodes).forEach((n) => {
+          if (n.nodeType !== 1) return;
+          let t = null;
+          if (n.localName === "t") t = n.textContent; else if (n.localName === "tab") t = " "; else if (n.localName === "sym") t = "✓";
+          else if (n.localName === "br" || n.localName === "cr") { cur = { text: "", bold: "", boldOpen: true }; lines.push(cur); return; }
+          if (t == null) return;
+          cur.text += t;
+          if (cur.boldOpen) { if (b) cur.bold += t; else if (t.trim()) cur.boldOpen = false; }
+        });
+      });
+    });
+    return lines.map((l) => ({ text: l.text.replace(/\s+/g, " ").trim(), bold: l.bold.replace(/\s+/g, " ").trim() }));
+  }
+  function wMarked(tc) {
+    const fills = wAll(tc, "shd").map((s) => (s.getAttributeNS(WNS, "fill") || "").toUpperCase());
+    const hls = wAll(tc, "highlight").map((h) => wVal(h).toLowerCase());
+    return fills.some((f) => f && !["AUTO", "FFFFFF", "NONE"].includes(f)) || hls.some((h) => h && !["none", "white"].includes(h));
+  }
+  function wRows(xml) {
+    const doc = new DOMParser().parseFromString(xml, "application/xml");
+    const tbls = wAll(doc, "tbl").filter((t) => { for (let p = t.parentNode; p; p = p.parentNode) if (p.localName === "tbl") return false; return true; });
+    const rows = [];
+    tbls.forEach((tbl) => wKids(tbl, "tr").forEach((tr) => {
+      const tcs = []; Array.from(tr.childNodes).forEach((n) => { if (n.localName === "tc") tcs.push(n); else if (n.localName === "sdt") wAll(n, "tc").forEach((x) => tcs.push(x)); });
+      let col = 0; const row = [];
+      tcs.forEach((tc) => {
+        const pr = wKids(tc, "tcPr")[0];
+        const span = +(pr && wVal(wKids(pr, "gridSpan")[0])) || 1;
+        const vm = pr && wKids(pr, "vMerge")[0];
+        const lines = wLines(tc).filter((l) => l.text);
+        row.push({ col, span, cont: !!vm && wVal(vm) !== "restart", lines, text: lines.map((l) => l.text).join("\n"), marked: wMarked(tc) });
+        col += span;
+      });
+      rows.push(row);
+    }));
+    return rows;
+  }
+  const quitaComillas = (t) => String(t || "").trim().replace(/^[“"«]\s*/, "").replace(/\s*[”"»]$/, "").trim();
+  const CAMPO_DE = (t) => { const n = N(t); return /lenguaj/.test(n) ? CAMPOS[0] : /saberes|matematic/.test(n) ? CAMPOS[1] : /etica|naturaleza|exploracion/.test(n) ? CAMPOS[2] : /humano|comunitario|socioemocional|fisica/.test(n) ? CAMPOS[3] : /artes/.test(n) ? CAMPOS[0] : null; };
+  const ABAJO_RE = [["ajustes", /^ajustes/], ["programasExternos", /^programas externos/], ["musica", /musica/], ["udei", /udei/], ["pmc", /pmc/], ["coevaluacion", /^coevaluacion/], ["retroalimentacion", /^retroalimentacion/], ["observaciones", /^observaciones/]];
+  function matchCont(text, campo) {
+    const a = wordsOf(sinClave(text)); if (a.size < 3) return null;
+    let best = null, bs = 0;
+    (campo ? [campo] : CAMPOS).forEach((c) => (CAT[c] || []).forEach((it, i) => {
+      const w = wordsOf(it.contenido); let n = 0; a.forEach((x) => { if (w.has(x)) n++; });
+      const s1 = n / Math.min(a.size, w.size), s2 = n / Math.max(a.size, w.size);
+      if (s1 >= 0.75 && s2 >= 0.5 && s1 + s2 > bs) { bs = s1 + s2; best = { campo: c, i }; }
+    }));
+    return best;
+  }
+  function parseActividad(lines, fase) {
+    const a = emptyAct(fase), notas = []; let cur = null;
+    lines.forEach((ln, k) => {
+      const t = ln.text; if (!t) return;
+      const m = t.match(/^(INICIO|DESARROLLO|CIERRE)\s*:\s*(.*)$/i);
+      if (m) { cur = m[1].toLowerCase(); a[cur] = a[cur] ? a[cur] + "\n" + m[2] : m[2]; return; }
+      if (k === 0 && !a.titulo) {
+        if (/^[“"«]/.test(t)) { a.titulo = quitaComillas(t); return; }
+        if (ln.bold && ln.bold.length >= 3) { a.titulo = ln.bold.replace(/[.:]\s*$/, ""); const rest = t.slice(t.indexOf(ln.bold) + ln.bold.length).trim(); if (rest) notas.push(rest); return; }
+        if (t.length <= 90 && !LABEL_RE.test(t) && lines.length > 1) { a.titulo = t.replace(/\.\s*$/, ""); return; }
+      }
+      if (cur && !LABEL_RE.test(t) && !/^\(/.test(t)) { a[cur] += "\n" + t; return; }
+      cur = null; notas.push(t);
+    });
+    a.notas = notas.join("\n");
+    return a;
+  }
+  function parseDocxPlan(xml) {
+    const rows = wRows(xml);
+    const plan = normalize(emptyPlan()); plan.actividades = [];
+    const avisos = [];
+    let modo = null, grado = null, cols = null, fase = "", campoActual = null, ejesMarcados = null;
+    const crudos = [], evalViejas = [];
+    const valorTras = (row, i) => row.slice(i + 1).map((c) => c.text).filter(Boolean).join("\n");
+    const colDe = (row, col) => row.find((c) => c.col <= col && col < c.col + c.span);
+    for (const row of rows) {
+      const texts = row.map((c) => c.text), first = N(texts[0] || ""), all = N(texts.join(" | "));
+      if (!all) continue;
+      // Datos generales
+      const iGr = row.findIndex((c) => /^grado/.test(N(c.text)));
+      if (iGr >= 0 && /docente/.test(all)) { const m = String(row[iGr + 1] ? row[iGr + 1].text : "").match(/[123]/); if (m) grado = m[0]; modo = null; continue; }
+      if (/^modalidad/.test(first)) {
+        const tras = N(texts[0].split(":").slice(1).join(":"));
+        MODALIDADES.forEach((m) => { if (tras && (tras.includes(N(m)) || (m === "Proyecto" && /proyecto/.test(tras)) || (m === "Aprendizaje basado en el juego" && /juego/.test(tras)))) if (!plan.modalidad.includes(m)) plan.modalidad.push(m); });
+        modo = "modalidad"; continue;
+      }
+      if (modo === "modalidad") {
+        row.forEach((c) => { const m = MODALIDADES.find((x) => N(c.text).replace(/[✓✔☑☒✅x]\s*$/i, "").trim().startsWith(N(x))); if (m && (MARCA_RE.test(c.text) || c.marked) && !plan.modalidad.includes(m)) plan.modalidad.push(m); });
+        modo = null; continue;
+      }
+      const lab = (re) => { const i = row.findIndex((c) => re.test(N(c.text))); return i >= 0 ? valorTras(row, i) : null; };
+      let v;
+      if ((v = lab(/^(nombre del proyecto|situacion de aprendizaje|nombre de la situacion)/)) !== null && /^(nombre del proyecto|situacion de aprendizaje|nombre de la situacion)/.test(first)) { plan.proyecto = quitaComillas(v.split("\n")[0]); continue; }
+      if (/^problematica/.test(first)) { plan.problematica = valorTras(row, 0); continue; }
+      if (/^(finalidad|proposito)/.test(first)) { plan.finalidad = valorTras(row, 0); continue; }
+      if (/^ejes articuladores/.test(first) && row.length <= 2) { modo = "ejes"; continue; }
+      if (modo === "ejes") {
+        const listados = [], palomita = [], resaltados = [];
+        row.forEach((c) => { const e = EJES.find((x) => N(c.text).startsWith(N(x).slice(0, 18))); if (!e) return; if (!listados.includes(e)) listados.push(e);
+          if (MARCA_RE.test(c.text) && !palomita.includes(e)) palomita.push(e); else if (c.marked && !resaltados.includes(e)) resaltados.push(e); });
+        plan.ejes = palomita.length ? palomita : resaltados.length ? resaltados : listados.length < EJES.length ? listados : [];
+        ejesMarcados = palomita.length > 0; modo = null; continue;
+      }
+      if (/^campo formativo/.test(first) && /contenido/.test(all)) { modo = "campos"; campoActual = null; continue; }
+      if (/aprendizajes? esperados?/.test(all) && /campo/.test(first)) {
+        cols = {}; row.forEach((c) => { const t = N(c.text); if (/^campo/.test(t)) cols.campo = c.col; else if (/aprendizaje/.test(t)) cols.ae = c.col; else if (/evaluacion/.test(t)) cols.ev = c.col; else if (/organizador/.test(t)) { if (cols.o1 == null) cols.o1 = c.col; else cols.o2 = c.col; } });
+        modo = "viejos"; continue;
+      }
+      if (/pda permanentes/.test(all)) { cols = { perm: (row.find((c) => /pda permanentes/.test(N(c.text))) || {}).col, ef: (row.find((c) => /educacion fisica/.test(N(c.text))) || {}).col }; modo = "perm"; continue; }
+      if (modo === "perm") { const p = colDe(row, cols.perm), e = cols.ef != null ? colDe(row, cols.ef) : null; if (p) plan.pdaPermanentes = p.text; if (e && e !== p) plan.educacionFisica = e.text; modo = null; continue; }
+      const esEncabezadoAct = (/estructura didactica/.test(all) && /actividad/.test(all)) || /^actividad(es)? de (inicio|desarrollo|cierre)/.test(first);
+      if (esEncabezadoAct) {
+        cols = {}; row.forEach((c) => { const t = N(c.text);
+          if (/^estructura/.test(t)) cols.fase = c.col; else if (/^actividad/.test(t)) cols.act = c.col; else if (/consigna/.test(t)) cols.cons = c.col;
+          else if (/organizacion/.test(t)) cols.org = c.col; else if (/recurso|material/.test(t)) cols.rec = c.col; else if (/tiempo|fecha/.test(t)) cols.tiempo = c.col; else if (/evaluacion/.test(t)) cols.ev = c.col; });
+        const m = first.match(/^actividad(es)? de (inicio|desarrollo|cierre)/); if (m) fase = m[2][0].toUpperCase() + m[2].slice(1);
+        modo = "acts"; continue;
+      }
+      const abajo = ABAJO_RE.find(([, re]) => re.test(first));
+      if (abajo && row.length >= 2 && row[0].text.length < 160) { plan[abajo[0]] = valorTras(row, 0); modo = null; continue; }
+      if (modo === "campos") {
+        const c0 = row[0], cont = row.length >= 3 ? row[1] : null, pdaC = row[row.length - 1];
+        if (!c0.cont && c0.text) campoActual = CAMPO_DE(c0.text) || campoActual;
+        if (!campoActual) continue;
+        const pdas = pdaC && pdaC !== c0 ? pdaC.text.split(/\n|•|●|▪|◦/).map((x) => x.replace(/^\s*[-*–]\s*/, "").replace(/^(L|SyPC|ENyS|HyC)\s?\d+\.\d+\s*/i, "").trim()).filter((x) => x.length > 3) : [];
+        const contenidos = cont && !cont.cont ? cont.lines.map((l) => l.text).filter((x) => x.length > 3) : [];
+        crudos.push({ campo: campoActual, contenidos, pdas });
+        continue;
+      }
+      if (modo === "viejos") {
+        const cc = colDe(row, cols.campo); if (cc && !cc.cont && cc.text) campoActual = CAMPO_DE(cc.text) || campoActual;
+        const o1 = cols.o1 != null ? colDe(row, cols.o1) : null, o2 = cols.o2 != null ? colDe(row, cols.o2) : null, ae = cols.ae != null ? colDe(row, cols.ae) : null, ev = cols.ev != null ? colDe(row, cols.ev) : null;
+        if (campoActual && ae && ae.text) plan.campos[campoActual].push({ contenido: [o1 && o1.text, o2 && o2 !== o1 && o2.text].filter(Boolean).map((x) => x.replace(/\s+/g, " ")).join(": "), pdas: [ae.text.replace(/\s+/g, " ")] });
+        if (ev && !ev.cont) ev.lines.forEach((l) => { if (!evalViejas.includes(l.text)) evalViejas.push(l.text); });
+        continue;
+      }
+      if (modo === "acts" && cols && cols.act != null) {
+        const ac = colDe(row, cols.act); const get = (k) => { if (cols[k] == null) return ""; const c = colDe(row, cols[k]); return c && c !== ac ? c.text : ""; };
+        if (cols.fase != null) { const fc = colDe(row, cols.fase); if (fc && fc !== ac && !fc.cont && fc.text) fase = fc.lines[0].text; }
+        if (!ac || !ac.text) continue;
+        const a = parseActividad(ac.lines, fase);
+        const cons = get("cons"); if (cons && !/^no aplica$/i.test(cons.trim())) a.notas = (a.notas ? a.notas + "\n" : "") + "CONSIGNAS: " + cons.replace(/\s*\n\s*/g, " ");
+        a.organizacion = get("org"); a.recursos = get("rec"); a.tiempo = get("tiempo").replace(/\s*\n\s*/g, " "); a.evaluacion = get("ev");
+        plan.actividades.push(a);
+      }
+    }
+    // Contenidos y PDA del formato nuevo: se acomodan en su campo con la clave del Programa Sintético.
+    const g = grado || gradeDefault();
+    const entrada = (campo, texto) => { const k = sinClave(texto); let e = plan.campos[campo].find((x) => sinClave(x.contenido) === k); if (!e) { e = { contenido: texto, pdas: [] }; plan.campos[campo].push(e); } return e; };
+    const deCatalogo = (campo, i) => entrada(campo, codeCont(campo, i) + ". " + CAT[campo][i].contenido);
+    crudos.forEach((r) => {
+      const propias = r.contenidos.map((t) => { const m = matchCont(t, r.campo) || matchCont(t, null); return m ? deCatalogo(m.campo, m.i) : entrada(r.campo, t); });
+      r.pdas.forEach((t) => {
+        const code = matchPda(t, g);
+        if (code) { const m = code.match(/^(\S+)\s(\d+)\.(\d+)$/); const campo = CAMPOS.find((c) => PREF[c] === m[1]); const e = deCatalogo(campo, +m[2] - 1); if (!e.pdas.includes(t)) e.pdas.push(t); }
+        else { const e = propias[0] || entrada(r.campo, ""); if (!e.pdas.includes(t)) e.pdas.push(t); }
+      });
+    });
+    if (evalViejas.length) plan.observaciones = (plan.observaciones ? plan.observaciones + "\n" : "") + "Estrategias de evaluación: " + evalViejas.join("; ") + ".";
+    if (!plan.proyecto && !plan.actividades.length) throw new Error("formato");
+    if (!plan.modalidad.length) avisos.push("la modalidad");
+    if (!ejesMarcados) avisos.push("los ejes articuladores");
+    if (!crudos.length && !CAMPOS.some((c) => plan.campos[c].length)) avisos.push("los contenidos y PDA");
+    if (!plan.actividades.length) avisos.push("las actividades");
+    return { plan, avisos };
+  }
+  async function leerWord(file) {
+    if (!/\.docx$/i.test(file.name)) throw new Error("tipo");
+    if (!window.JSZip) throw new Error("no-zip");
+    const zip = await window.JSZip.loadAsync(await file.arrayBuffer());
+    const f = zip.file("word/document.xml"); if (!f) throw new Error("tipo");
+    return parseDocxPlan(await f.async("string"));
+  }
+  let avisoImport = null;
+  async function importarWords(files) {
+    const ok = [], malos = [];
+    for (const f of files) {
+      try { const r = await leerWord(f); r.archivo = f.name; ok.push(r); }
+      catch (e) { malos.push(f.name + (e.message === "tipo" ? " (no es Word .docx)" : e.message === "no-zip" ? " (falta internet)" : " (no reconocí el formato)")); }
+    }
+    const noLeidos = malos.length ? " No se pudo leer: " + malos.join(", ") + ". Si es PDF o .doc, guárdalo como Word (.docx)." : "";
+    if (!ok.length) { toast(noLeidos.trim()); return; }
+    if (ok.length === 1) {
+      if (noLeidos) toast(noLeidos.trim());
+      const { plan, avisos, archivo } = ok[0];
+      avisoImport = { archivo, avisos };
+      startEdit(plan); draftDirty = true; renderEditor();
+    } else if (ok.length > 1) {
+      let n = 0;
+      for (const r of ok) { const p = r.plan; p.id = slug(p.proyecto || r.archivo); p.creado = new Date().toISOString(); if (!p.proyecto) p.proyecto = r.archivo.replace(/\.docx$/i, ""); try { await savePlan(p); n++; } catch (e) { break; } }
+      toast(`${n} planeaciones subidas al banco. Ábrelas para revisarlas.` + noLeidos);
+    }
+  }
+
   // ------------------------------------------------------------------ editor
   function startEdit(plan) {
+    if (!(plan && !plan.id)) avisoImport = null;
     if (plan) draft = normalize(plan);
     else { draft = normalize(emptyPlan()); draft.modalidad = ["Proyecto"]; draft.actividades = MOMENTOS["Proyecto"].map((f) => emptyAct(f)); }
     draftDirty = false; picker = null;
@@ -703,6 +916,7 @@ table.fmt td p:last-child { margin-bottom: 0; }
     const d = draft, isNew = !d.id || !plans.some((p) => p.id === d.id);
     let h = `<div class="editor-bar"><div class="t">${esc(d.proyecto || "Planeación sin nombre")}<small>${isNew ? "Nueva planeación (aún no está en el banco)" : "Editando una planeación del banco"}${draftDirty ? " · cambios sin guardar" : ""}</small></div>
       <div class="row"><button class="btn primary" data-act="save">Guardar en el banco</button>${isNew ? "" : '<button class="btn" data-act="saveCopy">Guardar como copia nueva</button>'}<button class="btn ghost" data-act="cancel">Cerrar</button></div></div>`;
+    if (avisoImport && isNew) h += `<div class="card sync"><b>Leí “${esc(avisoImport.archivo)}”.</b><p>Revisa que todo esté en su lugar${avisoImport.avisos.length ? ", sobre todo " + esc(avisoImport.avisos.join(", ").replace(/, ([^,]*)$/, " y $1")) : ""}. Cuando esté bien, pulsa “Guardar en el banco”.</p></div>`;
 
     h += `<details class="card guia"><summary>Antes de realizar la planeación <small>(Cuadernillo de planeación, p. 79)</small></summary><ul>
       <li>Reflexionar en el tema del proyecto e investigar sus posibles líneas de desarrollo.</li>
@@ -785,7 +999,7 @@ table.fmt td p:last-child { margin-bottom: 0; }
     if (!d.proyecto) { toast("Escribe el nombre del proyecto antes de guardar."); const el = $('[data-path="proyecto"]'); if (el) el.focus(); return; }
     if (asCopy || !d.id) { d.id = slug(d.proyecto); if (asCopy) d.proyecto += " (copia)"; d.creado = new Date().toISOString(); }
     try { await savePlan(d); } catch (e) { return; }
-    draft = d; draftDirty = false; setCurrent(d.id);
+    draft = d; draftDirty = false; avisoImport = null; setCurrent(d.id);
     toast(asCopy ? "Copia guardada en tu banco." : "Guardada en tu banco.");
     showView("formato"); renderAll();
   }
@@ -818,7 +1032,7 @@ table.fmt td p:last-child { margin-bottom: 0; }
       case "new": startEdit(null); return;
       case "save": doSave(false); return;
       case "saveCopy": doSave(true); return;
-      case "cancel": draft = null; draftDirty = false; picker = null; updateDirtyDot(); showView("formato"); return;
+      case "cancel": draft = null; draftDirty = false; picker = null; avisoImport = null; updateDirtyDot(); showView("formato"); return;
       case "pick": picker = { campo, ci: 0, g: gradeDefault(), sel: new Set() }; break;
       case "pkClose": picker = null; break;
       case "pkAll": { const it = CAT[picker.campo][picker.ci]; picker.sel = new Set(((it.pda && it.pda[picker.g]) || []).map((_, k) => k)); break; }
@@ -863,7 +1077,7 @@ table.fmt td p:last-child { margin-bottom: 0; }
     renderSync();
     const el = $("#bankList");
     if (!loaded) { el.innerHTML = '<div class="empty"><b>Cargando tu banco…</b>Tus planeaciones aparecerán aquí.</div>'; return; }
-    if (!plans.length) { el.innerHTML = '<div class="empty"><b>Tu banco está vacío</b>Pulsa “Nueva planeación” para capturar la primera, o “Cargar banco” si tienes un archivo banco.json.</div>'; return; }
+    if (!plans.length) { el.innerHTML = '<div class="empty"><b>Tu banco está vacío</b>Pulsa “Subir Word” para agregar una planeación que ya tengas en Word, “Nueva planeación” para capturarla aquí, o “Cargar banco” si tienes un archivo banco.json.</div>'; return; }
     const q = $("#q").value.trim().toLowerCase(), fc = $("#fCampo").value, fe = $("#fEje").value;
     const list = plans.filter((p) => (!q || planText(p).includes(q)) && (!fc || (p.campos[fc] || []).some((e) => e.contenido || e.pdas.length)) && (!fe || p.ejes.includes(fe)))
       .sort((a, b) => a.proyecto.localeCompare(b.proyecto, "es"));
@@ -902,6 +1116,8 @@ table.fmt td p:last-child { margin-bottom: 0; }
     const data = JSON.stringify({ tipo: "banco-planeaciones", version: 2, fecha: new Date().toISOString(), planeaciones: plans.map((p) => clone(p)) }, null, 1);
     offerFile("banco.json", new Blob([data], { type: "application/json" }));
   });
+  $("#btnWordIn").addEventListener("click", () => $("#fileWordIn").click());
+  $("#fileWordIn").addEventListener("change", async (ev) => { const fs = Array.from(ev.target.files || []); ev.target.value = ""; if (fs.length) await importarWords(fs); });
   $("#btnRestore").addEventListener("click", () => $("#fileRestore").click());
   $("#fileRestore").addEventListener("change", async (ev) => {
     const f = ev.target.files[0]; ev.target.value = ""; if (!f) return;
