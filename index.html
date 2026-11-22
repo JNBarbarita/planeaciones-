@@ -173,6 +173,17 @@ table.fmt td p:last-child { margin-bottom: 0; }
 .sync p { margin: 6px 0 0; font-size: .9rem; }
 .sync code { font-size: .85em; }
 .solo { font-size: .75rem; font-weight: 600; color: var(--warm); }
+/* PMC */
+.mes-chip { border: 1.5px solid var(--line); background: var(--bg); color: var(--muted); border-radius: 6px; padding: 3px 7px; font: 600 .76rem var(--f-ui); cursor: pointer; }
+.mes-chip[aria-pressed="true"] { background: var(--accent); border-color: var(--accent); color: var(--accent-ink); }
+.pmc-act { display: grid; gap: 6px; padding: 10px; border: 1px solid var(--line); border-radius: 10px; margin-bottom: 8px; background: var(--bg); opacity: .75; }
+.pmc-act.on { opacity: 1; border-color: var(--accent); background: var(--surface); }
+.pmc-act textarea { width: 100%; border: 1px solid var(--line); background: var(--surface); border-radius: 8px; padding: 6px 8px; resize: vertical; min-width: 0; }
+.pmc-ctrl { justify-content: space-between; }
+.meses { display: flex; flex-wrap: wrap; gap: 4px; }
+.pmc-lista { margin: 0; padding-left: 20px; display: grid; gap: 4px; }
+.pmc-auto { background: var(--bg); border-radius: 8px; padding: 8px 10px; font-size: .9rem; }
+.pmc-auto p { margin: 0 0 4px; }
 /* Avance */
 .av-sum { display: flex; flex-wrap: wrap; gap: 8px 20px; align-items: baseline; }
 .av-sum b { font-size: 1.6rem; font-variant-numeric: tabular-nums; }
@@ -238,6 +249,7 @@ table.fmt td p:last-child { margin-bottom: 0; }
       <button class="tab" role="tab" id="tab-formato" data-view="formato" aria-selected="true">Formato</button>
       <button class="tab" role="tab" id="tab-editar" data-view="editar" aria-selected="false">Editar</button>
       <button class="tab" role="tab" id="tab-banco" data-view="banco" aria-selected="false">Banco</button>
+      <button class="tab" role="tab" id="tab-pmc" data-view="pmc" aria-selected="false">PMC</button>
       <button class="tab" role="tab" id="tab-avance" data-view="avance" aria-selected="false">Avance</button>
     </nav>
   </div>
@@ -286,6 +298,9 @@ table.fmt td p:last-child { margin-bottom: 0; }
     <div class="card sync" id="syncNote" hidden></div>
     <div id="bankList"></div>
   </section>
+
+  <!-- PMC -->
+  <section class="view" id="v-pmc" hidden></section>
 
   <!-- AVANCE -->
   <section class="view" id="v-avance" hidden>
@@ -412,6 +427,39 @@ table.fmt td p:last-child { margin-bottom: 0; }
   // dispositivo se guarda en ese navegador hasta que se sube un banco.json nuevo.
   let shared = [], localPlans = [], hidden = [], sharedOk = false;
   const origen = {};
+
+  // Programa de Mejora Continua: actividades por mes. "Actividades de PMC" se llena sola según el periodo de la planeación.
+  const PKEY = "bancoPlaneaciones.pmc";
+  const MESES_PMC = [["sep", "Septiembre"], ["oct", "Octubre"], ["nov", "Noviembre"], ["dic", "Diciembre"], ["ene", "Enero"], ["feb", "Febrero"], ["mar", "Marzo"], ["abr", "Abril"], ["may", "Mayo"], ["jun", "Junio"]];
+  const AMBITOS = { A: "Aprovechamiento académico y asistencia de los alumnos", B: "Prácticas docentes y directivas", C: "Formación docente", D: "Avance de los planes y programas educativos", E: "Participación de la comunidad", F: "Desempeño de la autoridad escolar", G: "Infraestructura y equipamiento", H: "Carga administrativa" };
+  const MES_RE = [/\bsep(t(iembre)?)?\b|\bsetiembre\b/, /\boct(ubre)?\b/, /\bnov(iembre)?\b/, /\bdic(iembre)?\b/, /\bene(ro)?\b/, /\bfeb(rero)?\b/, /\bmar(zo)?\b/, /\babr(il)?\b/, /\bmayo?\b/, /\bjun(io)?\b/];
+  let pmc = { ciclo: "", objetivos: [], actividades: [] }, pmcLocalPend = false, pmcMesVista = null;
+  const nombreMes = (k) => (MESES_PMC.find((m) => m[0] === k) || [k, k])[1];
+  function normPmc(d) {
+    d = d && typeof d === "object" ? d : {};
+    return { ciclo: String(d.ciclo || ""), actualizado: d.actualizado || "", objetivos: Array.isArray(d.objetivos) ? d.objetivos.map(String) : [],
+      actividades: (Array.isArray(d.actividades) ? d.actividades : []).filter((a) => a && a.id).map((a) => ({ id: String(a.id), objetivo: +a.objetivo || 1, ambito: String(a.ambito || ""), actividad: String(a.actividad || ""), meses: Array.isArray(a.meses) ? a.meses.filter((m) => MESES_PMC.some((x) => x[0] === m)) : [], enPlaneacion: !!a.enPlaneacion })) };
+  }
+  // Meses que menciona un texto ("5 al 30 de octubre", "28 de septiembre al 9 de octubre", "05/10/2026"), incluidos los de en medio.
+  function mesesDe(text) {
+    const t = sinAcentos(text), idx = new Set();
+    MES_RE.forEach((re, i) => { if (re.test(t)) idx.add(i); });
+    t.replace(/\b(\d{1,2})[/.-](\d{1,2})[/.-](\d{2,4})\b/g, (x, d, m) => { const i = [9, 10, 11, 12, 1, 2, 3, 4, 5, 6].indexOf(+m); if (i >= 0) idx.add(i); return x; });
+    if (!idx.size) return [];
+    return MESES_PMC.slice(Math.min(...idx), Math.max(...idx) + 1).map((m) => m[0]);
+  }
+  function mesesPlan(plan) { const m = mesesDe(general.periodo || ""); return m.length ? m : mesesDe(plan.actividades.map((a) => a.tiempo).join(" ")); }
+  function pmcTexto(meses) {
+    const lines = [];
+    meses.forEach((m) => {
+      const acts = pmc.actividades.filter((a) => a.enPlaneacion && a.meses.includes(m));
+      if (!acts.length) return;
+      if (meses.length > 1) lines.push(nombreMes(m).toUpperCase() + ":");
+      acts.forEach((a) => lines.push("• " + a.actividad.trim().replace(/\.?$/, ".")));
+    });
+    return lines.join("\n");
+  }
+  function pmcDePlan(plan) { if (plan.pmcManual) return plan.pmc; return pmcTexto(mesesPlan(plan)) || plan.pmc; }
   const ls = {
     get(k, d) { try { const v = localStorage.getItem(k); return v ? JSON.parse(v) : d; } catch (e) { return d; } },
     set(k, v) { try { localStorage.setItem(k, JSON.stringify(v)); return true; } catch (e) { return false; } },
@@ -436,6 +484,10 @@ table.fmt td p:last-child { margin-bottom: 0; }
       db.doc("config/general").onSnapshot((s) => {
         if (s.exists) { general = Object.assign(general, s.data()); renderGeneralInputs(); renderSheet(); }
       }, () => {});
+      db.doc("config/pmc").onSnapshot((s) => {
+        pmc = normPmc(s.exists ? s.data() : null); renderSheet();
+        const v = $("#v-pmc"); if (!v.hidden && !v.contains(document.activeElement)) renderPmc();
+      }, () => {});
     } else {
       mode = "local";
       $("#btnPrint").hidden = inViewer;
@@ -448,8 +500,11 @@ table.fmt td p:last-child { margin-bottom: 0; }
         if (!r.ok) throw new Error(String(r.status));
         const d = await r.json();
         shared = (Array.isArray(d) ? d : d.planeaciones || []).filter((p) => p && p.id && p.proyecto).map(normalize);
+        pmc = normPmc(d.pmc);
         sharedOk = true;
       } catch (e) { shared = []; sharedOk = false; }
+      const pl = ls.get(PKEY, null);
+      if (pl && pl.pmc && String(pl.pmc.actualizado || "") > String(pmc.actualizado || "")) { pmc = normPmc(pl.pmc); pmcLocalPend = true; } else ls.set(PKEY, null);
       // Si el banco.json ya trae la misma versión (o una más nueva) de algo guardado aquí, ya no hace falta la copia local.
       localPlans = localPlans.filter((lp) => { const sp = shared.find((x) => x.id === lp.id); return !sp || String(lp.actualizado || "") > String(sp.actualizado || ""); });
       hidden = hidden.filter((id) => shared.some((x) => x.id === id));
@@ -468,7 +523,17 @@ table.fmt td p:last-child { margin-bottom: 0; }
     else if (n) setStatus("warn", n === 1 ? "1 cambio solo en este dispositivo" : n + " cambios solo en este dispositivo");
     else setStatus("cloud", "Banco al día");
   }
-  const pendientes = () => localPlans.length + hidden.length;
+  const pendientes = () => localPlans.length + hidden.length + (pmcLocalPend ? 1 : 0);
+  let pTimer = null;
+  function savePmcSoon() {
+    pmc.actualizado = new Date().toISOString();
+    clearTimeout(pTimer);
+    pTimer = setTimeout(async () => {
+      if (mode === "cloud") { try { await db.doc("config/pmc").set(clone(pmc)); } catch (e) { toast("No se pudo guardar el PMC. Revisa tu conexión."); } }
+      else { ls.set(PKEY, { pmc: clone(pmc) }); pmcLocalPend = true; rebuildLocal(); renderSync(); }
+    }, 700);
+    renderSheet();
+  }
   async function savePlan(p) {
     const body = clone(p); delete body.id; body.actualizado = new Date().toISOString();
     if (mode === "cloud") {
@@ -563,7 +628,7 @@ table.fmt td p:last-child { margin-bottom: 0; }
     }
     T.push({ w: [1500, 6900, 1300, 2000, 1300, 1300], head: 1, rows: arows });
     T.push({ gap: true });
-    T.push({ w: [2800, 11500], rows: ABAJO.map(([k, label]) => [H(label, { c: true }), V(plan[k], { minH: true })]) });
+    T.push({ w: [2800, 11500], rows: ABAJO.map(([k, label]) => [H(label, { c: true }), V(k === "pmc" ? pmcDePlan(plan) : plan[k], { minH: true })]) });
     if (g.firmas) T.push({ firmas: [["Docente frente a grupo " + (g.grupo || ""), g.docente ? "Profra. " + g.docente : ""], ["Directora del plantel", g.directora || "Vo. Bo. Dirección escolar"]] });
     return T;
   }
@@ -983,10 +1048,18 @@ table.fmt td p:last-child { margin-bottom: 0; }
     });
     h += `<div class="row"><button class="btn" data-act="addAct">+ Agregar actividad</button><button class="btn ghost" data-act="addMomentos">+ Agregar una actividad por cada momento de la modalidad</button></div></div>`;
 
-    h += `<div class="card"><h2>Cierre del formato</h2>${ABAJO.map(([k, l]) => fld(l.replace("\n", " "), k, d[k], 3)).join("")}</div>`;
+    h += `<div class="card"><h2>Cierre del formato</h2>${ABAJO.map(([k, l]) => (k === "pmc" ? pmcEditorHtml(d) : fld(l.replace("\n", " "), k, d[k], 3))).join("")}</div>`;
     h += `<div class="row"><button class="btn primary" data-act="save">Guardar en el banco</button>${isNew ? "" : '<button class="btn" data-act="saveCopy">Guardar como copia nueva</button>'}</div>`;
     v.innerHTML = h;
     updateDirtyDot();
+  }
+  function pmcEditorHtml(d) {
+    const meses = mesesPlan(d), auto = pmcTexto(meses), cuando = meses.map(nombreMes).join(", ");
+    let body;
+    if (d.pmcManual) body = `<textarea data-path="pmc" rows="5">${esc(d.pmc)}</textarea>`;
+    else if (auto) body = `<div class="pmc-auto"><p class="meta">Se llenan solas con tu PMC (${esc(cuando)}):</p><p>${esc(auto).replace(/\n/g, "<br>")}</p></div>`;
+    else body = `<div class="pmc-auto"><p class="meta">${meses.length ? "Tu PMC no tiene actividades marcadas para " + esc(cuando) + "." : "Escribe el periodo de tiempo en el formato para que se llenen solas con tu PMC."}${d.pmc ? " Mientras tanto se usa lo que trae esta planeación." : ""}</p></div>`;
+    return `<div class="fld"><span>Actividades de PMC</span><label class="chk" style="justify-self:start"><input type="checkbox" data-pmcmanual${d.pmcManual ? " checked" : ""}> Escribirlas a mano en esta planeación</label>${body}</div>`;
   }
   function pickerHtml() {
     const items = CAT[picker.campo] || [];
@@ -1034,6 +1107,11 @@ table.fmt td p:last-child { margin-bottom: 0; }
       arr.sort((a, b) => order.indexOf(a) - order.indexOf(b));
       if (el.dataset.list === "modalidad") { const dl = $("#fasesList"); if (dl) dl.innerHTML = fasesDe(draft).map((f) => `<option value="${esc(f)}">`).join(""); }
       markDirty(); return;
+    }
+    if (el.hasAttribute("data-pmcmanual")) {
+      draft.pmcManual = el.checked;
+      if (el.checked) { const auto = pmcTexto(mesesPlan(draft)); if (auto) draft.pmc = auto; }
+      markDirty(); const y = window.scrollY; renderEditor(); window.scrollTo(0, y); return;
     }
     if (el.dataset.pk === "ci") { picker.ci = +el.value; picker.sel = new Set(); renderEditor(); }
     else if (el.dataset.pk === "g") { picker.g = el.value; picker.sel = new Set(); renderEditor(); }
@@ -1127,7 +1205,7 @@ table.fmt td p:last-child { margin-bottom: 0; }
 
   $("#btnBackup").addEventListener("click", () => {
     if (!plans.length) { toast("Tu banco está vacío."); return; }
-    const data = JSON.stringify({ tipo: "banco-planeaciones", version: 2, fecha: new Date().toISOString(), planeaciones: plans.map((p) => clone(p)) }, null, 1);
+    const data = JSON.stringify({ tipo: "banco-planeaciones", version: 2, fecha: new Date().toISOString(), planeaciones: plans.map((p) => clone(p)), pmc: clone(pmc) }, null, 1);
     offerFile("banco.json", new Blob([data], { type: "application/json" }));
   });
   $("#btnWordIn").addEventListener("click", () => $("#fileWordIn").click());
@@ -1136,7 +1214,7 @@ table.fmt td p:last-child { margin-bottom: 0; }
   $("#fileRestore").addEventListener("change", async (ev) => {
     const f = ev.target.files[0]; ev.target.value = ""; if (!f) return;
     let list;
-    try { const d = JSON.parse(await f.text()); list = Array.isArray(d) ? d : d.planeaciones; if (!Array.isArray(list)) throw 0; }
+    try { const d = JSON.parse(await f.text()); list = Array.isArray(d) ? d : d.planeaciones; if (!Array.isArray(list)) throw 0; if (d.pmc && Array.isArray(d.pmc.actividades)) { pmc = normPmc(d.pmc); savePmcSoon(); } }
     catch (e) { toast("Ese archivo no es un banco de planeaciones."); return; }
     let n = 0;
     for (const raw of list) {
@@ -1149,6 +1227,7 @@ table.fmt td p:last-child { margin-bottom: 0; }
 
   // ------------------------------------------------------------------ formato: eventos
   $("#sheet").addEventListener("change", (ev) => {
+    if (ev.target.dataset.g === "periodo") { general.periodo = ev.target.value; saveGeneralSoon(); renderSheet(); return; }
     if (ev.target.id === "projSel") {
       setCurrent(ev.target.value); renderSheet(); renderBank();
       const p = current(); if (p) toast("Formato llenado con: " + p.proyecto);
@@ -1241,11 +1320,68 @@ table.fmt td p:last-child { margin-bottom: 0; }
     avSel = avSel === c.dataset.code ? null : c.dataset.code; renderAvance();
   });
 
+  // ------------------------------------------------------------------ PMC
+  function mesActual() { const m = new Date().getMonth(); const k = ["ene", "feb", "mar", "abr", "may", "jun", null, null, "sep", "oct", "nov", "dic"][m]; return k || "sep"; }
+  function renderPmc() {
+    const v = $("#v-pmc");
+    if (!pmcMesVista) { const p = current(); const m = p ? mesesPlan(p) : []; pmcMesVista = m[0] || mesActual(); }
+    const vista = pmc.actividades.filter((a) => a.enPlaneacion && a.meses.includes(pmcMesVista));
+    let h = `<div class="toolbar"><p class="hint">Programa de Mejora Continua ${esc(pmc.ciclo || "")}. Marca en qué meses va cada actividad y si va en las planeaciones. En el formato, “Actividades de PMC” se llena sola con las del mes del periodo de tiempo.</p></div>`;
+    h += `<div class="card"><h2>Así se verá en las planeaciones de ${esc(nombreMes(pmcMesVista).toLowerCase())}</h2>
+      <div class="row" style="margin:8px 0 10px">${MESES_PMC.map(([k, n]) => `<button class="mes-chip" data-vmes="${k}" aria-pressed="${k === pmcMesVista}">${n.slice(0, 3)}</button>`).join("")}</div>
+      ${vista.length ? `<ul class="pmc-lista">${vista.map((a) => `<li>${esc(a.actividad)}</li>`).join("")}</ul>` : '<p class="sub" style="margin:0">Ninguna actividad del PMC marcada para este mes.</p>'}</div>`;
+    if (!pmc.actividades.length) h += `<div class="empty"><b>Todavía no hay PMC cargado</b>Agrega las actividades con el botón de abajo, o carga un banco.json que ya lo traiga.</div>`;
+    const objs = Math.max(pmc.objetivos.length, ...pmc.actividades.map((a) => a.objetivo), 1);
+    for (let o = 1; o <= objs; o++) {
+      const acts = pmc.actividades.filter((a) => a.objetivo === o);
+      h += `<div class="card"><h2>Objetivo ${o}</h2>${pmc.objetivos[o - 1] ? `<p class="sub">${esc(pmc.objetivos[o - 1])}</p>` : ""}`;
+      const grupos = Object.keys(AMBITOS).concat([""]);
+      grupos.forEach((k) => {
+        const g = acts.filter((a) => (AMBITOS[a.ambito] ? a.ambito : "") === k); if (!g.length) return;
+        h += `<h3>${esc(AMBITOS[k] || "Otras actividades")}</h3>`;
+        g.forEach((a) => {
+          h += `<div class="pmc-act${a.enPlaneacion ? " on" : ""}" data-id="${esc(a.id)}">
+            <textarea data-ptxt rows="2" aria-label="Actividad">${esc(a.actividad)}</textarea>
+            <div class="row pmc-ctrl"><label class="chk"><input type="checkbox" data-pen${a.enPlaneacion ? " checked" : ""}> Va en las planeaciones</label>
+            <div class="meses">${MESES_PMC.map(([mk, n]) => `<button class="mes-chip" data-pmes="${mk}" aria-pressed="${a.meses.includes(mk)}" title="${n}">${n.slice(0, 3)}</button>`).join("")}</div>
+            <button class="btn sm danger" data-pdel>Quitar</button></div></div>`;
+        });
+      });
+      h += `<button class="btn sm" data-padd="${o}">+ Agregar actividad al objetivo ${o}</button></div>`;
+    }
+    v.innerHTML = h;
+  }
+  $("#v-pmc").addEventListener("click", (ev) => {
+    const vm = ev.target.closest("[data-vmes]"); if (vm) { pmcMesVista = vm.dataset.vmes; renderPmc(); return; }
+    const add = ev.target.closest("[data-padd]");
+    if (add) { const o = +add.dataset.padd, id = "a" + Date.now().toString(36); pmc.actividades.push({ id, objetivo: o, ambito: "", actividad: "", meses: [], enPlaneacion: true }); savePmcSoon(); renderPmc(); const t = $(`#v-pmc .pmc-act[data-id="${id}"] textarea`); if (t) t.focus(); return; }
+    const row = ev.target.closest(".pmc-act"); if (!row) return;
+    const a = pmc.actividades.find((x) => x.id === row.dataset.id); if (!a) return;
+    const mb = ev.target.closest("[data-pmes]");
+    if (mb) { const k = mb.dataset.pmes, i = a.meses.indexOf(k); if (i >= 0) a.meses.splice(i, 1); else { a.meses.push(k); a.meses.sort((x, y) => MESES_PMC.findIndex((m) => m[0] === x) - MESES_PMC.findIndex((m) => m[0] === y)); } mb.setAttribute("aria-pressed", String(i < 0)); savePmcSoon(); return; }
+    const del = ev.target.closest("[data-pdel]");
+    if (del) {
+      if (!del.classList.contains("armed")) { del.classList.add("armed"); del.textContent = "¿Quitar? Toca otra vez"; setTimeout(() => { del.classList.remove("armed"); del.textContent = "Quitar"; }, 4000); return; }
+      pmc.actividades = pmc.actividades.filter((x) => x !== a); savePmcSoon(); renderPmc();
+    }
+  });
+  $("#v-pmc").addEventListener("change", (ev) => {
+    if (!ev.target.hasAttribute("data-pen")) return;
+    const row = ev.target.closest(".pmc-act"), a = pmc.actividades.find((x) => x.id === row.dataset.id); if (!a) return;
+    a.enPlaneacion = ev.target.checked; row.classList.toggle("on", a.enPlaneacion); savePmcSoon();
+  });
+  $("#v-pmc").addEventListener("input", (ev) => {
+    if (!ev.target.hasAttribute("data-ptxt")) return;
+    const row = ev.target.closest(".pmc-act"), a = pmc.actividades.find((x) => x.id === row.dataset.id); if (!a) return;
+    a.actividad = ev.target.value; savePmcSoon();
+  });
+
   // ------------------------------------------------------------------ pestañas
   function showView(name) {
-    ["formato", "editar", "banco", "avance"].forEach((n) => { $("#v-" + n).hidden = n !== name; $("#tab-" + n).setAttribute("aria-selected", String(n === name)); });
+    ["formato", "editar", "banco", "pmc", "avance"].forEach((n) => { $("#v-" + n).hidden = n !== name; $("#tab-" + n).setAttribute("aria-selected", String(n === name)); });
     if (name === "editar" && !$("#v-editar").innerHTML.trim()) renderEditor();
     if (name === "avance") renderAvance();
+    if (name === "pmc") renderPmc();
     try { localStorage.setItem("bancoPlaneaciones.vista", name); } catch (e) { /* opcional */ }
     window.scrollTo(0, 0);
   }
@@ -1254,6 +1390,7 @@ table.fmt td p:last-child { margin-bottom: 0; }
   function renderAll() {
     renderSheet(); renderFilters(); renderBank();
     if (!$("#v-avance").hidden) renderAvance();
+    if (!$("#v-pmc").hidden) renderPmc();
   }
 
   renderAll();

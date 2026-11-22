@@ -497,5 +497,567 @@
    "id": "mi-alimentacion-2020",
    "actualizado": "2026-11-22T00:00:00Z"
   }
- ]
+ ],
+ "pmc": {
+  "ciclo": "2026-2027",
+  "objetivos": [
+   "Consolidar en el alumnado el desarrollo de habilidades comunicativas (expresión oral y aproximación a la lectura/escritura), de pensamiento matemático mediante la resolución de problemas cotidianos y de coordinación psicomotriz, a través de modalidades de trabajo y el juego formativo para favorecer su autonomía y desarrollo integral.",
+   "Promover la vivencia continua de valores comunitarios, los derechos humanos y la empatía a través de proyectos socioeducativos, talleres vivenciales y recursos lúdicos inclusivos que involucren activamente a las familias, con el propósito de erradicar factores de riesgo en la convivencia y consolidar un entorno escolar sano, pacífico e inclusivo."
+  ],
+  "actividades": [
+   {
+    "id": "o1-01",
+    "objetivo": 1,
+    "ambito": "A",
+    "actividad": "Entrevistas a alumnos y padres de familia",
+    "meses": [
+     "sep",
+     "nov",
+     "mar",
+     "may"
+    ],
+    "enPlaneacion": true
+   },
+   {
+    "id": "o1-02",
+    "objetivo": 1,
+    "ambito": "A",
+    "actividad": "Actividades diagnósticas: Circuitos motrices, juegos de conteo, colores, nombre propio, ubicación espacial, y normas para la sana convivencia.",
+    "meses": [
+     "sep"
+    ],
+    "enPlaneacion": true
+   },
+   {
+    "id": "o1-03",
+    "objetivo": 1,
+    "ambito": "A",
+    "actividad": "Biblioteca: Inauguración con un “Pic nic literario”",
+    "meses": [
+     "sep"
+    ],
+    "enPlaneacion": true
+   },
+   {
+    "id": "o1-04",
+    "objetivo": 1,
+    "ambito": "A",
+    "actividad": "Jardín sensorial",
+    "meses": [
+     "sep",
+     "oct",
+     "nov",
+     "ene",
+     "feb",
+     "mar",
+     "abr",
+     "may",
+     "jun"
+    ],
+    "enPlaneacion": true
+   },
+   {
+    "id": "o1-05",
+    "objetivo": 1,
+    "ambito": "A",
+    "actividad": "Escuela saludable: Pausa activa y recreo activo",
+    "meses": [
+     "sep",
+     "oct",
+     "nov",
+     "dic",
+     "ene",
+     "feb",
+     "mar",
+     "abr",
+     "may",
+     "jun"
+    ],
+    "enPlaneacion": true
+   },
+   {
+    "id": "o1-06",
+    "objetivo": 1,
+    "ambito": "B",
+    "actividad": "Implementar espacios multisensoriales como el aula blanca",
+    "meses": [
+     "sep",
+     "oct",
+     "nov",
+     "dic",
+     "ene",
+     "feb",
+     "mar",
+     "abr",
+     "may",
+     "jun"
+    ],
+    "enPlaneacion": true
+   },
+   {
+    "id": "o1-07",
+    "objetivo": 1,
+    "ambito": "B",
+    "actividad": "Identificación, canalización seguimiento de alumnos que enfrentan barreras de aprendizaje, participación y convivencia.",
+    "meses": [
+     "sep",
+     "nov",
+     "mar",
+     "jun"
+    ],
+    "enPlaneacion": false
+   },
+   {
+    "id": "o1-08",
+    "objetivo": 1,
+    "ambito": "B",
+    "actividad": "Asistir a asesorías y talleres convocados por la SEP con el fin de mejorar la práctica educativa",
+    "meses": [
+     "sep",
+     "nov",
+     "mar"
+    ],
+    "enPlaneacion": false
+   },
+   {
+    "id": "o1-09",
+    "objetivo": 1,
+    "ambito": "C",
+    "actividad": "Enlistar los cursos y diplomados ofertados por la SEP, y elegir en colegiado aquellos que puedan apoyar en nuestra labor docente..",
+    "meses": [
+     "oct",
+     "dic"
+    ],
+    "enPlaneacion": false
+   },
+   {
+    "id": "o1-10",
+    "objetivo": 1,
+    "ambito": "C",
+    "actividad": "Asesoría sobre estrategias para alumnos con barreras para el aprendizaje.",
+    "meses": [
+     "oct",
+     "ene",
+     "abr"
+    ],
+    "enPlaneacion": false
+   },
+   {
+    "id": "o1-11",
+    "objetivo": 1,
+    "ambito": "C",
+    "actividad": "Círculos de lectura: Guía operativa perfiles profesionales protocolos de seguridad",
+    "meses": [
+     "oct",
+     "nov",
+     "feb",
+     "abr",
+     "jun"
+    ],
+    "enPlaneacion": false
+   },
+   {
+    "id": "o1-12",
+    "objetivo": 1,
+    "ambito": "D",
+    "actividad": "Llevar a cabo la planificación y la evaluación en los formatos correspondientes que nos pide la autoridad educativa brindando momentos de retroalimentación y compartiendo experiencias.",
+    "meses": [
+     "sep",
+     "oct",
+     "nov",
+     "ene",
+     "feb",
+     "mar",
+     "abr",
+     "may",
+     "jun"
+    ],
+    "enPlaneacion": false
+   },
+   {
+    "id": "o1-13",
+    "objetivo": 1,
+    "ambito": "D",
+    "actividad": "Análisis de los PDA y contenidos de los campos formativos, compartiendo avance en los pdas así como los que faltan por desarrollar, compartir estrategias y actividades que nos han funcionado.",
+    "meses": [
+     "sep",
+     "oct",
+     "nov",
+     "ene",
+     "feb",
+     "mar",
+     "abr",
+     "may",
+     "jun"
+    ],
+    "enPlaneacion": false
+   },
+   {
+    "id": "o1-14",
+    "objetivo": 1,
+    "ambito": "E",
+    "actividad": "Involucrar a los padres de familia en las diferentes actividades del aula como la inauguración de la biblioteca, cuenta cuentos, etc.",
+    "meses": [
+     "sep",
+     "nov",
+     "ene",
+     "mar",
+     "abr",
+     "may",
+     "jun"
+    ],
+    "enPlaneacion": true
+   },
+   {
+    "id": "o1-15",
+    "objetivo": 1,
+    "ambito": "E",
+    "actividad": "Rendición de cuentas",
+    "meses": [
+     "sep",
+     "nov",
+     "ene",
+     "feb",
+     "abr",
+     "may",
+     "jun"
+    ],
+    "enPlaneacion": true
+   },
+   {
+    "id": "o1-16",
+    "objetivo": 1,
+    "ambito": "E",
+    "actividad": "Mañanas de trabajo",
+    "meses": [
+     "oct",
+     "mar"
+    ],
+    "enPlaneacion": true
+   },
+   {
+    "id": "o1-17",
+    "objetivo": 1,
+    "ambito": "F",
+    "actividad": "Acompañamiento y seguimiento sistemático a la práctica docente mediante observaciones de aula, brindando retroalimentación",
+    "meses": [
+     "sep",
+     "oct",
+     "nov",
+     "dic",
+     "ene",
+     "feb",
+     "mar",
+     "abr",
+     "may",
+     "jun"
+    ],
+    "enPlaneacion": false
+   },
+   {
+    "id": "o1-18",
+    "objetivo": 1,
+    "ambito": "F",
+    "actividad": "Identificación de áreas de oportunidad y establecimiento de acuerdos que fortalezcan las modalidades de trabajo y el juego como estrategias de aprendizaje.",
+    "meses": [
+     "sep",
+     "nov",
+     "feb",
+     "jun"
+    ],
+    "enPlaneacion": false
+   },
+   {
+    "id": "o1-19",
+    "objetivo": 1,
+    "ambito": "F",
+    "actividad": "Monitoreo periódico de los indicadores de avance del aprendizaje y utilizar los resultados para la toma de decisiones que permitan ajustar las estrategias implementadas.",
+    "meses": [
+     "sep",
+     "nov",
+     "mar"
+    ],
+    "enPlaneacion": false
+   },
+   {
+    "id": "o1-20",
+    "objetivo": 1,
+    "ambito": "G",
+    "actividad": "Dar mantenimiento preventivo y correctivo al mobiliario, juegos infantiles y áreas de trabajo, garantizando condiciones seguras para el aprendizaje y la convivencia.",
+    "meses": [
+     "sep",
+     "nov",
+     "mar",
+     "jun"
+    ],
+    "enPlaneacion": false
+   },
+   {
+    "id": "o1-21",
+    "objetivo": 1,
+    "ambito": "G",
+    "actividad": "Incorporar recursos tecnológicos disponibles (proyector, bocinas, pantalla o dispositivos digitales) para enriquecer las experiencias de aprendizaje mediante materiales audiovisuales e interactivos.",
+    "meses": [
+     "sep",
+     "nov",
+     "feb",
+     "abr",
+     "may"
+    ],
+    "enPlaneacion": false
+   },
+   {
+    "id": "o1-22",
+    "objetivo": 1,
+    "ambito": "G",
+    "actividad": "Organizar y acondicionar ambientes de aprendizaje (rincones de lectura, escritura, matemáticas, construcción, arte y psicomotricidad) que promuevan el aprendizaje mediante el juego y la exploración.",
+    "meses": [
+     "sep",
+     "nov",
+     "mar",
+     "jun"
+    ],
+    "enPlaneacion": false
+   },
+   {
+    "id": "o1-23",
+    "objetivo": 1,
+    "ambito": "H",
+    "actividad": "Entrega de documentos a Classroom de la evaluación de los alumnos",
+    "meses": [
+     "sep",
+     "nov",
+     "mar",
+     "jun"
+    ],
+    "enPlaneacion": false
+   },
+   {
+    "id": "o2-24",
+    "objetivo": 2,
+    "ambito": "A",
+    "actividad": "Compasiva: Fiesta de bienvenida",
+    "meses": [
+     "sep"
+    ],
+    "enPlaneacion": true
+   },
+   {
+    "id": "o2-25",
+    "objetivo": 2,
+    "ambito": "A",
+    "actividad": "Seguridad escolar y programa de movilidad y transporte escolar",
+    "meses": [
+     "sep",
+     "oct",
+     "nov",
+     "dic",
+     "ene",
+     "feb",
+     "mar",
+     "abr",
+     "may",
+     "jun"
+    ],
+    "enPlaneacion": true
+   },
+   {
+    "id": "o2-26",
+    "objetivo": 2,
+    "ambito": "A",
+    "actividad": "Escuela sustentable",
+    "meses": [
+     "sep",
+     "oct",
+     "nov",
+     "ene",
+     "feb",
+     "mar",
+     "abr",
+     "may",
+     "jun"
+    ],
+    "enPlaneacion": true
+   },
+   {
+    "id": "o2-27",
+    "objetivo": 2,
+    "ambito": "B",
+    "actividad": "Compartir estrategias exitosas para fortalecer la práctica educativa",
+    "meses": [],
+    "enPlaneacion": false
+   },
+   {
+    "id": "o2-28",
+    "objetivo": 2,
+    "ambito": "B",
+    "actividad": "Pláticas de parte de la UDEI a padres de familia sobre valores, sana convivencia e inclusión.",
+    "meses": [
+     "oct",
+     "ene",
+     "abr"
+    ],
+    "enPlaneacion": true
+   },
+   {
+    "id": "o2-29",
+    "objetivo": 2,
+    "ambito": "C",
+    "actividad": "Realizar reuniones periódicas entre docentes para compartir experiencias, analizar situaciones de aprendizaje, intercambiar estrategias y reflexionar sobre las prácticas que favorecen el aprendizaje y la participación de todos los alumnos.",
+    "meses": [
+     "sep",
+     "oct",
+     "nov",
+     "dic",
+     "ene",
+     "feb",
+     "mar",
+     "abr",
+     "may"
+    ],
+    "enPlaneacion": false
+   },
+   {
+    "id": "o2-30",
+    "objetivo": 2,
+    "ambito": "C",
+    "actividad": "Asesorías sobre estrategias para combatir las barreras para el aprendizaje, la participación y la convivencia por parte de la UDEI.",
+    "meses": [
+     "sep",
+     "oct",
+     "nov",
+     "feb",
+     "mar",
+     "abr",
+     "may",
+     "jun"
+    ],
+    "enPlaneacion": false
+   },
+   {
+    "id": "o2-31",
+    "objetivo": 2,
+    "ambito": "D",
+    "actividad": "Realizar los ajustes razonables necesarios los cuáles sean innovadores y acordes a las características de los alumnos que enfrentan bapyc.",
+    "meses": [
+     "sep",
+     "oct",
+     "nov",
+     "ene",
+     "feb",
+     "mar",
+     "abr",
+     "may"
+    ],
+    "enPlaneacion": false
+   },
+   {
+    "id": "o2-32",
+    "objetivo": 2,
+    "ambito": "E",
+    "actividad": "Talleres y actividades con padres de familia jornadas de limpieza y cuidado de los espacios escolares.",
+    "meses": [
+     "oct",
+     "feb",
+     "may"
+    ],
+    "enPlaneacion": true
+   },
+   {
+    "id": "o2-33",
+    "objetivo": 2,
+    "ambito": "F",
+    "actividad": "Gestionar la participación de instituciones y especialistas (UDEI, DIF, centros de salud, psicología, seguridad pública u otras instancias) para fortalecer las acciones de prevención, promoción de valores y atención a factores de riesgo.",
+    "meses": [
+     "oct",
+     "nov",
+     "ene",
+     "mar",
+     "abr",
+     "jun"
+    ],
+    "enPlaneacion": false
+   },
+   {
+    "id": "o2-34",
+    "objetivo": 2,
+    "ambito": "F",
+    "actividad": "Monitorear periódicamente el cumplimiento de la meta institucional, mediante registros de participación familiar, encuestas de percepción, evidencias de los proyectos y seguimiento de indicadores de convivencia escolar.",
+    "meses": [
+     "oct",
+     "ene",
+     "abr"
+    ],
+    "enPlaneacion": false
+   },
+   {
+    "id": "o2-35",
+    "objetivo": 2,
+    "ambito": "F",
+    "actividad": "Acompañamiento y retroalimentación a los docentes gestión de recursos y materiales para mejorar los aprendizajes",
+    "meses": [
+     "sep",
+     "ene"
+    ],
+    "enPlaneacion": false
+   },
+   {
+    "id": "o2-36",
+    "objetivo": 2,
+    "ambito": "E",
+    "actividad": "Taller: Familia y escuela construyendo juntos el camino para aprender",
+    "meses": [
+     "oct",
+     "nov",
+     "abr"
+    ],
+    "enPlaneacion": true
+   },
+   {
+    "id": "o2-37",
+    "objetivo": 2,
+    "ambito": "G",
+    "actividad": "Equipar las aulas con materiales que faciliten la implementación de estrategias de educación socioemocional y aprendizaje cooperativo, promoviendo la participación activa del alumnado.",
+    "meses": [
+     "sep",
+     "ene",
+     "may"
+    ],
+    "enPlaneacion": false
+   },
+   {
+    "id": "o2-38",
+    "objetivo": 2,
+    "ambito": "G",
+    "actividad": "Gestionar, en coordinación con las autoridades educativas, el Comité de Participación Escolar y las familias, recursos para mejorar continuamente la infraestructura y el equipamiento que favorezcan ambientes escolares seguros, inclusivos y promotores de una convivencia armónica.",
+    "meses": [
+     "sep",
+     "nov",
+     "ene",
+     "abr",
+     "jun"
+    ],
+    "enPlaneacion": false
+   },
+   {
+    "id": "o2-39",
+    "objetivo": 2,
+    "ambito": "H",
+    "actividad": "Asesoría sobre estrategias para alumnos con barreras para el aprendizaje, participación y convivencia.",
+    "meses": [
+     "sep",
+     "oct",
+     "nov",
+     "dic",
+     "feb",
+     "mar",
+     "abr",
+     "may",
+     "jun"
+    ],
+    "enPlaneacion": false
+   }
+  ],
+  "actualizado": "2026-11-22T17:00:00Z"
+ }
 }

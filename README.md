@@ -9,6 +9,9 @@ Jardín de Niños “Barbarita Barrera de González” (ciclo 2026-2027).
 - **Editar**: captura o modifica una planeación. Los contenidos y PDA se eligen del Programa Sintético
   de la Fase 2 (1°, 2° y 3°) con las claves del cuadernillo; los momentos cambian según la modalidad.
 - **Banco**: busca, filtra por campo formativo o eje, duplica, elimina, descarga o carga el banco.
+- **PMC**: las actividades del Programa de Mejora Continua 2026-2027 por mes. En el formato, “Actividades de PMC”
+  se llena sola con las del mes del *Periodo de tiempo* (o de las fechas de las actividades). Se puede marcar
+  qué actividades van en las planeaciones y, en una planeación específica, escribirlas a mano.
 - **Avance**: muestra qué PDA del grado ya tienen planeación en el banco y cuáles faltan.
 
 ## Subir planeaciones que ya tienes en Word
@@ -42,7 +45,7 @@ En el iPhone: abre el sitio en Safari → Compartir → **Agregar a pantalla de 
 |---|---|
 | `index.html` | La app (página del sitio). Se genera a partir de `app.html`. |
 | `app.html` | La misma app en la versión que se publica dentro de Claude. |
-| `banco.json` | El banco compartido de planeaciones. |
+| `banco.json` | El banco compartido de planeaciones y el PMC. |
 | `catalogo.js` | Contenidos y PDA de los 4 campos formativos (Programa Sintético Fase 2, SEP 2024). |
 | `plantilla.js` | Plantilla Word del formato (encabezado, logos, hoja horizontal). |
 | `manifest.webmanifest`, `img/icono-*.png` | Nombre e ícono al agregarla a la pantalla de inicio. |
