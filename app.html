@@ -800,6 +800,9 @@ table.fmt td p:last-child { margin-bottom: 0; }
   const wVal = (el) => (el && (el.getAttributeNS(WNS, "val") || el.getAttribute("w:val"))) || "";
   const N = (t) => sinAcentos(t).replace(/\s+/g, " ").trim();
   const MARCA_RE = /[✓✔☑☒✅]/;
+  // Una palomita (o una X suelta) puede ir antes o después del texto: "✔ Proyecto", "Proyecto ✓", "X Inclusión".
+  const sinMarca = (t) => N(String(t || "").replace(/[✓✔☑☒✅\ufe0f]/g, " ")).replace(/(^|\s)x(?=\s|$)/g, " ").replace(/\s+/g, " ").trim();
+  const conMarca = (t) => MARCA_RE.test(t) || /(^|\s)x(\s|$)/.test(N(t));
   function wLines(tc) {
     // Cada párrafo (y cada salto de línea) es un renglón; guarda el texto en negritas con que empieza.
     const lines = [];
@@ -887,7 +890,8 @@ table.fmt td p:last-child { margin-bottom: 0; }
       const texts = row.map((c) => c.text), first = N(texts[0] || ""), all = N(texts.join(" | "));
       if (!all) continue;
       // Datos generales
-      const iGr = row.findIndex((c) => /^grado/.test(N(c.text)));
+      let iGr = row.findIndex((c) => /^grado/.test(N(c.text)));
+      if (iGr < 0 && /docente/.test(all)) iGr = row.findIndex((c) => /^grupo/.test(N(c.text)));
       if (iGr >= 0 && !grado) {
         const t = N(row[iGr].text.split(":").slice(1).join(":") + " " + (row[iGr + 1] ? row[iGr + 1].text : ""));
         const m = t.match(/\b([123])\s*(°|º|o|ro|do|er|ero|\b)/) || t.match(/\b(prim|segu|terc)/);
@@ -900,7 +904,7 @@ table.fmt td p:last-child { margin-bottom: 0; }
         modo = "modalidad"; continue;
       }
       if (modo === "modalidad") {
-        row.forEach((c) => { const m = MODALIDADES.find((x) => N(c.text).replace(/[✓✔☑☒✅x]\s*$/i, "").trim().startsWith(N(x))); if (m && (MARCA_RE.test(c.text) || c.marked) && !plan.modalidad.includes(m)) plan.modalidad.push(m); });
+        row.forEach((c) => { const m = MODALIDADES.find((x) => sinMarca(c.text).startsWith(N(x))); if (m && (conMarca(c.text) || c.marked) && !plan.modalidad.includes(m)) plan.modalidad.push(m); });
         modo = null; continue;
       }
       const lab = (re) => { const i = row.findIndex((c) => re.test(N(c.text))); return i >= 0 ? valorTras(row, i) : null; };
@@ -911,8 +915,8 @@ table.fmt td p:last-child { margin-bottom: 0; }
       if (/^ejes articuladores/.test(first) && row.length <= 2) { modo = "ejes"; continue; }
       if (modo === "ejes") {
         const listados = [], palomita = [], resaltados = [];
-        row.forEach((c) => { const e = EJES.find((x) => N(c.text).startsWith(N(x).slice(0, 18))); if (!e) return; if (!listados.includes(e)) listados.push(e);
-          if (MARCA_RE.test(c.text) && !palomita.includes(e)) palomita.push(e); else if (c.marked && !resaltados.includes(e)) resaltados.push(e); });
+        row.forEach((c) => { const e = EJES.find((x) => sinMarca(c.text).startsWith(N(x).slice(0, 18))); if (!e) return; if (!listados.includes(e)) listados.push(e);
+          if (conMarca(c.text) && !palomita.includes(e)) palomita.push(e); else if (c.marked && !resaltados.includes(e)) resaltados.push(e); });
         plan.ejes = palomita.length ? palomita : resaltados.length ? resaltados : listados.length < EJES.length ? listados : [];
         ejesMarcados = palomita.length > 0; modo = null; continue;
       }
