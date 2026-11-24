@@ -890,6 +890,9 @@ table.fmt td p:last-child { margin-bottom: 0; }
       cur = null; notas.push(t);
     });
     a.notas = notas.join("\n");
+    // La fecha al inicio del título ("13 abr · ¿Qué puedo ser?") cambia cada año y ya está en "Tiempo de la actividad".
+    const sinFecha = a.titulo.replace(/^\d{1,2}\s*(de\s+)?(ene|feb|mar|abr|may|jun|jul|ago|sep|oct|nov|dic)[a-záéíóú]*\.?\s*[·•\-–—:|]\s*/i, "").trim();
+    if (sinFecha) a.titulo = sinFecha;
     return a;
   }
   function parseDocxPlan(xml) {

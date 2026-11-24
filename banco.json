@@ -788,6 +788,1861 @@
    "grado": "2",
    "creado": "2026-11-23T00:00:00Z",
    "actualizado": "2026-11-23T00:00:00Z"
+  },
+  {
+   "id": "mi-pasaporte-de-explorador-asi-soy-yo-y-asi-es-mi-2",
+   "proyecto": "Mi pasaporte de explorador: ¡Así soy yo y así es mi jardín!",
+   "modalidad": [
+    "Proyecto"
+   ],
+   "problematica": "Al iniciar el ciclo escolar, las niñas y los niños de 2° llegan con experiencias, saberes y formas de comunicarse muy diversas; algunos se integran por primera vez al grupo o al plantel y aún no conocen a todos sus compañeros, los espacios, las rutinas ni los acuerdos de convivencia. Es necesario generar un ambiente de confianza que permita conocer sus intereses y sus procesos en lenguaje oral y escrito, pensamiento matemático, convivencia, cuidado de sí y motricidad, para construir el diagnóstico del grupo.\nPregunta detonadora: ¿Cómo podemos conocernos, cuidarnos y convivir para que nuestro jardín sea un lugar donde todas y todos aprendamos felices?",
+   "finalidad": "Que las niñas y los niños exploren quiénes son, quiénes son sus compañeros y cómo es su jardín, registrando sus descubrimientos en un “Pasaporte de explorador”, para construir juntos acuerdos de convivencia y cuidado, y compartir con sus familias el “Museo de exploradores”; mientras la educadora observa y registra sus saberes y procesos de aprendizaje para elaborar el diagnóstico del grupo.",
+   "ejes": [
+    "Inclusión",
+    "Pensamiento crítico",
+    "Interculturalidad crítica",
+    "Vida saludable",
+    "Apropiación de las culturas a través de la lectura y la escritura",
+    "Artes y experiencias estéticas"
+   ],
+   "campos": {
+    "Lenguajes": [
+     {
+      "contenido": "L1. Comunicación oral de necesidades, emociones, gustos, ideas y saberes, a través de los diversos lenguajes, desde una perspectiva comunitaria.",
+      "pdas": [
+       "Manifiesta oralmente y de manera clara necesidades, emociones, gustos, preferencias e ideas, que construye en la convivencia diaria, y se da a entender apoyándose de distintos lenguajes.",
+       "Escucha con atención a sus pares y espera su turno para hablar."
+      ]
+     },
+     {
+      "contenido": "L4. Reconocimiento y aprecio de la diversidad lingüística, al identificar las formas en que se comunican las distintas personas de la comunidad.",
+      "pdas": [
+       "Muestra interés por indagar significados de palabras, frases o señas, y las incorpora a su comunicación como una forma de enriquecerla."
+      ]
+     },
+     {
+      "contenido": "L5. Representación gráfica de ideas y descubrimientos, al explorar los diversos textos que hay en su comunidad y otros lugares.",
+      "pdas": [
+       "Interpreta, a partir de experiencias y referentes culturales, el contenido de diversos textos que le interesan y sabe para qué son.",
+       "Comunica a diversas personas, mensajes con distintos propósitos."
+      ]
+     },
+     {
+      "contenido": "L7. Producciones gráficas dirigidas a diversas destinatarias y diversos destinatarios, para establecer vínculos sociales y acercarse a la cultura escrita.",
+      "pdas": [
+       "Representa su nombre y otras palabras comunes, con recursos propios y con distintos propósitos, tales como marcar sus producciones, registrar su asistencia, entre otros.",
+       "Produce textos o mensajes de interés, con formas gráficas personales, copiando textos o dictando a alguien, con distintos propósitos y destinatarios."
+      ]
+     }
+    ],
+    "Saberes y pensamiento científico": [
+     {
+      "contenido": "SyPC 2. Saberes familiares y comunitarios que resuelven situaciones y necesidades en el hogar y la comunidad.",
+      "pdas": [
+       "Selecciona saberes familiares y comunitarios útiles, para resolver situaciones diversas, los compara con los de sus pares y cuida su integridad y la de los demás."
+      ]
+     },
+     {
+      "contenido": "SyPC 4. Los saberes numéricos como herramienta para resolver situaciones del entorno, en diversos contextos socioculturales.",
+      "pdas": [
+       "Dice en orden los números que conoce y gradualmente amplía su rango de conteo.",
+       "Cuenta objetos y elementos de su entorno.",
+       "Propone códigos personales para representar datos en forma gráfica."
+      ]
+     },
+     {
+      "contenido": "SyPC 5. El dominio del espacio y reconocimiento de formas en el entorno desde diversos puntos de observación y mediante desplazamientos o recorridos.",
+      "pdas": [
+       "Ubica personas, objetos y elementos de su entorno con referentes personales y los comunica a sus pares y otras personas."
+      ]
+     },
+     {
+      "contenido": "SyPC 6. Las magnitudes de longitud, peso, capacidad y tiempo en situaciones cotidianas del hogar y del entorno sociocultural.",
+      "pdas": [
+       "Compara la longitud de dos o más objetos de uso cotidiano de manera directa o por superposición, contrasta sus ideas con sus pares.",
+       "Utiliza palabras relacionadas con el paso del tiempo que aprende en su contexto social, tales como: antes, después, primero, al final, temprano, en la mañana, en la tarde, en la noche, entre otras."
+      ]
+     }
+    ],
+    "Ética, naturaleza y sociedades": [
+     {
+      "contenido": "ENyS 1. Interacción, cuidado, conservación y regeneración de la naturaleza, que favorece la construcción de una conciencia socioambiental.",
+      "pdas": [
+       "Se relaciona con la naturaleza y considera la importancia de sus elementos para la vida (aire, sol, agua y suelo)."
+      ]
+     },
+     {
+      "contenido": "ENyS 7. La diversidad de personas y familias en la comunidad y su convivencia, en un ambiente de equidad, libertad, inclusión y respeto a los derechos humanos.",
+      "pdas": [
+       "Expresa algunas de sus costumbres y rutinas familiares, y las compara con las de sus pares, encontrando similitudes.",
+       "Se da cuenta de que las familias son diversas y distintas entre sí, y que esto favorece la convivencia en un entorno de inclusión y respeto."
+      ]
+     },
+     {
+      "contenido": "ENyS 8. La cultura de paz como una forma de relacionarse con otras personas para promover la inclusión y el respeto a la diversidad.",
+      "pdas": [
+       "Construye acuerdos para una convivencia pacífica en su hogar y escuela, al escuchar y expresar con respeto ideas y opiniones propias y de las demás personas, que fortalezcan una cultura de paz.",
+       "Acuerda con su familia, pares y otras personas, las responsabilidades que tendrá en su hogar y escuela, y explica por qué es importante cumplirlas."
+      ]
+     }
+    ],
+    "De lo humano y lo comunitario": [
+     {
+      "contenido": "HyC 1. Construcción de la identidad personal a partir de su pertenencia a un territorio, su origen étnico, cultural y lingüístico, y la interacción con personas cercanas.",
+      "pdas": [
+       "Reconoce algunos rasgos de su identidad, dice cómo es físicamente, qué se le facilita, qué se le dificulta, qué le gusta, qué no le gusta, y los expresa en su lengua materna o con otros lenguajes.",
+       "Distingue semejanzas y diferencias con las demás personas, a partir de distintos rasgos de identidad como su nombre, características físicas, formas de vestir, hablar, alimentarse, entre otros."
+      ]
+     },
+     {
+      "contenido": "HyC 3. Precisión y coordinación en los movimientos al usar objetos, herramientas y materiales, de acuerdo con sus condiciones, capacidades y características.",
+      "pdas": [
+       "Controla sus movimientos al usar objetos, herramientas y materiales en juegos y actividades de experimentación, creación personal y resolución de problemas, atendiendo las normas de seguridad."
+      ]
+     },
+     {
+      "contenido": "HyC 7. Consumo de alimentos y bebidas que benefician la salud, de acuerdo con los contextos socioculturales.",
+      "pdas": [
+       "Cuida su salud al llevar a cabo medidas de seguridad, higiene y limpieza, en la preparación y consumo de alimentos y bebidas saludables."
+      ]
+     },
+     {
+      "contenido": "HyC 8. Medidas de prevención de accidentes y situaciones de riesgo de acuerdo con el contexto, para el cuidado de la integridad personal y colectiva.",
+      "pdas": [
+       "Expresa qué comportamientos, objetos, materiales y lugares pueden provocar accidentes y poner en riesgo la seguridad y el bienestar personal y colectivo.",
+       "Lleva a cabo acciones para prevenir accidentes y salvaguardar su bienestar y seguridad, personales y colectivos."
+      ]
+     }
+    ]
+   },
+   "pdaPermanentes": "Lectura (L5): Interpreta, a partir de experiencias y referentes culturales, el contenido de diversos textos que le interesan y sabe para qué son. Rutina: lectura diaria en voz alta y “lectura” de la agenda con pictogramas.\nEscritura (L7): Representa su nombre y otras palabras comunes, con recursos propios y con distintos propósitos, tales como marcar sus producciones, registrar su asistencia, entre otros. Rutina: pase de lista con tarjeta de nombre y firma de su pasaporte.\nMatemáticas (SyPC 4): Dice en orden los números que conoce y gradualmente amplía su rango de conteo. Rutina: conteo diario de asistentes (niñas, niños, total) y fecha en el calendario.",
+   "educacionFisica": "HyC 2. Posibilidades de movimiento en diferentes espacios, para favorecer las habilidades motrices.\n• Adapta sus movimientos y fortalece su lateralidad al desplazarse en espacios de la escuela, casa y comunidad en distintas direcciones y con velocidades variadas; descubre nuevas formas de moverse.\n• Mantiene el control y equilibrio de los distintos segmentos corporales tanto en situaciones estáticas como en movimientos sin desplazamiento.\nSugerencia: “Circuito del explorador” por el patio (saltar, reptar, caminar sobre una línea) como evaluación diagnóstica motriz.",
+   "actividades": [
+    {
+     "fase": "1.Punto de Partida",
+     "titulo": "Día 1 · La maleta misteriosa de la maestra",
+     "inicio": "Recibe a cada niña y niño en la puerta con el saludo que elija del “tablero de saludos” (abrazo, choque de manos, baile). En círculo canta “Hola, hola” diciendo su nombre.",
+     "desarrollo": "La educadora abre una maleta con fotografías y objetos personales (su familia, su mascota, su comida favorita, lo que le gusta hacer). Las niñas y los niños anticipan qué dice de ella cada objeto. Se plantea la pregunta detonadora: ¿qué necesitamos saber unos de otros para convivir y aprender juntos este año?",
+     "cierre": "En asamblea se registran sus ideas en un papelógrafo de dos columnas: “Lo que ya sabemos” y “Lo que queremos descubrir” (dibujos y dictado a la educadora).",
+     "notas": "",
+     "organizacion": "Asamblea / grupal",
+     "recursos": "Maleta, fotos y objetos personales, tablero de saludos, papelógrafo, marcadores",
+     "tiempo": "Día 1 60 min",
+     "evaluacion": "Expresa ideas, gustos y necesidades; espera su turno (L1).\nInstrumento: Diario de la educadora"
+    },
+    {
+     "fase": "1.Punto de Partida",
+     "titulo": "Día 2 · La caja sorpresa y el dado preguntón",
+     "inicio": "Juega a decir su nombre con la canción “Soy una serpiente”.",
+     "desarrollo": "Sentados en círculo, de una caja sorpresa sale la foto de un compañero; pasa al centro, lanza el “dado preguntón” (yo soy…, mi familia, lo que me gusta jugar, mi comida favorita, cómo me siento hoy, qué quiero aprender en el jardín) y responde con palabras, gestos o señas. Sus compañeros escuchan y pueden hacerle una pregunta.",
+     "cierre": "Dibuja en una hoja con forma de “foto instantánea” lo que más le gustó y cómo se sintió; la educadora escribe al reverso lo que dicta.",
+     "notas": "",
+     "organizacion": "Círculo / individual",
+     "recursos": "Caja sorpresa, fotos de los alumnos, dado de tela, hojas “foto instantánea”, crayolas",
+     "tiempo": "Día 2 50 min",
+     "evaluacion": "Reconoce rasgos de su identidad (HyC 1); se interesa por lo que dicen sus pares (L1).\nInstrumento: Registro anecdótico"
+    },
+    {
+     "fase": "1.Punto de Partida",
+     "titulo": "Día 3 · Exploradores con lupa: ¿qué hay de nuevo en mi jardín?",
+     "inicio": "Recibe una lupa de cartón y una gorra de explorador; recuerda las reglas para salir del salón.",
+     "desarrollo": "En pequeños grupos recorre el plantel: observa y, con la educadora, fotografía lo que le llama la atención (letreros, números de los salones, áreas verdes, juegos, dirección). Cuenta salones, baños o columpios y comenta para qué sirven los letreros.",
+     "cierre": "En asamblea comparte sus hallazgos y formula nuevas preguntas (¿quién trabaja aquí?, ¿dónde podemos jugar seguros?) que se agregan a “Lo que queremos descubrir”.",
+     "notas": "",
+     "organizacion": "Equipos pequeños / asamblea",
+     "recursos": "Lupas de cartón, gorras, cámara o celular, papelógrafo",
+     "tiempo": "Día 3 60 min",
+     "evaluacion": "Cuenta elementos de su entorno (SyPC 4); dice para qué sirven los letreros (L5).\nInstrumento: Lista de cotejo"
+    },
+    {
+     "fase": "2.Planeación",
+     "titulo": "Día 4 · Trazamos el mapa del tesoro y nace el pasaporte",
+     "inicio": "Relee con apoyo de la educadora las preguntas del papelógrafo.",
+     "desarrollo": "En asamblea acuerda las 4 estaciones del proyecto, cada una con su pictograma: 1) Así soy yo, 2) Así es mi familia, 3) Así es mi jardín, 4) Así nos cuidamos. En un friso “Mapa del tesoro” (organizador gráfico) organizan qué harán, con qué materiales y a quién invitarán al final (las familias).",
+     "cierre": "Elabora la portada de su “Pasaporte de explorador”: autorretrato frente a un espejo y su nombre escrito con sus propios recursos (puede apoyarse en su tarjeta). Esta es la primera muestra de escritura para el diagnóstico.",
+     "notas": "",
+     "organizacion": "Asamblea / individual",
+     "recursos": "Friso, pictogramas, librito-pasaporte, tarjetas con nombre, espejo, crayolas",
+     "tiempo": "Día 4 60 min",
+     "evaluacion": "Representa su nombre con recursos propios (L7); participa en los acuerdos.\nInstrumento: Muestra de escritura 1 (portafolio)"
+    },
+    {
+     "fase": "2.Planeación",
+     "titulo": "Día 5 · Mi agenda y las palabras mágicas",
+     "inicio": "Busca pictogramas escondidos por el salón mientras suena la canción “Palabras mágicas” y muestra al grupo el que encontró.",
+     "desarrollo": "Indaga qué significa cada pictograma y lo coloca en la agenda diaria del pizarrón siguiendo el orden de la jornada (primero, después, al final). Aprende a decir “hola”, “gracias” y “por favor” en Lengua de Señas Mexicana y en alguna lengua que se hable en las familias del grupo.",
+     "cierre": "Coloca las tarjetas de palabras mágicas (gracias, perdón, por favor) en los momentos de la agenda en que las usaría.",
+     "notas": "",
+     "organizacion": "Grupal",
+     "recursos": "Pictogramas, canción “Palabras mágicas”, agenda de pizarrón, tarjetas",
+     "tiempo": "Día 5 45 min",
+     "evaluacion": "Usa palabras del paso del tiempo (SyPC 6); incorpora palabras o señas nuevas (L4).\nInstrumento: Lista de cotejo"
+    },
+    {
+     "fase": "2.Planeación",
+     "titulo": "Día 6 · El tratado de paz de la Isla Pelusa",
+     "inicio": "Escucha el cuento “La isla Pelusa” y reflexiona: ¿qué pasaba en la isla cuando no había acuerdos?",
+     "desarrollo": "Con la “varita de la palabra” (solo habla quien la tiene) propone acuerdos para el salón; los representa con dibujos y la educadora escribe a un lado. Acuerdan responsabilidades del grupo (regar plantas, repartir material, guardar juguetes) y explican por qué es importante cumplirlas.",
+     "cierre": "Firma el “Tratado de paz” con su huella y su nombre; pega una versión pequeña en su pasaporte.",
+     "notas": "",
+     "organizacion": "Asamblea",
+     "recursos": "Cuento, varita, cartulina, marcadores, cojín de tinta",
+     "tiempo": "Día 6 50 min",
+     "evaluacion": "Construye acuerdos y explica por qué cumplirlos (ENyS 8).\nInstrumento: Diario de la educadora"
+    },
+    {
+     "fase": "3.A Trabajar",
+     "titulo": "Día 7 · Estación “Así soy yo”: mi guiñol y yo",
+     "inicio": "Observa su fotografía y las de sus compañeros; describe cómo es (cabello, ojos, estatura, lo que le gusta).",
+     "desarrollo": "Elabora un guiñol con bolsa de papel y su foto. Presenta a su guiñol diciendo qué se le facilita y qué se le dificulta. Juega “Adivina quién”: describe a un compañero para que el grupo lo descubra.",
+     "cierre": "Canta la canción de saludo con su guiñol y recibe el primer sello de su pasaporte.",
+     "notas": "",
+     "organizacion": "Individual / grupal",
+     "recursos": "Bolsas de papel, fotos, estambre, tijeras, pegamento",
+     "tiempo": "Día 7 60 min",
+     "evaluacion": "Reconoce rasgos de su identidad y semejanzas con otros (HyC 1); usa tijeras y pegamento (HyC 3).\nInstrumento: Rúbrica"
+    },
+    {
+     "fase": "3.A Trabajar",
+     "titulo": "Día 8 · ¿Cuántos años cumplo? La fiesta de todos",
+     "inicio": "Observa un pastel de cartón y comparte cómo se celebran los cumpleaños en su casa.",
+     "desarrollo": "Muestra con sus dedos cuántos años tiene y coloca esa cantidad de velitas (palitos) en un pastel de plastilina. Busca en el calendario el mes de su cumpleaños y pega su foto con un código personal (estrella, círculo, corazón) para construir la gráfica “Nuestros cumpleaños”.",
+     "cierre": "Cuenta cuántos cumplen en cada mes y responde: ¿en qué mes hay más?, ¿en cuál no hay ninguno?",
+     "notas": "",
+     "organizacion": "Grupal / individual",
+     "recursos": "Plastilina, palitos, calendario grande, fotos, papel bond",
+     "tiempo": "Día 8 60 min",
+     "evaluacion": "Dice en orden los números, cuenta y representa datos con códigos personales (SyPC 4).\nInstrumento: Lista de cotejo"
+    },
+    {
+     "fase": "3.A Trabajar",
+     "titulo": "Día 9 · ¿Quién es más alto? El muro “Así crecemos”",
+     "inicio": "Juega a las estatuas y a formarse de distintas maneras (de la más alta a la más bajita y al revés).",
+     "desarrollo": "En binas mide su estatura con una tira de estambre, la compara con la de su compañero por superposición y la pega en el muro “Así crecemos”, ordenando con ayuda de la más corta a la más larga.",
+     "cierre": "Explica qué tira es más larga o más corta y cómo lo supo; dibuja en su pasaporte su tira junto a la de un amigo.",
+     "notas": "",
+     "organizacion": "Binas",
+     "recursos": "Estambre, tijeras, cinta, papel kraft",
+     "tiempo": "Día 9 45 min",
+     "evaluacion": "Compara longitudes de forma directa y contrasta sus ideas (SyPC 6).\nInstrumento: Registro anecdótico"
+    },
+    {
+     "fase": "3.A Trabajar",
+     "titulo": "Día 10 · Estación “Así es mi familia”",
+     "inicio": "Trae de casa una foto o dibujo de su familia (se sugiere a las familias escribir juntos los nombres de cada integrante).",
+     "desarrollo": "Presenta a su familia: cuántos son, quién es el mayor y el menor, una costumbre o comida que comparten. El grupo descubre semejanzas y diferencias y reconoce que hay muchas formas de ser familia.",
+     "cierre": "Cuenta los integrantes de su familia y pega la misma cantidad de fichas en la “Gráfica de familias”; lo registra en su pasaporte.",
+     "notas": "",
+     "organizacion": "Asamblea / individual",
+     "recursos": "Fotos o dibujos familiares, fichas, cartulina",
+     "tiempo": "Día 10 60 min",
+     "evaluacion": "Expresa costumbres familiares y reconoce que las familias son diversas (ENyS 7); cuenta (SyPC 4).\nInstrumento: Diario de la educadora"
+    },
+    {
+     "fase": "3.A Trabajar",
+     "titulo": "Día 11 · Estación “Así nos cuidamos”: ¿qué puedo y qué no puedo hacer en casa?",
+     "inicio": "Escucha el cuento interactivo “Brunilda juega en casa” y decide qué debe hacer el personaje para no lastimarse.",
+     "desarrollo": "Con el “sombrero seleccionador” comparte un saber de su familia que le ayuda a cuidarse (no tocar la estufa, lavar la fruta, cruzar de la mano) y lo compara con el de sus compañeros. En equipos elabora con pintura señalizaciones de seguridad.",
+     "cierre": "Coloca sus señales en el dibujo de una casa y responde: ¿qué pasaría si…?",
+     "notas": "",
+     "organizacion": "Equipos / grupal",
+     "recursos": "Cuento, sombrero, dibujo de casa, pintura, cartulinas",
+     "tiempo": "Día 11 60 min",
+     "evaluacion": "Selecciona saberes familiares para cuidarse (SyPC 2); expresa qué puede provocar accidentes (HyC 8).\nInstrumento: Lista de cotejo"
+    },
+    {
+     "fase": "3.A Trabajar",
+     "titulo": "Día 12 · Guardianes del jardín: mapa de lugares seguros",
+     "inicio": "Recuerda el recorrido del día 3 con las fotografías tomadas.",
+     "desarrollo": "En equipos recorre de nuevo el plantel con un croquis; ubica su lugar favorito y los lugares que requieren cuidado (escaleras, puerta, columpios) usando referentes como cerca de, junto a, detrás de. Coloca estrellas de semáforo: verde (seguro), amarillo (con cuidado), rojo (pedir ayuda a un adulto).",
+     "cierre": "Explica al grupo por qué eligió cada color y practica cómo actuar en un simulacro.",
+     "notas": "",
+     "organizacion": "Equipos",
+     "recursos": "Croquis del plantel, estrellas de colores, pegamento",
+     "tiempo": "Día 12 60 min",
+     "evaluacion": "Ubica lugares con referentes personales (SyPC 5); realiza acciones para prevenir accidentes (HyC 8).\nInstrumento: Rúbrica"
+    },
+    {
+     "fase": "3.A Trabajar",
+     "titulo": "Día 13 · Jardín sensorial: la naturaleza me ayuda a sentir",
+     "inicio": "Con los ojos cerrados escucha sonidos de la naturaleza y adivina de dónde vienen.",
+     "desarrollo": "Visita el jardín sensorial o el área verde: huele, toca y observa plantas, tierra, piedras y agua. Dialoga sobre por qué las plantas necesitan sol, agua, aire y suelo y cómo podemos cuidarlas.",
+     "cierre": "Relaciona lo que sintió con una emoción (calma, alegría) y elige un compromiso de cuidado (regar una planta del salón).",
+     "notas": "",
+     "organizacion": "Grupal / equipos",
+     "recursos": "Bocina, lupas, regaderas, plantas",
+     "tiempo": "Día 13 50 min",
+     "evaluacion": "Reconoce la importancia del aire, sol, agua y suelo (ENyS 1).\nInstrumento: Registro de observación"
+    },
+    {
+     "fase": "3.A Trabajar",
+     "titulo": "Día 14 · Juguemos en armonía: el twist de los ratoncitos",
+     "inicio": "Elabora su máscara de ratón recortando y pegando.",
+     "desarrollo": "Baila el “twist de los ratoncitos”; cuando la música se detiene forma equipos con la cantidad que diga la maestra (2, 3, 4…); quien queda fuera es el gato en la siguiente ronda. Variante: lanzar y atrapar una pelota en equipo.",
+     "cierre": "Se coloca sobre la carita del piso (feliz, triste, enojado) que muestra cómo se sintió y dice por qué.",
+     "notas": "",
+     "organizacion": "Grupal / equipos",
+     "recursos": "Patrón de máscara, elástico, canción, pelotas, caritas en el piso",
+     "tiempo": "Día 14 50 min",
+     "evaluacion": "Coordina movimientos y usa materiales con control (HyC 3); forma colecciones (SyPC 4).\nInstrumento: Lista de cotejo"
+    },
+    {
+     "fase": "3.A Trabajar",
+     "titulo": "Día 15 · Pequeños chefs: la maqueta comestible de nuestro jardín",
+     "inicio": "Comenta qué hay que hacer antes de preparar alimentos y practica el lavado de manos con una canción.",
+     "desarrollo": "En equipos construye con galletas, fruta picada y betún una maqueta del jardín (salones, patio, árboles), cuidando la higiene. Conversa sobre opciones saludables (fruta o dulces).",
+     "cierre": "Prepara su pasaporte y su maqueta para el museo y ensaya cómo se los explicará a su familia.",
+     "notas": "",
+     "organizacion": "Equipos",
+     "recursos": "Jabón, agua, gel, galletas, fruta, betún, platos, manteles",
+     "tiempo": "Día 15 60 min",
+     "evaluacion": "Practica medidas de higiene al preparar alimentos (HyC 7).\nInstrumento: Registro de observación"
+    },
+    {
+     "fase": "4.Compartimos nuestros logros",
+     "titulo": "Día 16 · Museo de exploradores: “Así soy yo y así es mi jardín”",
+     "inicio": "Recibe a su familia en la puerta como “guía del museo” con un gafete con su nombre.",
+     "desarrollo": "Guía a su familia por las estaciones: gráfica de cumpleaños, muro “Así crecemos”, gráfica de familias, tratado de paz, mapa de lugares seguros y maqueta. Explica con sus palabras lo que hizo y descubrió, apoyándose en su pasaporte.",
+     "cierre": "La familia deja un mensaje o dibujo en el “Libro de visitas” y pone el sello final en el pasaporte.",
+     "notas": "",
+     "organizacion": "Niña o niño con su familia",
+     "recursos": "Producciones del proyecto, gafetes, libro de visitas, sellos",
+     "tiempo": "Día 16 90 min",
+     "evaluacion": "Comunica mensajes a diversas personas (L5); narra lo que hizo.\nInstrumento: Fotografías y evidencias"
+    },
+    {
+     "fase": "4.Compartimos nuestros logros",
+     "titulo": "Día 17 · Leemos el libro de visitas",
+     "inicio": "La educadora lee en voz alta los mensajes del libro de visitas; las niñas y los niños anticipan de quién es cada uno por la firma o el dibujo.",
+     "desarrollo": "Busca su nombre y el de sus familiares en los mensajes. Dicta a la educadora una carta grupal de agradecimiento para las familias.",
+     "cierre": "Firma la carta con su nombre a su manera; se envía a las familias.",
+     "notas": "",
+     "organizacion": "Grupal",
+     "recursos": "Libro de visitas, papel bond, marcadores",
+     "tiempo": "Día 17 40 min",
+     "evaluacion": "Produce mensajes dictando a alguien (L7).\nInstrumento: Muestra de escritura 2"
+    },
+    {
+     "fase": "5.Reflexión sobre el aprendizaje",
+     "titulo": "Día 18 · El camino del explorador",
+     "inicio": "Recorre el “Mapa del tesoro” y recuerda qué hicieron en cada estación.",
+     "desarrollo": "Con la dinámica de la telaraña responde: ¿qué aprendí?, ¿qué fue fácil?, ¿qué fue difícil?, ¿qué haría diferente? Se autoevalúa en su pasaporte con estrellas de semáforo (verde: lo logré; amarillo: casi lo logro; rojo: necesito ayuda).",
+     "cierre": "En binas le dice a un compañero algo que hizo muy bien (coevaluación).",
+     "notas": "",
+     "organizacion": "Asamblea / binas",
+     "recursos": "Friso, estambre, estrellas de colores",
+     "tiempo": "Día 18 50 min",
+     "evaluacion": "Explica lo que aprendió y reconoce sus dificultades.\nInstrumento: Autoevaluación en el pasaporte"
+    },
+    {
+     "fase": "5.Reflexión sobre el aprendizaje",
+     "titulo": "Día 19 · Nuevos retos para los exploradores",
+     "inicio": "Observa el video “El valor del esfuerzo diario” y comenta.",
+     "desarrollo": "Retoma la actividad que más se le dificultó, con un apoyo distinto o con un reto mayor si ya la logró; coloca su insignia de explorador en la gráfica grupal de logros.",
+     "cierre": "Completa la columna “Lo que descubrimos” del papelógrafo inicial y elige entre las nuevas preguntas el tema del próximo proyecto.",
+     "notas": "",
+     "organizacion": "Grupal / individual",
+     "recursos": "Video, insignias, gráfica de logros, papelógrafo",
+     "tiempo": "Día 19 50 min",
+     "evaluacion": "Identifica sus logros y nuevos intereses.\nInstrumento: Insumo para el diagnóstico grupal"
+    }
+   ],
+   "ajustes": "",
+   "programasExternos": "",
+   "musica": "",
+   "udei": "",
+   "pmc": "",
+   "coevaluacion": "",
+   "retroalimentacion": "",
+   "observaciones": "",
+   "grado": "2",
+   "creado": "2026-11-24T04:46:14.671Z",
+   "actualizado": "2026-11-24T04:46:44Z"
+  },
+  {
+   "id": "nuestra-voz-y-nuestros-acuerdos-para-convivir-en-p-2",
+   "proyecto": "Nuestra voz y nuestros acuerdos para convivir en paz",
+   "modalidad": [
+    "Proyecto"
+   ],
+   "problematica": "Durante la etapa diagnóstica se observó que las niñas y los niños muestran poca atención y escucha: les cuesta esperar turno, compartir materiales y resolver desacuerdos sin empujar o quitar objetos, lo que dificulta relacionarse favorablemente y lograr los propósitos de las actividades.\nPregunta detonadora: ¿Qué acuerdos necesitamos para que todos nos escuchemos y convivamos en paz?",
+   "finalidad": "Que las niñas y los niños expresen sus ideas y emociones, escuchen a los demás y construyan y sigan acuerdos para una convivencia sana y pacífica, inspirados en los valores de las fechas cívicas del mes, y los compartan en la “Expo-Convivencia: Así nos escuchamos y respetamos”.",
+   "ejes": [
+    "Inclusión",
+    "Pensamiento crítico",
+    "Igualdad de género",
+    "Apropiación de las culturas a través de la lectura y la escritura",
+    "Artes y experiencias estéticas"
+   ],
+   "campos": {
+    "Lenguajes": [
+     {
+      "contenido": "L1. Comunicación oral de necesidades, emociones, gustos, ideas y saberes, a través de los diversos lenguajes, desde una perspectiva comunitaria.",
+      "pdas": [
+       "Manifiesta oralmente y de manera clara necesidades, emociones, gustos, preferencias e ideas, que construye en la convivencia diaria, y se da a entender apoyándose de distintos lenguajes.",
+       "Escucha con atención a sus pares y espera su turno para hablar.",
+       "Se interesa por lo que otras personas expresan, sienten y saben e intercambia sus puntos de vista."
+      ]
+     },
+     {
+      "contenido": "L2. Narración de historias mediante diversos lenguajes, en un ambiente donde niñas y niños participen y se apropien de la cultura, a través de diferentes textos.",
+      "pdas": [
+       "Lee con apoyo y narra con una secuencia lógica, diferentes textos literarios como leyendas, cuentos, fábulas, historias, y relatos de la comunidad, en las que aprecia otras formas de vida, de pensamiento y de comportamiento."
+      ]
+     }
+    ],
+    "Saberes y pensamiento científico": [
+     {
+      "contenido": "SyPC 5. El dominio del espacio y reconocimiento de formas en el entorno desde diversos puntos de observación y mediante desplazamientos o recorridos.",
+      "pdas": [
+       "Ubica personas, objetos y elementos de su entorno con referentes personales y los comunica a sus pares y otras personas.",
+       "Establece relaciones de orientación y direccionalidad al interactuar y desplazarse en su entorno (hacia, desde, atrás, arriba, da vuelta).",
+       "Juega con el tangram para hacer composiciones y arma rompecabezas."
+      ]
+     },
+     {
+      "contenido": "SyPC 4. Los saberes numéricos como herramienta para resolver situaciones del entorno, en diversos contextos socioculturales.",
+      "pdas": [
+       "Cuenta objetos y elementos de su entorno."
+      ]
+     }
+    ],
+    "Ética, naturaleza y sociedades": [
+     {
+      "contenido": "ENyS 8. La cultura de paz como una forma de relacionarse con otras personas para promover la inclusión y el respeto a la diversidad.",
+      "pdas": [
+       "Construye acuerdos para una convivencia pacífica en su hogar y escuela, al escuchar y expresar con respeto ideas y opiniones propias y de las demás personas, que fortalezcan una cultura de paz.",
+       "Acuerda con su familia, pares y otras personas, las responsabilidades que tendrá en su hogar y escuela, y explica por qué es importante cumplirlas."
+      ]
+     },
+     {
+      "contenido": "ENyS 3. Construcción de la identidad y pertenencia a una comunidad y país a partir del conocimiento de su historia, sus celebraciones, conmemoraciones tradicionales y obras del patrimonio artístico y cultural.",
+      "pdas": [
+       "Construye de manera informal un sentido de pertenencia a su comunidad, al interpretar el significado de sus celebraciones y conmemoraciones.",
+       "Intercambia con sus pares, experiencias y vivencias al participar en eventos, celebraciones y conmemoraciones de su comunidad, y las representa con recursos artísticos."
+      ]
+     }
+    ],
+    "De lo humano y lo comunitario": [
+     {
+      "contenido": "HyC 1. Construcción de la identidad personal a partir de su pertenencia a un territorio, su origen étnico, cultural y lingüístico, y la interacción con personas cercanas.",
+      "pdas": [
+       "Reconoce algunos rasgos de su identidad, dice cómo es físicamente, qué se le facilita, qué se le dificulta, qué le gusta, qué no le gusta, y los expresa en su lengua materna o con otros lenguajes.",
+       "Distingue semejanzas y diferencias con las demás personas, a partir de distintos rasgos de identidad como su nombre, características físicas, formas de vestir, hablar, alimentarse, entre otros."
+      ]
+     },
+     {
+      "contenido": "HyC 4. Las emociones en la interacción con diversas personas y situaciones.",
+      "pdas": [
+       "Percibe cambios corporales, y con ayuda, nombra las emociones que experimenta, como: alegría, tristeza, sorpresa, miedo o enojo, y reconoce las situaciones que las provocan.",
+       "Muestra respeto y empatía hacia la expresión de emociones de las personas, comprende cuando alguien necesita ayuda y la ofrece."
+      ]
+     },
+     {
+      "contenido": "HyC 5. Interacción con personas de diversos contextos, que contribuyan al establecimiento de relaciones positivas y a una convivencia basada en la aceptación de la diversidad.",
+      "pdas": [
+       "Interactúa con distintas personas en situaciones diversas, y establecen acuerdos para la participación, la organización y la convivencia."
+      ]
+     }
+    ]
+   },
+   "pdaPermanentes": "Lectura (L5): Interpreta, a partir de experiencias y referentes culturales, el contenido de diversos textos que le interesan y sabe para qué son. Rutina: lectura en la biblioteca del aula y del reglamento ilustrado.\nEscritura (L7): Representa su nombre y otras palabras comunes, con recursos propios y con distintos propósitos, tales como marcar sus producciones, registrar su asistencia, entre otros. Rutina: pase de lista con su nombre y firma del reglamento.\nMatemáticas (SyPC 4): Dice en orden los números que conoce y gradualmente amplía su rango de conteo. Rutina: conteo de asistencia y fecha en el calendario.",
+   "educacionFisica": "HyC 2. Posibilidades de movimiento en diferentes espacios, para favorecer las habilidades motrices.\n• Adapta sus movimientos y fortalece su lateralidad al desplazarse en espacios de la escuela, casa y comunidad en distintas direcciones y con velocidades variadas; descubre nuevas formas de moverse.\n• Mantiene el control y equilibrio de los distintos segmentos corporales tanto en situaciones estáticas (sostenerse en un pie, hacer una figura con el cuerpo, entre otras) como en movimientos sin desplazamiento (girar, brincar, etcétera).\nSugerencia: Ejercicios guiados de imitación (“Dany go”), rondas infantiles, momentos de relajación y motricidad fina con el “cactus muy mexicano”.",
+   "actividades": [
+    {
+     "fase": "1.Punto de Partida",
+     "titulo": "Los Niños Héroes y el valor de ser mexicanos",
+     "inicio": "Conversa sobre las fechas cívicas del mes y escucha la historia personificada de los Niños Héroes.",
+     "desarrollo": "Responde: ¿qué pasó?, ¿quiénes eran?, ¿qué valores mostraron (valentía, unión, respeto)? Participa en la asamblea interna.",
+     "cierre": "Decora con fomi su ficha de los Niños Héroes.",
+     "notas": "",
+     "organizacion": "Grupal / individual",
+     "recursos": "Ficha gráfica, crayolas, fomi, pegamento",
+     "tiempo": "14 sep 50 min",
+     "evaluacion": "Interpreta el significado de las conmemoraciones (ENyS 3).\nInstrumento: Diario de la educadora"
+    },
+    {
+     "fase": "1.Punto de Partida",
+     "titulo": "¡Viva México! La Independencia",
+     "inicio": "Escucha por qué hoy y mañana son días importantes para México.",
+     "desarrollo": "Observa un video sobre la Independencia y comenta lo que vio; participa en la Mañana Mexicana con su grupo.",
+     "cierre": "Pinta con cotonetes una bandera con los colores verde, blanco y rojo.",
+     "notas": "",
+     "organizacion": "Grupal / plantel",
+     "recursos": "Video, dibujos, cotonetes, pintura",
+     "tiempo": "15 sep Mañana",
+     "evaluacion": "Intercambia vivencias de las celebraciones de su comunidad (ENyS 3).\nInstrumento: Diario de la educadora"
+    },
+    {
+     "fase": "1.Punto de Partida",
+     "titulo": "¿Cómo nos escuchamos en la escuela?",
+     "inicio": "Escucha que, como los héroes, necesitamos valores y normas para vivir juntos.",
+     "desarrollo": "Participa en juegos grupales de escucha: “teléfono descompuesto”, “Simón dice” y adivinar sonidos; comenta qué pasó cuando todos hablaban a la vez.",
+     "cierre": "Responde la pregunta detonadora: ¿qué necesitamos para escucharnos? Se registra en un papelógrafo.",
+     "notas": "",
+     "organizacion": "Grupal",
+     "recursos": "Bocina, pictogramas, papelógrafo",
+     "tiempo": "17 sep 45 min",
+     "evaluacion": "Escucha con atención a sus pares y espera su turno (L1).\nInstrumento: Diario de la educadora"
+    },
+    {
+     "fase": "1.Punto de Partida",
+     "titulo": "Mis emociones y las tuyas al convivir",
+     "inicio": "En el rincón del encuentro observa imágenes de situaciones del aula (no compartir, empujar, quitar un juguete).",
+     "desarrollo": "Responde: ¿cómo te sientes cuando…?, ¿qué harías? Lanza el dado de las emociones y cuenta una situación en la que se sintió así. Participa en el simulacro.",
+     "cierre": "Realiza su ficha de emociones para el portafolio.",
+     "notas": "",
+     "organizacion": "Grupal / individual",
+     "recursos": "Imágenes, dado de emociones, ficha, crayolas",
+     "tiempo": "18 sep 45 min",
+     "evaluacion": "Nombra sus emociones (HyC 4); muestra empatía hacia las emociones de los demás (HyC 4).\nInstrumento: Portafolio"
+    },
+    {
+     "fase": "2.Planeación",
+     "titulo": "¿Qué pasa cuando no hay reglas?",
+     "inicio": "En círculo usa materiales variados durante 15 minutos con una sola indicación: dejarlos al sonar la campana.",
+     "desarrollo": "Responde: ¿pudieron jugar a gusto?, ¿alguien se molestó?, ¿por qué fue difícil? Por el Día Internacional de la Paz propone qué acuerdos necesitamos; la educadora los escribe y se organiza el plan de actividades con pictogramas.",
+     "cierre": "Usa el micrófono parlante para que cada quien diga su acuerdo favorito.",
+     "notas": "",
+     "organizacion": "Círculo / asamblea",
+     "recursos": "Materiales variados, campana, pizarrón, micrófono parlante",
+     "tiempo": "21 sep 50 min",
+     "evaluacion": "Construye acuerdos para una convivencia pacífica (ENyS 8).\nInstrumento: Diario de la educadora"
+    },
+    {
+     "fase": "3.A Trabajar",
+     "titulo": "Reglamento ilustrado",
+     "inicio": "Recuerda lo que hizo ayer sobre el respeto y los acuerdos.",
+     "desarrollo": "Responde: ¿qué podemos hacer para que no haya conflictos?, ¿cómo pedimos las cosas? En equipos ilustra un acuerdo con dibujos y pintura; la educadora escribe el texto.",
+     "cierre": "Se arma el reglamento ilustrado y cada quien lo firma con su nombre.",
+     "notas": "",
+     "organizacion": "Equipos",
+     "recursos": "Dibujos, crayolas, pintura, marcadores, cartulina",
+     "tiempo": "22 sep 50 min",
+     "evaluacion": "Acuerda responsabilidades y explica por qué cumplirlas (ENyS 8).\nInstrumento: Diario de la educadora"
+    },
+    {
+     "fase": "3.A Trabajar",
+     "titulo": "Iguales en oportunidades, diversos en ideas",
+     "inicio": "Se mira al espejo, dice su nombre y algo que le gusta de sí mismo.",
+     "desarrollo": "Dialoga sobre situaciones: ¿quiénes pueden jugar fútbol?, ¿quiénes pueden cocinar? Descubre que niñas y niños pueden hacer lo mismo y que todos somos diferentes y valiosos.",
+     "cierre": "Busca en los gafetes a un compañero con algo en común.",
+     "notas": "",
+     "organizacion": "Grupal",
+     "recursos": "Espejo, imágenes, gafetes o fotos",
+     "tiempo": "23 sep 45 min",
+     "evaluacion": "Reconoce rasgos de su identidad y distingue semejanzas y diferencias (HyC 1).\nInstrumento: Diario de la educadora"
+    },
+    {
+     "fase": "3.A Trabajar",
+     "titulo": "Jugamos respetando turnos",
+     "inicio": "Conversa: ¿cuándo usamos turnos?, ¿por qué es importante respetarlos?",
+     "desarrollo": "Observa el video “Pedir disculpas y respetar turnos” y juega en equipos a construir una torre con bloques por turnos; luego pinta por turnos un mural grupal.",
+     "cierre": "Participa en la inauguración de la biblioteca del aula.",
+     "notas": "",
+     "organizacion": "Equipos",
+     "recursos": "Video, bloques, papel kraft, pintura, pinceles",
+     "tiempo": "24 sep 50 min",
+     "evaluacion": "Se relaciona con respeto y colabora en juegos (HyC 5).\nInstrumento: Diario de la educadora"
+    },
+    {
+     "fase": "3.A Trabajar",
+     "titulo": "Arma el rompecabezas en equipo",
+     "inicio": "Conversa si conoce los rompecabezas y cómo se juegan.",
+     "desarrollo": "Por mesas explora un rompecabezas (forma, tamaño, color), dialoga con su equipo dónde va cada pieza (arriba, abajo, junto a) y lo arma; cuenta las piezas.",
+     "cierre": "Arma y pega su propio rompecabezas en una hoja.",
+     "notas": "",
+     "organizacion": "Equipos / individual",
+     "recursos": "Rompecabezas, hojas, pegamento",
+     "tiempo": "28 sep 45 min",
+     "evaluacion": "Ubica objetos con referentes personales (SyPC 5); juega con rompecabezas (SyPC 5); cuenta (SyPC 4).\nInstrumento: Portafolio"
+    },
+    {
+     "fase": "3.A Trabajar",
+     "titulo": "Completa la historia",
+     "inicio": "Observa la biblioteca del aula: ¿para qué es?, ¿cómo está organizada?",
+     "desarrollo": "Elige un cuento; mientras la docente lo lee, escucha en calma. Con tarjetas de imágenes ordena la historia y propone otro final.",
+     "cierre": "Comparte su final con un compañero esperando su turno.",
+     "notas": "",
+     "organizacion": "Grupal / binas",
+     "recursos": "Biblioteca del aula, cuentos, tarjetas con imágenes",
+     "tiempo": "29 sep 45 min",
+     "evaluacion": "Lee con apoyo y narra con secuencia lógica (L2).\nInstrumento: Diario de la educadora"
+    },
+    {
+     "fase": "4.Compartimos nuestros logros",
+     "titulo": "Expo-Convivencia: “Así nos escuchamos y respetamos”",
+     "inicio": "Coloca en el piso huellas de papel con los pictogramas de los acuerdos (escuchar, esperar turno, compartir, ordenar, tratar con respeto).",
+     "desarrollo": "Recibe a las familias y las guía por el camino de huellas: en cada una explica el acuerdo y lo representa con una dramatización breve; muestra el reglamento ilustrado y el mural.",
+     "cierre": "Las familias firman un compromiso para practicar los acuerdos en casa.",
+     "notas": "",
+     "organizacion": "Grupal / familias",
+     "recursos": "Huellas de papel, pictogramas, reglamento, mural, compromisos",
+     "tiempo": "30 sep 60 min",
+     "evaluacion": "Manifiesta oralmente sus ideas a otras personas (L1); interactúa y establece acuerdos (HyC 5).\nInstrumento: Rúbrica"
+    },
+    {
+     "fase": "5.Reflexión sobre el aprendizaje",
+     "titulo": "El cartel de los logros",
+     "inicio": "En plenaria dialoga: ¿qué aprendimos?, ¿qué acuerdo nos sale mejor ahora?",
+     "desarrollo": "Marca cada acuerdo del reglamento con estrellas verdes, amarillas o rojas para ver cuánto hemos avanzado; propone cómo mejorar el que está en rojo.",
+     "cierre": "Recibe su medalla de “Guardián de la paz”.",
+     "notas": "",
+     "organizacion": "Grupal / individual",
+     "recursos": "Reglamento ilustrado, estrellas, medallas",
+     "tiempo": "1 oct 45 min",
+     "evaluacion": "Reconoce los desacuerdos como oportunidad (ENyS 8).\nInstrumento: Rúbrica"
+    },
+    {
+     "fase": "5.Reflexión sobre el aprendizaje",
+     "titulo": "El baile del congelado con acuerdos",
+     "inicio": "Revisa el reglamento.",
+     "desarrollo": "Baila al ritmo de la música; al pausarla, la educadora menciona un acuerdo (“¡Escuchamos!”) y todos adoptan la postura correspondiente.",
+     "cierre": "Comenta qué acuerdo practicará en casa.",
+     "notas": "",
+     "organizacion": "Grupal",
+     "recursos": "Música, bocina, reglamento",
+     "tiempo": "2 oct 30 min",
+     "evaluacion": "Escucha con atención y sigue acuerdos (L1).\nInstrumento: Diario de la educadora"
+    }
+   ],
+   "ajustes": "",
+   "programasExternos": "",
+   "musica": "",
+   "udei": "",
+   "pmc": "",
+   "coevaluacion": "",
+   "retroalimentacion": "",
+   "observaciones": "",
+   "grado": "2",
+   "creado": "2026-11-24T04:46:18.454Z",
+   "actualizado": "2026-11-24T04:46:44Z"
+  },
+  {
+   "id": "nuestros-amigos-los-animales-exploramos-cuidamos-y-2",
+   "proyecto": "Nuestros amigos los animales: ¡exploramos, cuidamos y compartimos!",
+   "modalidad": [
+    "Proyecto"
+   ],
+   "problematica": "En el grupo se identifican áreas de oportunidad en las habilidades comunicativas, motrices, de pensamiento científico y de convivencia. Las niñas y los niños muestran gran curiosidad por los animales, pero conocen poco sobre dónde viven, qué necesitan y cómo cuidarlos, y a veces los maltratan en el patio o en casa.\nPregunta detonadora: ¿Cómo viven los animales y qué podemos hacer para cuidarlos?",
+   "finalidad": "Favorecer el desarrollo integral de las niñas y los niños mediante experiencias lúdicas, colaborativas y significativas sobre el mundo animal: explorar dónde viven, cómo son, cómo nacen y qué necesitan, para construir un zoológico y un libro de cuentos de animales que compartirán en el “Safari de pequeños exploradores” con sus familias.",
+   "ejes": [
+    "Inclusión",
+    "Pensamiento crítico",
+    "Vida saludable",
+    "Apropiación de las culturas a través de la lectura y la escritura",
+    "Artes y experiencias estéticas"
+   ],
+   "campos": {
+    "Lenguajes": [
+     {
+      "contenido": "L2. Narración de historias mediante diversos lenguajes, en un ambiente donde niñas y niños participen y se apropien de la cultura, a través de diferentes textos.",
+      "pdas": [
+       "Lee con apoyo y narra con una secuencia lógica, diferentes textos literarios como leyendas, cuentos, fábulas, historias, y relatos de la comunidad, en las que aprecia otras formas de vida, de pensamiento y de comportamiento.",
+       "Narra con secuencia lógica, historias que conoce o inventa, y las acompaña con recursos de los lenguajes artísticos."
+      ]
+     },
+     {
+      "contenido": "L6. Expresión de emociones y experiencias, en igualdad de oportunidades, apoyándose de recursos gráficos personales y de los lenguajes artísticos.",
+      "pdas": [
+       "Explica a otras personas lo que representan sus producciones gráficas (alguna emoción, experiencia, paisaje, ser vivo o persona)."
+      ]
+     }
+    ],
+    "Saberes y pensamiento científico": [
+     {
+      "contenido": "SyPC 1. Exploración de la diversidad natural que existe en la comunidad y en otros lugares.",
+      "pdas": [
+       "Observa y describe en su lengua materna, animales de su entorno: cómo son, cómo crecen, dónde viven, qué comen, los cuidados que necesitan y otros aspectos que le causan curiosidad.",
+       "Realiza experimentos para poner a prueba sus ideas y supuestos sobre lo que observa en su entorno."
+      ]
+     },
+     {
+      "contenido": "SyPC 7. Clasificación y experimentación con objetos y elementos del entorno que reflejan la diversidad de la comunidad o región.",
+      "pdas": [
+       "Compara y organiza elementos del entorno, como objetos cotidianos o artesanías de su comunidad, de acuerdo con uno o dos criterios definidos con sus pares: color, forma, tamaño, textura o uso.",
+       "Organiza por sus semejanzas, objetos y elementos de su entorno, con un propósito definido y los representa mediante dibujos, símbolos, pictogramas en cuadros y tablas sencillas."
+      ]
+     },
+     {
+      "contenido": "SyPC 6. Las magnitudes de longitud, peso, capacidad y tiempo en situaciones cotidianas del hogar y del entorno sociocultural.",
+      "pdas": [
+       "Sopesa dos o más objetos para comparar su peso y dice cuál es más pesado o ligero que otro."
+      ]
+     }
+    ],
+    "Ética, naturaleza y sociedades": [
+     {
+      "contenido": "ENyS 1. Interacción, cuidado, conservación y regeneración de la naturaleza, que favorece la construcción de una conciencia socioambiental.",
+      "pdas": [
+       "Se relaciona con la naturaleza y considera la importancia de sus elementos para la vida (aire, sol, agua y suelo).",
+       "Aprecia la diversidad de características de los seres vivos y no vivos que hay en la naturaleza y sugiere formas de cuidarlos y preservarlos.",
+       "Promueve actitudes y acciones de cuidado hacia la naturaleza e involucra a las personas de su familia y escuela para colaborar en ellas."
+      ]
+     }
+    ],
+    "De lo humano y lo comunitario": [
+     {
+      "contenido": "HyC 4. Las emociones en la interacción con diversas personas y situaciones.",
+      "pdas": [
+       "Percibe cambios corporales, y con ayuda, nombra las emociones que experimenta, como: alegría, tristeza, sorpresa, miedo o enojo, y reconoce las situaciones que las provocan.",
+       "Muestra respeto y empatía hacia la expresión de emociones de las personas, comprende cuando alguien necesita ayuda y la ofrece."
+      ]
+     },
+     {
+      "contenido": "HyC 5. Interacción con personas de diversos contextos, que contribuyan al establecimiento de relaciones positivas y a una convivencia basada en la aceptación de la diversidad.",
+      "pdas": [
+       "Se relaciona con respeto y colabora de manera asertiva para el logro de propósitos comunes en juegos y actividades."
+      ]
+     }
+    ]
+   },
+   "pdaPermanentes": "Lectura (L5): Interpreta, a partir de experiencias y referentes culturales, el contenido de diversos textos que le interesan y sabe para qué son. Rutina: lectura de cuentos y libros informativos de animales en el rincón de cuentos.\nEscritura (L7): Representa su nombre y otras palabras comunes, con recursos propios y con distintos propósitos, tales como marcar sus producciones, registrar su asistencia, entre otros. Rutina: pase de lista con su nombre y gafete de equipo.\nMatemáticas (SyPC 4): Dice en orden los números que conoce y gradualmente amplía su rango de conteo. Rutina: conteo de asistencia y de huellas en la ruta del proyecto.",
+   "educacionFisica": "HyC 2. Posibilidades de movimiento en diferentes espacios, para favorecer las habilidades motrices.\n• Adapta sus movimientos y fortalece su lateralidad al desplazarse en espacios de la escuela, casa y comunidad en distintas direcciones y con velocidades variadas; descubre nuevas formas de moverse.\n• Mantiene el control y equilibrio de los distintos segmentos corporales tanto en situaciones estáticas (sostenerse en un pie, hacer una figura con el cuerpo, entre otras) como en movimientos sin desplazamiento (girar, brincar, etcétera).\nSugerencia: Circuito de los animales: saltar como ranas en aros, arrastrarse como serpientes por el túnel, caminar como osos y volar como aves con listones.",
+   "actividades": [
+    {
+     "fase": "1.Punto de Partida",
+     "titulo": "Las huellas misteriosas",
+     "inicio": "Encuentra en el piso huellas de animales que llevan a una caja misteriosa mientras se escuchan sonidos de animales.",
+     "desarrollo": "Adivina de qué animal es cada huella y sonido; abre la caja con figuras y peluches y comenta qué animales conoce y dónde los ha visto.",
+     "cierre": "Dibuja el animal que más le gusta para el mural “Los animales que conocemos”.",
+     "notas": "",
+     "organizacion": "Círculo / individual",
+     "recursos": "Huellas de papel, caja, peluches, bocina, papel bond",
+     "tiempo": "3 nov 50 min",
+     "evaluacion": "Observa y describe animales de su entorno (SyPC 1).\nInstrumento: Diario de la educadora"
+    },
+    {
+     "fase": "1.Punto de Partida",
+     "titulo": "Mi animal y yo",
+     "inicio": "Baila “El baile de los animales” imitando cómo se mueve cada animal.",
+     "desarrollo": "En parejas presenta la foto o dibujo de su mascota o animal favorito y dice cómo se siente cuando está con él; usa tarjetas de caritas para nombrar la emoción.",
+     "cierre": "Pega su dibujo en el mural.",
+     "notas": "",
+     "organizacion": "Grupal / parejas",
+     "recursos": "Música, fotos o dibujos, papel bond, tarjetas de emociones",
+     "tiempo": "4 nov 50 min",
+     "evaluacion": "Percibe cambios corporales y nombra sus emociones (HyC 4).\nInstrumento: Registro anecdótico"
+    },
+    {
+     "fase": "1.Punto de Partida",
+     "titulo": "El patito feo",
+     "inicio": "En el rincón de cuentos responde: ¿qué crees que pasará con el patito?",
+     "desarrollo": "Escucha el cuento con títeres o láminas y conversa en equipos cómo se sentía el patito y cómo podemos tratar a quien es diferente; formula preguntas sobre los animales.",
+     "cierre": "Las preguntas se escriben en el mural.",
+     "notas": "",
+     "organizacion": "Grupal / equipos",
+     "recursos": "Cuento, títeres, láminas de secuencia, tarjetas de emociones",
+     "tiempo": "5 nov 50 min",
+     "evaluacion": "Lee con apoyo y narra con secuencia lógica (L2); muestra empatía (HyC 4).\nInstrumento: Diario de la educadora"
+    },
+    {
+     "fase": "2.Planeación",
+     "titulo": "Acuerdos de pequeños exploradores",
+     "inicio": "Observa el chaleco, la gorra y la lupa de explorador: “Para investigar necesitamos ponernos de acuerdo”.",
+     "desarrollo": "Propone acuerdos (cuidar a los animales y materiales, escuchar, esperar turno) y los firma con pintura dactilar.",
+     "cierre": "Practica los acuerdos con tarjetas verde y roja.",
+     "notas": "",
+     "organizacion": "Asamblea",
+     "recursos": "Chaleco, lupa, papel bond, pictogramas, pintura dactilar",
+     "tiempo": "6 nov 40 min",
+     "evaluacion": "Se relaciona con respeto y colabora para propósitos comunes (HyC 5).\nInstrumento: Diario de la educadora"
+    },
+    {
+     "fase": "2.Planeación",
+     "titulo": "¿Qué sabemos, qué queremos saber y qué haremos?",
+     "inicio": "Retoma el mural y las preguntas del cuento.",
+     "desarrollo": "Construye el organizador gráfico con dibujos y recortes: qué sabemos, qué queremos saber y qué haremos.",
+     "cierre": "Coloca su dibujo en la columna que elige.",
+     "notas": "",
+     "organizacion": "Grupal / individual",
+     "recursos": "Papel bond, plumones, dibujos, recortes",
+     "tiempo": "7 nov 45 min",
+     "evaluacion": "Expresa sus ideas sobre la naturaleza (ENyS 1).\nInstrumento: Diario de la educadora"
+    },
+    {
+     "fase": "2.Planeación",
+     "titulo": "Equipos, roles y la ruta de huellas",
+     "inicio": "Responde: ¿cómo construiremos el zoológico y cuándo lo mostraremos a las familias?",
+     "desarrollo": "Se organiza en 5 equipos con gafetes y roles; arma con la educadora la ruta de huellas con las actividades y la fecha del safari.",
+     "cierre": "Se envía un recado a casa para la entrevista “Animales y cuentos de mi familia”.",
+     "notas": "",
+     "organizacion": "5 equipos",
+     "recursos": "Ruta de huellas, gafetes, cartulinas, recado",
+     "tiempo": "10 nov 40 min",
+     "evaluacion": "Colabora de manera asertiva (HyC 5).\nInstrumento: Diario de la educadora"
+    },
+    {
+     "fase": "3.A Trabajar",
+     "titulo": "¿Dónde viven los animales?",
+     "inicio": "Responde: ¿todos los animales viven en el mismo lugar? Observa imágenes de selva, granja, mar y desierto.",
+     "desarrollo": "Cada equipo arma un hábitat en cartulina y coloca las tarjetas de animales que viven ahí, consultando libros infantiles.",
+     "cierre": "Dibuja un animal en su casa.",
+     "notas": "",
+     "organizacion": "5 equipos / individual",
+     "recursos": "Cartulinas de hábitats, tarjetas, libros, imágenes",
+     "tiempo": "11 nov 50 min",
+     "evaluacion": "Compara y organiza elementos con criterios (SyPC 7).\nInstrumento: Lista de cotejo"
+    },
+    {
+     "fase": "3.A Trabajar",
+     "titulo": "¿Cómo son y cómo se mueven?",
+     "inicio": "Recorre el circuito de los animales en el patio.",
+     "desarrollo": "Clasifica tarjetas por la forma en que se mueven los animales (vuelan, nadan, saltan, se arrastran) y por su cubierta (plumas, pelo, escamas).",
+     "cierre": "Elabora con su equipo una tabla con dibujos.",
+     "notas": "",
+     "organizacion": "Grupal / equipos",
+     "recursos": "Aros, túnel, listones, tarjetas, cartulina",
+     "tiempo": "12 nov 50 min",
+     "evaluacion": "Compara y organiza elementos con uno o dos criterios (SyPC 7).\nInstrumento: Lista de cotejo"
+    },
+    {
+     "fase": "3.A Trabajar",
+     "titulo": "¿Cómo nacen y cómo crecen?",
+     "inicio": "Adivina: “Soy pequeño como un huevito, me convierto en oruga y después salgo volando”.",
+     "desarrollo": "Observa láminas o un video y ordena tarjetas de secuencia (huevo, oruga, capullo, mariposa; huevo, pollito, gallina); representa con telas cómo crece una mariposa.",
+     "cierre": "Narra el ciclo a un compañero.",
+     "notas": "",
+     "organizacion": "5 equipos / grupal",
+     "recursos": "Láminas, tarjetas de secuencia, telas, música",
+     "tiempo": "13 nov 50 min",
+     "evaluacion": "Observa y describe cómo crecen los animales (SyPC 1).\nInstrumento: Diario de la educadora"
+    },
+    {
+     "fase": "3.A Trabajar",
+     "titulo": "Animales y cuentos de mi familia",
+     "inicio": "Cada equipo muestra los dibujos y relatos de la entrevista familiar.",
+     "desarrollo": "Compara qué animales cuidan en casa y qué cuentos de animales conocen; escucha a un invitado (veterinario o familiar) o un video y le hace preguntas.",
+     "cierre": "Registra con dibujos lo que aprendió.",
+     "notas": "",
+     "organizacion": "5 equipos / grupal",
+     "recursos": "Entrevistas, invitado o video, hojas, crayolas",
+     "tiempo": "14 nov 50 min",
+     "evaluacion": "Narra con secuencia lógica historias que conoce (L2).\nInstrumento: Diario de la educadora"
+    },
+    {
+     "fase": "3.A Trabajar",
+     "titulo": "¿Qué necesitan para vivir?",
+     "inicio": "Juega “La isla de los animales”: elige tarjetas de agua, alimento, aire, sol y refugio para cada animal.",
+     "desarrollo": "Distingue seres vivos y no vivos; sopesa con las manos dos bolsas de alimento para mascotas y dice cuál pesa más. Siembra frijoles para observar que las plantas también necesitan agua y sol.",
+     "cierre": "Registra en su hoja qué necesita su animal favorito.",
+     "notas": "",
+     "organizacion": "5 equipos / individual",
+     "recursos": "Tarjetas, peluches, objetos, frijoles, algodón, vasos, agua",
+     "tiempo": "18 nov 50 min",
+     "evaluacion": "Se relaciona con la naturaleza y considera la importancia del aire, sol, agua y suelo (ENyS 1); sopesa objetos (SyPC 6).\nInstrumento: Registro"
+    },
+    {
+     "fase": "3.A Trabajar",
+     "titulo": "Cuidamos a los animales y su casa",
+     "inicio": "Observa un “río” de tela azul con basura y peces de papel: ¿qué les pasa a los animales si tiramos basura?",
+     "desarrollo": "Rescata a los peces sacando la basura con pinzas y la clasifica; propone acciones para cuidar a los animales y su casa.",
+     "cierre": "Firma con su huella la tarjeta “Mi compromiso con los animales”.",
+     "notas": "",
+     "organizacion": "5 equipos / grupal",
+     "recursos": "Tela azul, basura de papel, peces, pinzas, tarjetas",
+     "tiempo": "19 nov 45 min",
+     "evaluacion": "Sugiere formas de cuidar a los seres vivos y promueve acciones de cuidado (ENyS 1).\nInstrumento: Lista de cotejo"
+    },
+    {
+     "fase": "3.A Trabajar",
+     "titulo": "Construimos nuestro zoológico",
+     "inicio": "Revisa la ruta de huellas y sus roles.",
+     "desarrollo": "Construye con su equipo un hábitat del zoológico con cajas, material reciclado, ramas y hojas, y modela su animal con plastilina o masa.",
+     "cierre": "Explica qué necesita el animal en su hábitat.",
+     "notas": "",
+     "organizacion": "5 equipos / individual",
+     "recursos": "Cajas, plastilina, material reciclado, pintura, ramas",
+     "tiempo": "24 nov 60 min",
+     "evaluacion": "Explica a otras personas lo que representan sus producciones (L6).\nInstrumento: Rúbrica"
+    },
+    {
+     "fase": "3.A Trabajar",
+     "titulo": "Nuestro libro de cuentos de animales",
+     "inicio": "Recuerda “El patito feo” y otros cuentos.",
+     "desarrollo": "Inventa con su equipo un cuento con los animales del zoológico, lo ilustra con collage y sellos y lo dicta a la educadora; se encuaderna el libro del grupo.",
+     "cierre": "Ensaya la narración con títeres para el safari.",
+     "notas": "",
+     "organizacion": "5 equipos",
+     "recursos": "Hojas, crayolas, pintura, sellos, títeres, argollas",
+     "tiempo": "25 nov 60 min",
+     "evaluacion": "Narra con secuencia lógica historias que inventa (L2).\nInstrumento: Rúbrica"
+    },
+    {
+     "fase": "4.Compartimos nuestros logros",
+     "titulo": "Safari de pequeños exploradores",
+     "inicio": "Con su gorra de explorador da la bienvenida a las familias y grupos invitados y les entrega un “boleto de safari”.",
+     "desarrollo": "Guía a los visitantes por los hábitats del zoológico, explica qué necesitan los animales, narra su cuento con títeres y comparte su compromiso de cuidado.",
+     "cierre": "Las familias dejan un mensaje en el libro de visitas.",
+     "notas": "",
+     "organizacion": "5 equipos / familias / comunidad",
+     "recursos": "Gorras, boletos, hábitats, libro de cuentos, títeres",
+     "tiempo": "26 nov Mañana",
+     "evaluacion": "Explica sus producciones (L6); promueve acciones de cuidado con su familia (ENyS 1).\nInstrumento: Diario de la educadora"
+    },
+    {
+     "fase": "5.Reflexión sobre el aprendizaje",
+     "titulo": "La ruta de huellas: ¿qué aprendimos?",
+     "inicio": "En asamblea recorre la ruta de huellas con fotografías y evidencias: ¿qué hicimos primero?, ¿qué después?",
+     "desarrollo": "Responde: ¿qué aprendí de los animales?, ¿cómo me sentí al explicarlo?, ¿qué fue difícil? Completa “lo que aprendimos” en el organizador.",
+     "cierre": "Dibuja lo que más le gustó y elige su carita.",
+     "notas": "",
+     "organizacion": "Asamblea / individual",
+     "recursos": "Fotografías, organizador gráfico, tarjetas de caritas",
+     "tiempo": "27 nov 40 min",
+     "evaluacion": "Nombra las emociones que experimentó (HyC 4).\nInstrumento: Autoevaluación"
+    }
+   ],
+   "ajustes": "",
+   "programasExternos": "",
+   "musica": "",
+   "udei": "",
+   "pmc": "",
+   "coevaluacion": "",
+   "retroalimentacion": "",
+   "observaciones": "",
+   "grado": "2",
+   "creado": "2026-11-24T04:46:22.105Z",
+   "actualizado": "2026-11-24T04:46:44Z"
+  },
+  {
+   "id": "trabajos-de-mi-comunidad-2",
+   "proyecto": "Trabajos de mi comunidad",
+   "modalidad": [
+    "Proyecto"
+   ],
+   "problematica": "Se ha observado que muchas niñas y muchos niños no identifican con claridad los distintos oficios y profesiones que forman parte de su comunidad, ni cómo contribuyen al bienestar de todos; algunos piensan que hay trabajos solo para hombres o solo para mujeres.\nPregunta detonadora: ¿Quiénes trabajan en mi comunidad y cómo nos ayudan?",
+   "finalidad": "Favorecer en las niñas y los niños el reconocimiento de los oficios y profesiones de su entorno, sus herramientas y su aporte al bien común, mediante el juego simbólico, para construir una “Miniciudad” con sus familias y agradecer a los trabajadores de la comunidad con cartas y medallas.",
+   "ejes": [
+    "Inclusión",
+    "Pensamiento crítico",
+    "Igualdad de género",
+    "Apropiación de las culturas a través de la lectura y la escritura",
+    "Artes y experiencias estéticas"
+   ],
+   "campos": {
+    "Lenguajes": [
+     {
+      "contenido": "L5. Representación gráfica de ideas y descubrimientos, al explorar los diversos textos que hay en su comunidad y otros lugares.",
+      "pdas": [
+       "Interpreta, a partir de experiencias y referentes culturales, el contenido de diversos textos que le interesan y sabe para qué son.",
+       "Representa gráficamente, con recursos personales, ideas y descubrimientos del entorno mediante textos conocidos.",
+       "Comunica a diversas personas, mensajes con distintos propósitos."
+      ]
+     },
+     {
+      "contenido": "L4. Reconocimiento y aprecio de la diversidad lingüística, al identificar las formas en que se comunican las distintas personas de la comunidad.",
+      "pdas": [
+       "Muestra interés por indagar significados de palabras, frases o señas, y las incorpora a su comunicación como una forma de enriquecerla."
+      ]
+     }
+    ],
+    "Saberes y pensamiento científico": [
+     {
+      "contenido": "SyPC 9. Objetos y artefactos tecnológicos que mejoran y facilitan la vida familiar y de la comunidad.",
+      "pdas": [
+       "Observa y explica cómo entiende que funcionan los juguetes, objetos o artefactos tecnológicos del hogar, la escuela y la comunidad, por qué son útiles, y qué beneficios aportan a las personas y a la comunidad.",
+       "Reconoce en su entorno sociocultural, diferentes usos que las personas le dan a los juguetes, objetos y artefactos tecnológicos, y comparte sus descubrimientos con sus pares para crear nuevas formas de usarlos."
+      ]
+     },
+     {
+      "contenido": "SyPC 6. Las magnitudes de longitud, peso, capacidad y tiempo en situaciones cotidianas del hogar y del entorno sociocultural.",
+      "pdas": [
+       "Estima si un lugar está más cerca o lejos que otro, y propone formas de medirlo para comprobarlo.",
+       "Organiza actividades y juegos con sus pares, estableciendo una secuencia en su duración al llevarlas a cabo.",
+       "Utiliza palabras relacionadas con el paso del tiempo que aprende en su contexto social, tales como: antes, después, primero, al final, temprano, en la mañana, en la tarde, en la noche, entre otras."
+      ]
+     },
+     {
+      "contenido": "SyPC 7. Clasificación y experimentación con objetos y elementos del entorno que reflejan la diversidad de la comunidad o región.",
+      "pdas": [
+       "Organiza por sus semejanzas, objetos y elementos de su entorno, con un propósito definido y los representa mediante dibujos, símbolos, pictogramas en cuadros y tablas sencillas."
+      ]
+     }
+    ],
+    "Ética, naturaleza y sociedades": [
+     {
+      "contenido": "ENyS 5. Labores y servicios que contribuyen al bien común de las distintas familias y comunidades.",
+      "pdas": [
+       "Identifica que las personas realizan actividades diversas y ofrecen distintos servicios que contribuyen a lograr metas comunes.",
+       "Comparte con sus pares la importancia de los trabajos y servicios que las y los integrantes de las familias desarrollan en sus hogares y la comunidad, en condiciones de igualdad y equidad."
+      ]
+     },
+     {
+      "contenido": "ENyS 4. Cambios que ocurren en los lugares, entornos, objetos, costumbres y formas de vida de las distintas familias y comunidades con el paso del tiempo.",
+      "pdas": [
+       "Evoca, con apoyo de sus familiares, acontecimientos y sucesos personales relevantes de su historia de vida y los comparte con sus pares, mediante narraciones y fotografías."
+      ]
+     }
+    ],
+    "De lo humano y lo comunitario": [
+     {
+      "contenido": "HyC 3. Precisión y coordinación en los movimientos al usar objetos, herramientas y materiales, de acuerdo con sus condiciones, capacidades y características.",
+      "pdas": [
+       "Controla sus movimientos al usar objetos, herramientas y materiales en juegos y actividades de experimentación, creación personal y resolución de problemas, atendiendo las normas de seguridad.",
+       "Descubre nuevas formas de coordinar sus movimientos al transportar objetos con alguna parte del cuerpo, caminar y lanzar una pelota, alternar el uso de manos y pies, entre otros.",
+       "Controla cada vez con mayor precisión sus movimientos en coordinación con sus sentidos, al jugar y realizar actividades."
+      ]
+     },
+     {
+      "contenido": "HyC 2. Posibilidades de movimiento en diferentes espacios, para favorecer las habilidades motrices.",
+      "pdas": [
+       "Explica los cambios que experimenta su cuerpo cuando realiza actividad física, y con ayuda, reconoce señales de dolor o malestar."
+      ]
+     }
+    ]
+   },
+   "pdaPermanentes": "Lectura (L5): Interpreta, a partir de experiencias y referentes culturales, el contenido de diversos textos que le interesan y sabe para qué son. Rutina: lectura de cuentos de oficios y letreros de la comunidad.\nEscritura (L7): Representa su nombre y otras palabras comunes, con recursos propios y con distintos propósitos, tales como marcar sus producciones, registrar su asistencia, entre otros. Rutina: pase de lista y gafete del oficio del día.\nMatemáticas (SyPC 4): Dice en orden los números que conoce y gradualmente amplía su rango de conteo. Rutina: conteo de asistencia y fecha en el calendario.",
+   "educacionFisica": "HyC 2. Posibilidades de movimiento en diferentes espacios, para favorecer las habilidades motrices.\n• Adapta sus movimientos y fortalece su lateralidad al desplazarse en espacios de la escuela, casa y comunidad en distintas direcciones y con velocidades variadas; descubre nuevas formas de moverse.\n• Mantiene el control y equilibrio de los distintos segmentos corporales tanto en situaciones estáticas (sostenerse en un pie, hacer una figura con el cuerpo, entre otras) como en movimientos sin desplazamiento (girar, brincar, etcétera).\nSugerencia: Circuito de bomberos, relevos de repartidores y juegos de equilibrio con objetos.",
+   "actividades": [
+    {
+     "fase": "1.Punto de Partida",
+     "titulo": "¿Qué puedo ser?",
+     "inicio": "Conversa sobre el regreso de vacaciones y lo que le gustaría ser de grande.",
+     "desarrollo": "Explora el material manipulable “Lo que podemos ser” y elige el tema del proyecto con el grupo.",
+     "cierre": "Se registra “Lo que sabemos / Lo que queremos descubrir” de los trabajos.",
+     "notas": "",
+     "organizacion": "Grupal",
+     "recursos": "Material manipulable, papelógrafo",
+     "tiempo": "13 abr 45 min",
+     "evaluacion": "Comparte con sus pares textos de su interés (L5).\nInstrumento: Diario de la educadora"
+    },
+    {
+     "fase": "1.Punto de Partida",
+     "titulo": "La ciudad",
+     "inicio": "Recuerda lo trabajado en la clase anterior.",
+     "desarrollo": "Observa las páginas 32 y 33 del libro Explorar e imaginar: ¿qué lugares de trabajo hay en la ciudad?, ¿quién trabaja ahí?",
+     "cierre": "Dibuja un lugar de trabajo que conoce.",
+     "notas": "",
+     "organizacion": "Grupal / individual",
+     "recursos": "Libro Explorar e imaginar, hojas",
+     "tiempo": "14 abr 45 min",
+     "evaluacion": "Identifica que las personas ofrecen distintos servicios (ENyS 5).\nInstrumento: Diario de la educadora"
+    },
+    {
+     "fase": "1.Punto de Partida",
+     "titulo": "Imaginándome de grande",
+     "inicio": "Termina de recortar las láminas de “Lo que podemos ser”.",
+     "desarrollo": "Se imagina de grande y dibuja su oficio favorito; descubre que niñas y niños pueden tener cualquier trabajo. Tarea: foto disfrazado de una profesión.",
+     "cierre": "Comparte su dibujo.",
+     "notas": "",
+     "organizacion": "Individual",
+     "recursos": "Láminas, tijeras, hojas, crayolas",
+     "tiempo": "15 abr 45 min",
+     "evaluacion": "Representa gráficamente sus ideas (L5).\nInstrumento: Diario de la educadora"
+    },
+    {
+     "fase": "2.Planeación",
+     "titulo": "Mural del proyecto",
+     "inicio": "Observa las fotografías de sus compañeros disfrazados.",
+     "desarrollo": "Construye el mural del proyecto con las fotos y el calendario de oficios que conocerán; acuerda cerrar con una miniciudad para las familias.",
+     "cierre": "Firma el mural.",
+     "notas": "",
+     "organizacion": "Asamblea",
+     "recursos": "Fotografías, papel kraft, cinta",
+     "tiempo": "16 abr 45 min",
+     "evaluacion": "Organiza actividades estableciendo una secuencia (SyPC 6).\nInstrumento: Diario de la educadora"
+    },
+    {
+     "fase": "2.Planeación",
+     "titulo": "Así será la miniciudad",
+     "inicio": "Comparte los juguetes que trajo (carritos, camiones, herramientas) y quién los usa.",
+     "desarrollo": "Propone qué lugares tendrá la miniciudad y qué necesitamos para construirla; responde cómo funcionan algunos juguetes y para qué sirven.",
+     "cierre": "Dibuja su propuesta.",
+     "notas": "",
+     "organizacion": "Grupal / equipos",
+     "recursos": "Juguetes, hojas, crayolas",
+     "tiempo": "17 abr 45 min",
+     "evaluacion": "Observa y explica cómo funcionan juguetes y objetos (SyPC 9).\nInstrumento: Diario de la educadora"
+    },
+    {
+     "fase": "3.A Trabajar",
+     "titulo": "Croquis de mi comunidad",
+     "inicio": "Comparte con su familia (tarea) un croquis de los alrededores de su casa.",
+     "desarrollo": "Ubica en el croquis lugares de trabajo que ayudan a todos (tienda, clínica, escuela) y estima cuáles están más cerca o más lejos de su casa.",
+     "cierre": "Lo compara con el de un compañero.",
+     "notas": "",
+     "organizacion": "Individual / binas",
+     "recursos": "Croquis, crayolas",
+     "tiempo": "20 abr 45 min",
+     "evaluacion": "Estima si un lugar está más cerca o lejos que otro (SyPC 6).\nInstrumento: Rúbrica"
+    },
+    {
+     "fase": "3.A Trabajar",
+     "titulo": "Doctoras y doctores",
+     "inicio": "Observa imágenes de médicos: ¿qué hace un doctor?, ¿qué instrumentos usa?",
+     "desarrollo": "Juega al hospital y cura a un oso pegando curitas con números según la cantidad indicada.",
+     "cierre": "Comenta cómo se siente cuando va al doctor.",
+     "notas": "",
+     "organizacion": "Binas",
+     "recursos": "Oso de papel, curitas con números, instrumentos de juguete",
+     "tiempo": "22 abr 45 min",
+     "evaluacion": "Reconoce los usos que las personas dan a los objetos (SyPC 9).\nInstrumento: Rúbrica"
+    },
+    {
+     "fase": "3.A Trabajar",
+     "titulo": "Construimos nuestra propia ciudad",
+     "inicio": "Observa edificios y construcciones: ¿qué hace un constructor?",
+     "desarrollo": "Construye con bloques y cajas edificios de la ciudad, transportando materiales con cuidado.",
+     "cierre": "Explica qué construyó.",
+     "notas": "",
+     "organizacion": "Equipos",
+     "recursos": "Bloques, cajas, cascos",
+     "tiempo": "24 abr 50 min",
+     "evaluacion": "Descubre nuevas formas de coordinar sus movimientos al transportar objetos (HyC 3).\nInstrumento: Rúbrica"
+    },
+    {
+     "fase": "3.A Trabajar",
+     "titulo": "Vaqueros y granjeros",
+     "inicio": "Observa granjas y productos agrícolas.",
+     "desarrollo": "Juega a cuidar animales y cosechar; elabora un cartel de “Se busca” de un animal perdido de la granja.",
+     "cierre": "Comparte su cartel.",
+     "notas": "",
+     "organizacion": "Grupal / individual",
+     "recursos": "Imágenes, hojas, crayolas",
+     "tiempo": "28 abr 45 min",
+     "evaluacion": "Comunica mensajes con distintos propósitos (L5).\nInstrumento: Rúbrica"
+    },
+    {
+     "fase": "3.A Trabajar",
+     "titulo": "Cocineros y pizzeros",
+     "inicio": "Responde: ¿qué les gusta cocinar?, ¿qué herramientas usan?",
+     "desarrollo": "Prepara una pizza de papel o real con ingredientes, siguiendo los pasos (primero, después, al final).",
+     "cierre": "Comparte su pizza.",
+     "notas": "",
+     "organizacion": "Equipos",
+     "recursos": "Ingredientes, platos, gorros",
+     "tiempo": "4 may 50 min",
+     "evaluacion": "Usa palabras relacionadas con el paso del tiempo (SyPC 6).\nInstrumento: Rúbrica"
+    },
+    {
+     "fase": "3.A Trabajar",
+     "titulo": "Trabajos del hogar",
+     "inicio": "Conversa sobre las tareas de casa y quién las hace.",
+     "desarrollo": "Juega a lavar, tender y doblar ropa; reconoce que todos en la familia pueden ayudar.",
+     "cierre": "Elige una tarea que hará en casa.",
+     "notas": "",
+     "organizacion": "Grupal",
+     "recursos": "Ropa, pinzas, mecate, cubetas",
+     "tiempo": "7 may 45 min",
+     "evaluacion": "Comparte la importancia de los trabajos que realizan las familias (ENyS 5).\nInstrumento: Rúbrica"
+    },
+    {
+     "fase": "3.A Trabajar",
+     "titulo": "La tiendita",
+     "inicio": "Observa imágenes de vendedores en un mercado.",
+     "desarrollo": "Juega a vender y comprar frutas y verduras; clasifica los productos por sus semejanzas y los registra en un cuadro con dibujos.",
+     "cierre": "Cuenta cuánto vendió.",
+     "notas": "",
+     "organizacion": "Equipos",
+     "recursos": "Frutas y verduras, canastas, monedas, cuadro",
+     "tiempo": "11 may 50 min",
+     "evaluacion": "Organiza objetos por sus semejanzas y los representa en cuadros (SyPC 7).\nInstrumento: Rúbrica"
+    },
+    {
+     "fase": "3.A Trabajar",
+     "titulo": "Maestras y maestros",
+     "inicio": "Observa aulas y maestros: ¿qué hace un maestro?",
+     "desarrollo": "Juega a ser maestro y enseña algo que sabe hacer a un compañero.",
+     "cierre": "Agradece a su maestra con un dibujo.",
+     "notas": "",
+     "organizacion": "Binas",
+     "recursos": "Pizarrón, materiales del aula",
+     "tiempo": "13 may 45 min",
+     "evaluacion": "Identifica actividades que contribuyen al bien común (ENyS 5).\nInstrumento: Rúbrica"
+    },
+    {
+     "fase": "3.A Trabajar",
+     "titulo": "Músicos",
+     "inicio": "Observa instrumentos musicales: ¿qué hace un músico?",
+     "desarrollo": "Fabrica un instrumento con material de reúso y forma una orquesta con el grupo.",
+     "cierre": "Comenta qué sonido produce su instrumento.",
+     "notas": "",
+     "organizacion": "Grupal",
+     "recursos": "Botellas, semillas, ligas, cajas",
+     "tiempo": "14 may 50 min",
+     "evaluacion": "Controla sus movimientos al usar materiales (HyC 3).\nInstrumento: Rúbrica"
+    },
+    {
+     "fase": "3.A Trabajar",
+     "titulo": "Heladeros",
+     "inicio": "Responde: ¿qué sabores te gustan?, ¿cómo se hace un helado?",
+     "desarrollo": "Prepara paletas de fruta y observa cómo cambia el jugo al congelarse.",
+     "cierre": "Comparte su paleta al día siguiente.",
+     "notas": "",
+     "organizacion": "Equipos",
+     "recursos": "Jugo de fruta, moldes, palitos",
+     "tiempo": "18 may 45 min",
+     "evaluacion": "Reconoce usos de los objetos, como el congelador (SyPC 9).\nInstrumento: Rúbrica"
+    },
+    {
+     "fase": "3.A Trabajar",
+     "titulo": "Paleontólogos",
+     "inicio": "Observa dinosaurios y fósiles: ¿qué hacen los paleontólogos?",
+     "desarrollo": "Excava en arena con pinceles para descubrir “fósiles” y los describe; conversa cómo eran los animales hace mucho tiempo.",
+     "cierre": "Dibuja su fósil.",
+     "notas": "",
+     "organizacion": "Equipos",
+     "recursos": "Arena, pinceles, huesos de juguete",
+     "tiempo": "19 may 50 min",
+     "evaluacion": "Controla con precisión sus movimientos (HyC 3).\nInstrumento: Rúbrica"
+    },
+    {
+     "fase": "3.A Trabajar",
+     "titulo": "Exploradores del reino animal",
+     "inicio": "Observa animales en su hábitat: ¿qué hace un zoólogo?",
+     "desarrollo": "Con binoculares de cartón busca animales escondidos y registra cuántos encontró.",
+     "cierre": "Comparte sus hallazgos.",
+     "notas": "",
+     "organizacion": "Equipos",
+     "recursos": "Binoculares de cartón, figuras de animales, hojas",
+     "tiempo": "20 may 45 min",
+     "evaluacion": "Representa gráficamente descubrimientos (L5).\nInstrumento: Rúbrica"
+    },
+    {
+     "fase": "3.A Trabajar",
+     "titulo": "Estilistas y peluqueros",
+     "inicio": "Observa peinados: ¿qué herramientas usa un estilista?",
+     "desarrollo": "Juega “Adivina el personaje” con peinados y peina muñecas o pelucas de estambre.",
+     "cierre": "Comenta si niñas y niños pueden ser estilistas.",
+     "notas": "",
+     "organizacion": "Binas",
+     "recursos": "Peines, pelucas de estambre, ligas",
+     "tiempo": "21 may 45 min",
+     "evaluacion": "Controla sus movimientos en coordinación con sus sentidos (HyC 3).\nInstrumento: Rúbrica"
+    },
+    {
+     "fase": "3.A Trabajar",
+     "titulo": "Bomberos",
+     "inicio": "Responde: ¿qué hacen los bomberos?, ¿por qué son importantes?",
+     "desarrollo": "Realiza el circuito del bombero: carga peluches, apaga fuego con atomizadores y explica cómo se siente su cuerpo después de correr.",
+     "cierre": "Comenta qué hacer en caso de incendio.",
+     "notas": "",
+     "organizacion": "Grupal / patio",
+     "recursos": "Atomizadores, peluches, conos",
+     "tiempo": "22 may 50 min",
+     "evaluacion": "Explica los cambios de su cuerpo al hacer actividad física (HyC 2).\nInstrumento: Rúbrica"
+    },
+    {
+     "fase": "3.A Trabajar",
+     "titulo": "Repartidor de paquetes",
+     "inicio": "Observa repartidores, camiones y mapas.",
+     "desarrollo": "Entrega paquetes a distintos lugares del jardín siguiendo un mapa; dice qué lugar estaba más lejos.",
+     "cierre": "Comenta por qué es importante su trabajo.",
+     "notas": "",
+     "organizacion": "Equipos",
+     "recursos": "Cajas, mapa del jardín",
+     "tiempo": "25 may 45 min",
+     "evaluacion": "Estima distancias (SyPC 6).\nInstrumento: Rúbrica"
+    },
+    {
+     "fase": "3.A Trabajar",
+     "titulo": "Policías",
+     "inicio": "Observa policías dirigiendo el tráfico y ayudando a las personas.",
+     "desarrollo": "Juega a dirigir el tránsito con señales y aprende palabras y señas para pedir ayuda.",
+     "cierre": "Elabora su placa.",
+     "notas": "",
+     "organizacion": "Grupal",
+     "recursos": "Señales, silbatos, placas",
+     "tiempo": "26 may 45 min",
+     "evaluacion": "Incorpora palabras o señas nuevas a su comunicación (L4).\nInstrumento: Rúbrica"
+    },
+    {
+     "fase": "4.Compartimos nuestros logros",
+     "titulo": "La miniciudad",
+     "inicio": "En equipos monta un local de la miniciudad (bomberos, policía, consultorio, escuela, tiendita, cocina).",
+     "desarrollo": "Recibe a las familias y ejerce el oficio que eligió, explicando a los visitantes qué hace y con qué herramientas.",
+     "cierre": "Las familias reciben un recibo de servicio.",
+     "notas": "",
+     "organizacion": "Equipos / familias",
+     "recursos": "Locales, disfraces, herramientas, recibos",
+     "tiempo": "27 may Mañana",
+     "evaluacion": "Comparte la importancia de los trabajos (ENyS 5); comunica mensajes (L5).\nInstrumento: Diario de la educadora"
+    },
+    {
+     "fase": "5.Reflexión sobre el aprendizaje",
+     "titulo": "Gracias, trabajadores",
+     "inicio": "Recuerda los oficios que conoció en el mural.",
+     "desarrollo": "Elabora cartas y medallas de agradecimiento para servidores públicos y trabajadores del jardín y las entrega; responde qué oficio le gustó más y por qué.",
+     "cierre": "Evoca con apoyo cómo ha cambiado lo que quiere ser desde que empezó el proyecto.",
+     "notas": "",
+     "organizacion": "Grupal",
+     "recursos": "Hojas, medallas de cartón, listón",
+     "tiempo": "28 may 50 min",
+     "evaluacion": "Evoca sucesos relevantes de su historia (ENyS 4).\nInstrumento: Autoevaluación"
+    }
+   ],
+   "ajustes": "",
+   "programasExternos": "",
+   "musica": "",
+   "udei": "",
+   "pmc": "",
+   "coevaluacion": "",
+   "retroalimentacion": "",
+   "observaciones": "",
+   "grado": "2",
+   "creado": "2026-11-24T04:46:25.853Z",
+   "actualizado": "2026-11-24T04:46:44Z"
+  },
+  {
+   "id": "una-aventura-saludable-comemos-descubrimos-y-nos-c-2",
+   "proyecto": "Una aventura saludable: ¡Comemos, descubrimos y nos cuidamos!",
+   "modalidad": [
+    "Proyecto"
+   ],
+   "problematica": "En el grupo se identifican áreas de oportunidad en las habilidades comunicativas, motrices, de pensamiento matemático y de convivencia, así como hábitos alimenticios poco saludables en los lonches. La alimentación es un tema cercano a su vida familiar que permite trabajar estas habilidades de manera integral, lúdica y significativa.\nPregunta detonadora: ¿Qué alimentos nos cuidan y cómo llegan hasta nuestra mesa?",
+   "finalidad": "Favorecer el desarrollo integral de las niñas y los niños mediante experiencias lúdicas, colaborativas y significativas sobre la alimentación saludable: conocer, clasificar, comprar, preparar y compartir alimentos, para organizar una “Feria de alimentos que nos cuidan” con otro grupo y las familias.",
+   "ejes": [
+    "Inclusión",
+    "Pensamiento crítico",
+    "Interculturalidad crítica",
+    "Vida saludable",
+    "Apropiación de las culturas a través de la lectura y la escritura",
+    "Artes y experiencias estéticas"
+   ],
+   "campos": {
+    "Lenguajes": [
+     {
+      "contenido": "L6. Expresión de emociones y experiencias, en igualdad de oportunidades, apoyándose de recursos gráficos personales y de los lenguajes artísticos.",
+      "pdas": [
+       "Elige algunos recursos gráficos, como marcas propias, símbolos, dibujos o algunos otros de los lenguajes artísticos, al representar emociones y experiencias.",
+       "Observa las producciones de sus pares y expresa su opinión.",
+       "Intercambia ideas acerca de las producciones de sus compañeras y compañeros, y encuentra semejanzas con las propias."
+      ]
+     },
+     {
+      "contenido": "L7. Producciones gráficas dirigidas a diversas destinatarias y diversos destinatarios, para establecer vínculos sociales y acercarse a la cultura escrita.",
+      "pdas": [
+       "Produce textos o mensajes de interés, con formas gráficas personales, copiando textos o dictando a alguien, con distintos propósitos y destinatarios."
+      ]
+     },
+     {
+      "contenido": "L1. Comunicación oral de necesidades, emociones, gustos, ideas y saberes, a través de los diversos lenguajes, desde una perspectiva comunitaria.",
+      "pdas": [
+       "Se interesa por lo que otras personas expresan, sienten y saben e intercambia sus puntos de vista."
+      ]
+     }
+    ],
+    "Saberes y pensamiento científico": [
+     {
+      "contenido": "SyPC 2. Saberes familiares y comunitarios que resuelven situaciones y necesidades en el hogar y la comunidad.",
+      "pdas": [
+       "Selecciona saberes familiares y comunitarios útiles, para resolver situaciones diversas, los compara con los de sus pares y cuida su integridad y la de los demás."
+      ]
+     },
+     {
+      "contenido": "SyPC 7. Clasificación y experimentación con objetos y elementos del entorno que reflejan la diversidad de la comunidad o región.",
+      "pdas": [
+       "Compara y organiza elementos del entorno, como objetos cotidianos o artesanías de su comunidad, de acuerdo con uno o dos criterios definidos con sus pares: color, forma, tamaño, textura o uso.",
+       "Organiza por sus semejanzas, objetos y elementos de su entorno, con un propósito definido y los representa mediante dibujos, símbolos, pictogramas en cuadros y tablas sencillas."
+      ]
+     },
+     {
+      "contenido": "SyPC 4. Los saberes numéricos como herramienta para resolver situaciones del entorno, en diversos contextos socioculturales.",
+      "pdas": [
+       "Cuenta objetos y elementos de su entorno.",
+       "Se familiariza con el uso de monedas y billetes en diversas situaciones e intuye su valor."
+      ]
+     }
+    ],
+    "Ética, naturaleza y sociedades": [
+     {
+      "contenido": "ENyS 7. La diversidad de personas y familias en la comunidad y su convivencia, en un ambiente de equidad, libertad, inclusión y respeto a los derechos humanos.",
+      "pdas": [
+       "Expresa algunas de sus costumbres y rutinas familiares, y las compara con las de sus pares, encontrando similitudes.",
+       "Se da cuenta de que las familias son diversas y distintas entre sí, y que esto favorece la convivencia en un entorno de inclusión y respeto."
+      ]
+     },
+     {
+      "contenido": "ENyS 5. Labores y servicios que contribuyen al bien común de las distintas familias y comunidades.",
+      "pdas": [
+       "Identifica que las personas realizan actividades diversas y ofrecen distintos servicios que contribuyen a lograr metas comunes."
+      ]
+     },
+     {
+      "contenido": "ENyS 2. Transformación responsable del entorno al satisfacer necesidades básicas de alimentación, vestido y vivienda.",
+      "pdas": [
+       "Reconoce que todas las personas tienen necesidades básicas, como la alimentación, el vestido y la vivienda, y que estas se satisfacen con recursos de la naturaleza, como el agua simple potable para beber; frutas y verduras para comer, el algodón, la seda y el lino para hacer algunas prendas de ropa."
+      ]
+     }
+    ],
+    "De lo humano y lo comunitario": [
+     {
+      "contenido": "HyC 7. Consumo de alimentos y bebidas que benefician la salud, de acuerdo con los contextos socioculturales.",
+      "pdas": [
+       "Distingue alimentos y bebidas que son saludables, así como los que ponen en riesgo la salud, y reconoce que existen opciones alimentarias sanas que contribuyen a una mejor calidad de vida para todas las personas.",
+       "Cuida su salud al llevar a cabo medidas de seguridad, higiene y limpieza, en la preparación y consumo de alimentos y bebidas saludables."
+      ]
+     },
+     {
+      "contenido": "HyC 5. Interacción con personas de diversos contextos, que contribuyan al establecimiento de relaciones positivas y a una convivencia basada en la aceptación de la diversidad.",
+      "pdas": [
+       "Se relaciona con respeto y colabora de manera asertiva para el logro de propósitos comunes en juegos y actividades."
+      ]
+     }
+    ]
+   },
+   "pdaPermanentes": "Lectura (L5): Interpreta, a partir de experiencias y referentes culturales, el contenido de diversos textos que le interesan y sabe para qué son. Rutina: lectura de cuentos, menús y etiquetas de alimentos.\nEscritura (L7): Representa su nombre y otras palabras comunes, con recursos propios y con distintos propósitos, tales como marcar sus producciones, registrar su asistencia, entre otros. Rutina: pase de lista con su nombre y gafete en los juegos de roles.\nMatemáticas (SyPC 4): Dice en orden los números que conoce y gradualmente amplía su rango de conteo. Rutina: conteo de asistencia y fecha en el calendario.",
+   "educacionFisica": "HyC 2. Posibilidades de movimiento en diferentes espacios, para favorecer las habilidades motrices.\n• Adapta sus movimientos y fortalece su lateralidad al desplazarse en espacios de la escuela, casa y comunidad en distintas direcciones y con velocidades variadas; descubre nuevas formas de moverse.\n• Mantiene el control y equilibrio de los distintos segmentos corporales tanto en situaciones estáticas (sostenerse en un pie, hacer una figura con el cuerpo, entre otras) como en movimientos sin desplazamiento (girar, brincar, etcétera).\nSugerencia: Ejercicios de imitación “Dany go”, rondas infantiles, gimnasia cerebral, relajación y motricidad fina con trazos y materiales manipulables.",
+   "actividades": [
+    {
+     "fase": "1.Punto de Partida",
+     "titulo": "La canasta misteriosa",
+     "inicio": "Descubre una canasta misteriosa con alimentos de juguete e imágenes.",
+     "desarrollo": "Responde: ¿qué alimentos conoces?, ¿cuáles comen en casa?, ¿quién los prepara?, ¿dónde los compran? En equipos de 5 los nombra y los describe.",
+     "cierre": "Inicia el mural “Lo que sabemos” con dibujos y pictogramas.",
+     "notas": "",
+     "organizacion": "Grupal / equipos",
+     "recursos": "Canasta, alimentos de juguete, papel kraft, marcadores, pictogramas",
+     "tiempo": "5 oct 50 min",
+     "evaluacion": "Elige recursos gráficos para representar sus experiencias (L6).\nInstrumento: Diario de la educadora"
+    },
+    {
+     "fase": "1.Punto de Partida",
+     "titulo": "El platillo de mi familia",
+     "inicio": "Conversa sobre los alimentos que se preparan en casa.",
+     "desarrollo": "Comparte dibujos o fotografías del platillo de su familia: quién lo prepara, cuándo lo comen y qué ingredientes lleva; descubre semejanzas con otras familias.",
+     "cierre": "Pega su platillo en el mural.",
+     "notas": "",
+     "organizacion": "Grupal / individual",
+     "recursos": "Fotografías, revistas, papel kraft, pegamento",
+     "tiempo": "6 oct 45 min",
+     "evaluacion": "Expresa costumbres familiares y reconoce que las familias son diversas (ENyS 7).\nInstrumento: Producción gráfica"
+    },
+    {
+     "fase": "1.Punto de Partida",
+     "titulo": "¿En qué se parecen?",
+     "inicio": "Observa diferentes alimentos y responde: ¿cómo podríamos conocerlos mejor?",
+     "desarrollo": "En equipos propone criterios para clasificarlos (color, forma, tamaño, tipo o uso) y los coloca en aros; cuenta cuántos hay en cada grupo.",
+     "cierre": "Explica al grupo el criterio de su equipo.",
+     "notas": "",
+     "organizacion": "Equipos de 5",
+     "recursos": "Tarjetas de alimentos, alimentos de juguete, aros, números",
+     "tiempo": "7 oct 45 min",
+     "evaluacion": "Compara y organiza elementos con criterios definidos con sus pares (SyPC 7).\nInstrumento: Lista de cotejo"
+    },
+    {
+     "fase": "1.Punto de Partida",
+     "titulo": "Semáforo de alimentos",
+     "inicio": "Observa imágenes de loncheras y reconoce alimentos y bebidas.",
+     "desarrollo": "Juega al semáforo de alimentos: decide si un alimento va en verde (todos los días), amarillo (a veces) o rojo (muy poco).",
+     "cierre": "Dibuja su lonchera ideal.",
+     "notas": "",
+     "organizacion": "Grupal / individual",
+     "recursos": "Imágenes, tres carteles de colores, hojas, crayolas",
+     "tiempo": "8 oct 45 min",
+     "evaluacion": "Distingue alimentos saludables y los que ponen en riesgo la salud (HyC 7).\nInstrumento: Producción gráfica"
+    },
+    {
+     "fase": "1.Punto de Partida",
+     "titulo": "¿Qué queremos descubrir?",
+     "inicio": "Observa el mural inicial y recupera lo conversado en la semana.",
+     "desarrollo": "Responde: ¿qué sabemos?, ¿qué no conocemos?, ¿qué nos gustaría investigar? Las preguntas se escriben en tarjetas.",
+     "cierre": "Coloca sus preguntas en el mural.",
+     "notas": "",
+     "organizacion": "Grupal",
+     "recursos": "Mural, tarjetas de preguntas, marcadores",
+     "tiempo": "9 oct 40 min",
+     "evaluacion": "Se interesa por lo que otros saben e intercambia puntos de vista (L1).\nInstrumento: Diario de la educadora"
+    },
+    {
+     "fase": "2.Planeación",
+     "titulo": "Nuestro reto: conocer, clasificar, preparar y compartir",
+     "inicio": "Recuerda sus preguntas y escucha el reto del proyecto.",
+     "desarrollo": "Construye el organizador “Qué sabemos / Qué queremos saber / Qué haremos / Qué necesitamos” con tarjetas de acciones y acuerda cerrar con una feria.",
+     "cierre": "Elige con su equipo una tarea para la feria.",
+     "notas": "",
+     "organizacion": "Grupal / equipos",
+     "recursos": "Cartulina, pictogramas, tarjetas de acciones",
+     "tiempo": "12 oct 45 min",
+     "evaluacion": "Selecciona saberes útiles para resolver situaciones (SyPC 2).\nInstrumento: Diario de la educadora"
+    },
+    {
+     "fase": "2.Planeación",
+     "titulo": "Acuerdos para trabajar en equipo",
+     "inicio": "Responde: ¿qué hacemos cuando dos quieren el mismo material?, ¿cómo escuchamos las ideas de los demás?",
+     "desarrollo": "Propone acuerdos y los representa con dibujos en tarjetas.",
+     "cierre": "Firma el cartel de acuerdos con su nombre.",
+     "notas": "",
+     "organizacion": "Equipos de 5",
+     "recursos": "Cartulina, tarjetas de acuerdos, crayolas",
+     "tiempo": "13 oct 40 min",
+     "evaluacion": "Se relaciona con respeto y colabora para propósitos comunes (HyC 5).\nInstrumento: Registro de acuerdos"
+    },
+    {
+     "fase": "3.A Trabajar",
+     "titulo": "Montamos nuestra comunidad alimentaria",
+     "inicio": "Recuerda qué lugares venden o preparan alimentos.",
+     "desarrollo": "Organiza el salón en frutería, tienda, restaurante y cocina con cajas, envases vacíos y frutas de juguete; elabora gafetes y precios.",
+     "cierre": "Juega libremente en los espacios.",
+     "notas": "",
+     "organizacion": "Grupal / equipos",
+     "recursos": "Cajas, envases, frutas de juguete, monedas, gafetes",
+     "tiempo": "14 oct 50 min",
+     "evaluacion": "Identifica que las personas ofrecen distintos servicios (ENyS 5).\nInstrumento: Diario de la educadora"
+    },
+    {
+     "fase": "3.A Trabajar",
+     "titulo": "¿Quién trabaja aquí?",
+     "inicio": "Escucha un cuento sobre una familia que compra y prepara alimentos.",
+     "desarrollo": "Juega “¿Quién trabaja aquí?” relacionando agricultor, vendedor, cocinero y mesero con su espacio; se disfraza y representa su trabajo.",
+     "cierre": "Comenta qué trabajo le gustaría hacer.",
+     "notas": "",
+     "organizacion": "Grupal / equipos",
+     "recursos": "Cuento, tarjetas de oficios, disfraces sencillos",
+     "tiempo": "15 oct 45 min",
+     "evaluacion": "Identifica actividades y servicios que contribuyen al bien común (ENyS 5).\nInstrumento: Registro anecdótico"
+    },
+    {
+     "fase": "3.A Trabajar",
+     "titulo": "Planeamos la ensalada de frutas",
+     "inicio": "Escucha el reto: preparar una ensalada sin usar fuego.",
+     "desarrollo": "Elige ingredientes, elabora la lista con dibujos y números y reparte roles (lavar, servir, mezclar); participa en la preparación de platillos creativos con madres de familia.",
+     "cierre": "Revisa la lista con su equipo.",
+     "notas": "",
+     "organizacion": "Equipos de 5 / familias",
+     "recursos": "Imágenes, alimentos, cartulina, tarjetas de roles",
+     "tiempo": "16 oct 50 min",
+     "evaluacion": "Produce mensajes con formas gráficas personales (L7).\nInstrumento: Lista de cotejo"
+    },
+    {
+     "fase": "3.A Trabajar",
+     "titulo": "¿De dónde vienen los alimentos?",
+     "inicio": "Observa imágenes o un video sobre el recorrido de los alimentos (libro Explorar e imaginar, págs. 28 y 29).",
+     "desarrollo": "Ordena tarjetas secuenciales: del campo a la tienda y a la mesa; descubre que las personas transforman la naturaleza para alimentarse.",
+     "cierre": "Dibuja el recorrido de su fruta favorita.",
+     "notas": "",
+     "organizacion": "Grupal / individual",
+     "recursos": "Video, tarjetas secuenciales, libro, crayolas",
+     "tiempo": "19 oct 45 min",
+     "evaluacion": "Reconoce que todas las personas necesitan alimentación (ENyS 2).\nInstrumento: Diario de la educadora"
+    },
+    {
+     "fase": "3.A Trabajar",
+     "titulo": "Compramos en la frutería",
+     "inicio": "Plantea situaciones: “quiero comprar fruta”, “necesito elegir alimentos”.",
+     "desarrollo": "Juega a comprar y vender en la frutería y la tienda con monedas de juguete, tratando con amabilidad a quien atiende.",
+     "cierre": "Cuenta cuántas frutas compró y cuánto pagó.",
+     "notas": "",
+     "organizacion": "Equipos de 5",
+     "recursos": "Frutas, canastas, monedas de juguete, etiquetas",
+     "tiempo": "20 oct 45 min",
+     "evaluacion": "Cuenta objetos (SyPC 4); se familiariza con el uso de monedas (SyPC 4).\nInstrumento: Lista de cotejo"
+    },
+    {
+     "fase": "3.A Trabajar",
+     "titulo": "Nuestro menú saludable",
+     "inicio": "Observa un menú infantil e identifica sus partes.",
+     "desarrollo": "En equipos elabora un menú con bebida, fruta o verdura y platillo, con dibujos y palabras.",
+     "cierre": "Presenta su menú y opina sobre los de otros equipos.",
+     "notas": "",
+     "organizacion": "Equipos de 5",
+     "recursos": "Plantillas de menú, imágenes, crayolas, pegamento",
+     "tiempo": "21 oct 45 min",
+     "evaluacion": "Observa las producciones de sus pares y expresa su opinión (L6).\nInstrumento: Producción gráfica"
+    },
+    {
+     "fase": "3.A Trabajar",
+     "titulo": "Preparamos la ensalada de frutas",
+     "inicio": "Recuerda las medidas de higiene y seguridad; se verifican autorizaciones y alergias.",
+     "desarrollo": "Se lava las manos y, en equipos con supervisión adulta, prepara y sirve la ensalada siguiendo su lista y sus roles.",
+     "cierre": "Degusta y comenta qué fruta le gustó más.",
+     "notas": "",
+     "organizacion": "Equipos con supervisión",
+     "recursos": "Frutas lavadas, recipientes, cucharas, servilletas, jabón",
+     "tiempo": "22 oct 60 min",
+     "evaluacion": "Cuida su salud con medidas de higiene al preparar alimentos (HyC 7).\nInstrumento: Lista de cotejo"
+    },
+    {
+     "fase": "3.A Trabajar",
+     "titulo": "¿Cuánta azúcar tiene mi bebida?",
+     "inicio": "Conversa qué bebidas toma en casa.",
+     "desarrollo": "Clasifica bebidas y observa con cucharitas medidoras la cantidad simbólica de azúcar de cada una; compara con el agua.",
+     "cierre": "Dibuja su bebida saludable favorita.",
+     "notas": "",
+     "organizacion": "Grupal / equipos",
+     "recursos": "Envases, cucharitas medidoras, material simbólico, hojas",
+     "tiempo": "26 oct 45 min",
+     "evaluacion": "Distingue bebidas saludables y las que ponen en riesgo la salud (HyC 7).\nInstrumento: Cuestionamientos y producción"
+    },
+    {
+     "fase": "3.A Trabajar",
+     "titulo": "Restaurante del 2° A",
+     "inicio": "Presenta el restaurante y distribuye roles.",
+     "desarrollo": "Juega a ser cocinero, mesero, cliente o cajero usando sus menús, gafetes y delantales.",
+     "cierre": "Comenta cómo atendió a sus clientes.",
+     "notas": "",
+     "organizacion": "Equipos de 5",
+     "recursos": "Menús, gafetes, delantales, platos y comida de juguete",
+     "tiempo": "27 oct 50 min",
+     "evaluacion": "Colabora de manera asertiva en juegos (HyC 5).\nInstrumento: Diario de la educadora"
+    },
+    {
+     "fase": "4.Compartimos nuestros logros",
+     "titulo": "Feria de alimentos que nos cuidan",
+     "inicio": "Organiza el salón en stands: alimentos saludables, clasificación, higiene, frutería, tienda, restaurante y recorrido de los alimentos.",
+     "desarrollo": "Invita a otro grupo, a las familias o al personal; explica sus producciones, clasifica alimentos, muestra el lavado de manos y representa roles, escuchando y respetando turnos.",
+     "cierre": "Dibuja “Lo que aprendí para cuidar mi salud”.",
+     "notas": "",
+     "organizacion": "Equipos de 5 / visitantes",
+     "recursos": "Carteles, stands, menús, gafetes, material de clasificación",
+     "tiempo": "28 oct Mañana",
+     "evaluacion": "Explica a otras personas sus producciones (L6); distingue alimentos saludables (HyC 7).\nInstrumento: Lista de verificación"
+    },
+    {
+     "fase": "5.Reflexión sobre el aprendizaje",
+     "titulo": "Antes pensaba… ahora sé",
+     "inicio": "Recupera el cartel “Lo que sabíamos” y lo compara con lo aprendido.",
+     "desarrollo": "Elige una evidencia de su portafolio y explica qué aprendió; se autoevalúa con caritas: “lo hago solo”, “con ayuda”, “aún estoy aprendiendo”.",
+     "cierre": "Construye el compromiso “Acuerdos para comer, preparar y convivir saludablemente” y celebra los logros.",
+     "notas": "",
+     "organizacion": "Grupal / individual",
+     "recursos": "Cartel inicial y final, portafolio, caritas, medallas simbólicas",
+     "tiempo": "29 oct 45 min",
+     "evaluacion": "Intercambia ideas sobre sus producciones y lo que aprendió (L6).\nInstrumento: Autoevaluación / portafolio"
+    }
+   ],
+   "ajustes": "",
+   "programasExternos": "",
+   "musica": "",
+   "udei": "",
+   "pmc": "",
+   "coevaluacion": "",
+   "retroalimentacion": "",
+   "observaciones": "",
+   "grado": "2",
+   "creado": "2026-11-24T04:46:29.737Z",
+   "actualizado": "2026-11-24T04:46:44Z"
+  },
+  {
+   "id": "viajando-por-el-mundo-2",
+   "proyecto": "Viajando por el mundo",
+   "modalidad": [
+    "Proyecto"
+   ],
+   "problematica": "Las niñas y los niños conocen poco sobre otras culturas y algunos se burlan de las formas de hablar, vestir o comer diferentes a las suyas. Con motivo del Día de las Naciones Unidas, es oportuno que descubran que las personas tienen rasgos culturales distintos y aprendan a respetarlos y valorarlos.\nPregunta detonadora: ¿Cómo viven, hablan y celebran los niños de otros países?",
+   "finalidad": "Que las niñas y los niños reconozcan semejanzas y diferencias entre las personas, conozcan costumbres, idiomas, comidas, música y banderas de distintos países, y las valoren con respeto, guardando sus descubrimientos en una “maleta de viajero” que compartirán en el taller “Viajando por el mundo” de la ONU.",
+   "ejes": [
+    "Inclusión",
+    "Pensamiento crítico",
+    "Interculturalidad crítica",
+    "Apropiación de las culturas a través de la lectura y la escritura",
+    "Artes y experiencias estéticas"
+   ],
+   "campos": {
+    "Lenguajes": [
+     {
+      "contenido": "L4. Reconocimiento y aprecio de la diversidad lingüística, al identificar las formas en que se comunican las distintas personas de la comunidad.",
+      "pdas": [
+       "Se familiariza con lenguas distintas a la suya que escucha en su comunidad e incorpora a su comunicación, expresiones de origen indígena, extranjero o de las lenguas de señas.",
+       "Muestra interés por indagar significados de palabras, frases o señas, y las incorpora a su comunicación como una forma de enriquecerla."
+      ]
+     },
+     {
+      "contenido": "L8. Reconocimiento de ideas o emociones en la interacción con manifestaciones culturales y artísticas y con la naturaleza, a través de diversos lenguajes.",
+      "pdas": [
+       "Interpreta manifestaciones artísticas y culturales diversas (fotografías, música regional, murales, danzas, entre otras) a partir de los elementos que las componen.",
+       "Explica lo que le provocan las manifestaciones artísticas y culturales; y escucha lo que sus pares comparten."
+      ]
+     },
+     {
+      "contenido": "L6. Expresión de emociones y experiencias, en igualdad de oportunidades, apoyándose de recursos gráficos personales y de los lenguajes artísticos.",
+      "pdas": [
+       "Elige algunos recursos gráficos, como marcas propias, símbolos, dibujos o algunos otros de los lenguajes artísticos, al representar emociones y experiencias."
+      ]
+     }
+    ],
+    "Saberes y pensamiento científico": [
+     {
+      "contenido": "SyPC 4. Los saberes numéricos como herramienta para resolver situaciones del entorno, en diversos contextos socioculturales.",
+      "pdas": [
+       "Cuenta objetos y elementos de su entorno."
+      ]
+     },
+     {
+      "contenido": "SyPC 5. El dominio del espacio y reconocimiento de formas en el entorno desde diversos puntos de observación y mediante desplazamientos o recorridos.",
+      "pdas": [
+       "Ubica personas, objetos y elementos de su entorno con referentes personales y los comunica a sus pares y otras personas."
+      ]
+     }
+    ],
+    "Ética, naturaleza y sociedades": [
+     {
+      "contenido": "ENyS 3. Construcción de la identidad y pertenencia a una comunidad y país a partir del conocimiento de su historia, sus celebraciones, conmemoraciones tradicionales y obras del patrimonio artístico y cultural.",
+      "pdas": [
+       "Conoce y disfruta lugares de relevancia natural, cultural e histórica de su comunidad y país, como monumentos, zonas arqueológicas, áreas naturales protegidas, museos o casas de cultura."
+      ]
+     },
+     {
+      "contenido": "ENyS 7. La diversidad de personas y familias en la comunidad y su convivencia, en un ambiente de equidad, libertad, inclusión y respeto a los derechos humanos.",
+      "pdas": [
+       "Se da cuenta de que las familias son diversas y distintas entre sí, y que esto favorece la convivencia en un entorno de inclusión y respeto."
+      ]
+     }
+    ],
+    "De lo humano y lo comunitario": [
+     {
+      "contenido": "HyC 1. Construcción de la identidad personal a partir de su pertenencia a un territorio, su origen étnico, cultural y lingüístico, y la interacción con personas cercanas.",
+      "pdas": [
+       "Distingue semejanzas y diferencias con las demás personas, a partir de distintos rasgos de identidad como su nombre, características físicas, formas de vestir, hablar, alimentarse, entre otros."
+      ]
+     },
+     {
+      "contenido": "HyC 5. Interacción con personas de diversos contextos, que contribuyan al establecimiento de relaciones positivas y a una convivencia basada en la aceptación de la diversidad.",
+      "pdas": [
+       "Interactúa con distintas personas en situaciones diversas, y establecen acuerdos para la participación, la organización y la convivencia.",
+       "Se relaciona con respeto y colabora de manera asertiva para el logro de propósitos comunes en juegos y actividades."
+      ]
+     }
+    ]
+   },
+   "pdaPermanentes": "Lectura (L5): Interpreta, a partir de experiencias y referentes culturales, el contenido de diversos textos que le interesan y sabe para qué son. Rutina: lectura de cuentos de niños de otros países.\nEscritura (L7): Representa su nombre y otras palabras comunes, con recursos propios y con distintos propósitos, tales como marcar sus producciones, registrar su asistencia, entre otros. Rutina: pase de lista y firma de su pasaporte de viajero.\nMatemáticas (SyPC 4): Dice en orden los números que conoce y gradualmente amplía su rango de conteo. Rutina: conteo de asistencia y de países visitados.",
+   "educacionFisica": "HyC 2. Posibilidades de movimiento en diferentes espacios, para favorecer las habilidades motrices.\n• Adapta sus movimientos y fortalece su lateralidad al desplazarse en espacios de la escuela, casa y comunidad en distintas direcciones y con velocidades variadas; descubre nuevas formas de moverse.\n• Mantiene el control y equilibrio de los distintos segmentos corporales tanto en situaciones estáticas (sostenerse en un pie, hacer una figura con el cuerpo, entre otras) como en movimientos sin desplazamiento (girar, brincar, etcétera).\nSugerencia: Olimpiadas del mundo: carreras, lanzamientos y competencias de saltos (atletismo).",
+   "actividades": [
+    {
+     "fase": "1.Punto de Partida",
+     "titulo": "¿En qué nos parecemos?",
+     "inicio": "Se observa en un espejo y describe sus características físicas.",
+     "desarrollo": "Observa imágenes de niñas y niños de distintos países y comenta en qué se parecen y en qué son diferentes de él (cabello, ropa, piel, forma de vestir).",
+     "cierre": "Responde: ¿cómo vivirán, hablarán y jugarán? Se registran sus ideas.",
+     "notas": "",
+     "organizacion": "Grupal",
+     "recursos": "Espejo, imágenes de personas de otros países, papelógrafo",
+     "tiempo": "17 oct 45 min",
+     "evaluacion": "Distingue semejanzas y diferencias con las demás personas (HyC 1).\nInstrumento: Rúbrica"
+    },
+    {
+     "fase": "2.Planeación",
+     "titulo": "Preparamos el viaje: idiomas y banderas",
+     "inicio": "Escucha grabaciones en distintos idiomas y adivina de dónde son.",
+     "desarrollo": "Observa un globo terráqueo y banderas de Colombia, Brasil, Canadá, México, Estados Unidos y Argentina; decide con el grupo el orden de los países que “visitará” y elabora su maleta de viajero y su pasaporte.",
+     "cierre": "Escribe su nombre en su pasaporte.",
+     "notas": "",
+     "organizacion": "Grupal / individual",
+     "recursos": "Grabaciones, globo terráqueo, banderas, cartulina, crayolas",
+     "tiempo": "18 oct 50 min",
+     "evaluacion": "Muestra interés por palabras y saludos de otras lenguas (L4).\nInstrumento: Rúbrica"
+    },
+    {
+     "fase": "3.A Trabajar",
+     "titulo": "Primer destino: México",
+     "inicio": "Sella su pasaporte con la bandera de México.",
+     "desarrollo": "Conoce lugares turísticos, flora, fauna, comida típica, vestimenta y música de México; elabora su bandera y escucha un son mexicano.",
+     "cierre": "Guarda en su maleta un recuerdo de México.",
+     "notas": "",
+     "organizacion": "Grupal / individual",
+     "recursos": "Imágenes, música, hojas, lustrinas, tijeras, pegamento",
+     "tiempo": "19 oct 50 min",
+     "evaluacion": "Conoce y disfruta lugares de relevancia natural y cultural de su país (ENyS 3).\nInstrumento: Rúbrica"
+    },
+    {
+     "fase": "3.A Trabajar",
+     "titulo": "Segundo destino: Canadá",
+     "inicio": "Observa la bandera de Canadá: ¿qué colores tiene?, ¿qué figura?",
+     "desarrollo": "Conoce sus paisajes con nieve, animales como el alce y el castor y la miel de maple; aprende a decir “hello” y “bonjour”.",
+     "cierre": "Elabora la bandera y cuenta cuántas puntas tiene la hoja de maple.",
+     "notas": "",
+     "organizacion": "Grupal / individual",
+     "recursos": "Imágenes, hojas, crayolas, lustrinas",
+     "tiempo": "20 oct 50 min",
+     "evaluacion": "Utiliza palabras de otras lenguas (L4); cuenta elementos (SyPC 4).\nInstrumento: Rúbrica"
+    },
+    {
+     "fase": "3.A Trabajar",
+     "titulo": "Tercer destino: Brasil",
+     "inicio": "Escucha música de samba y se mueve con ella.",
+     "desarrollo": "Conoce la selva amazónica, sus animales, el carnaval y sus comidas; dice qué le hace sentir la música de Brasil.",
+     "cierre": "Elabora una máscara de carnaval.",
+     "notas": "",
+     "organizacion": "Grupal / individual",
+     "recursos": "Música, imágenes, cartulina, plumas, lentejuela",
+     "tiempo": "21 oct 50 min",
+     "evaluacion": "Interpreta manifestaciones artísticas y dice lo que le provocan (L8).\nInstrumento: Rúbrica"
+    },
+    {
+     "fase": "3.A Trabajar",
+     "titulo": "Asamblea de las Naciones Unidas",
+     "inicio": "Escucha qué es la Organización de las Naciones Unidas y qué hace.",
+     "desarrollo": "Pinta con acuarelas un dibujo de la ONU y prepara con su grupo la ambientación del país asignado para la exposición.",
+     "cierre": "Comenta por qué es importante que los países se lleven bien.",
+     "notas": "",
+     "organizacion": "Grupal",
+     "recursos": "Dibujo de la ONU, acuarelas, ambientación",
+     "tiempo": "24 oct 50 min",
+     "evaluacion": "Se da cuenta de que las personas son diversas y que esto favorece la convivencia (ENyS 7).\nInstrumento: Rúbrica"
+    },
+    {
+     "fase": "3.A Trabajar",
+     "titulo": "Cuarto destino: Estados Unidos",
+     "inicio": "Ubica Estados Unidos en el globo terráqueo con referentes: arriba de México.",
+     "desarrollo": "Conoce sus lugares turísticos, comidas y música; compara cómo se celebra Halloween con nuestro Día de Muertos.",
+     "cierre": "Elabora su bandera contando estrellas y franjas.",
+     "notas": "",
+     "organizacion": "Grupal / individual",
+     "recursos": "Globo terráqueo, imágenes, hojas, crayolas",
+     "tiempo": "25 oct 50 min",
+     "evaluacion": "Ubica lugares con referentes (SyPC 5); cuenta (SyPC 4).\nInstrumento: Rúbrica"
+    },
+    {
+     "fase": "3.A Trabajar",
+     "titulo": "Quinto destino: Colombia",
+     "inicio": "Escucha una cumbia y la baila.",
+     "desarrollo": "Conoce el café, las frutas tropicales, los sombreros y los animales de Colombia; describe la vestimenta típica.",
+     "cierre": "Inaugura con su grupo la biblioteca de aula con un cuento colombiano.",
+     "notas": "",
+     "organizacion": "Grupal",
+     "recursos": "Música, imágenes, frutas, cuento",
+     "tiempo": "26 oct 50 min",
+     "evaluacion": "Explica lo que le provocan las manifestaciones artísticas (L8).\nInstrumento: Rúbrica"
+    },
+    {
+     "fase": "3.A Trabajar",
+     "titulo": "Sexto destino: Argentina",
+     "inicio": "Observa la bandera con un sol en el centro.",
+     "desarrollo": "Conoce los paisajes, el tango y comidas como las empanadas; juega a decir palabras que se dicen distinto en Argentina y en México (“pileta” y “alberca”).",
+     "cierre": "Elabora su bandera y guarda el último recuerdo en su maleta.",
+     "notas": "",
+     "organizacion": "Grupal / individual",
+     "recursos": "Imágenes, música, hojas, crayolas",
+     "tiempo": "27 oct 50 min",
+     "evaluacion": "Reconoce que algunos objetos se nombran de distinta manera (L4).\nInstrumento: Rúbrica"
+    },
+    {
+     "fase": "4.Compartimos nuestros logros",
+     "titulo": "Taller de la ONU “Viajando por el mundo”",
+     "inicio": "Visita los salones ambientados del plantel con su pasaporte.",
+     "desarrollo": "Comparte con otros grupos y familias lo que aprendió del país de su salón (Canadá) y recibe un sello en cada país que visita.",
+     "cierre": "Cuenta cuántos sellos tiene su pasaporte.",
+     "notas": "",
+     "organizacion": "Plantel / familias",
+     "recursos": "Pasaportes, sellos, ambientación de países",
+     "tiempo": "24 oct Mañana",
+     "evaluacion": "Interactúa con distintas personas y establece acuerdos (HyC 5).\nInstrumento: Rúbrica"
+    },
+    {
+     "fase": "5.Reflexión sobre el aprendizaje",
+     "titulo": "Abro mi maleta de viajero",
+     "inicio": "En círculo abre su maleta y saca los recuerdos de cada país.",
+     "desarrollo": "Responde: ¿qué país te gustó más?, ¿qué aprendiste?, ¿por qué debemos respetar a quienes son diferentes? Dice una palabra nueva que aprendió.",
+     "cierre": "Coevaluación: dice qué hizo bien su compañero durante el viaje.",
+     "notas": "",
+     "organizacion": "Círculo",
+     "recursos": "Maletas de viajero, pasaportes",
+     "tiempo": "27 oct 30 min",
+     "evaluacion": "Se relaciona con respeto y colabora (HyC 5).\nInstrumento: Autoevaluación"
+    }
+   ],
+   "ajustes": "",
+   "programasExternos": "",
+   "musica": "",
+   "udei": "",
+   "pmc": "",
+   "coevaluacion": "",
+   "retroalimentacion": "",
+   "observaciones": "",
+   "grado": "2",
+   "creado": "2026-11-24T04:46:33.402Z",
+   "actualizado": "2026-11-24T04:46:44Z"
   }
  ],
  "pmc": {
