@@ -365,6 +365,17 @@ table.fmt td p:last-child { margin-bottom: 0; }
     [/logros/, "Diseña acciones para compartir el proceso y la producción final con las familias y la comunidad escolar."],
     [/reflexi/, "Diseña actividades de reflexión sobre las experiencias, los aprendizajes logrados y las dificultades enfrentadas durante el proyecto."],
   ];
+  // Nombres de los momentos del proyecto como los escribe el cuadernillo (p. 69, 71 y 81). Corrige variantes como
+  // "1.Punto de Partida", "3.A Trabajar", "4.Compartimos nuestros logros", "5.Compartimos…" o "6.Reflexión…".
+  function momentoOficial(f) {
+    const t = String(f || "").normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase().replace(/^\s*\d+\s*[.)-]?\s*/, "").replace(/[¡!]/g, "").trim();
+    if (/^punto de partida$/.test(t)) return "1. Punto de partida";
+    if (/^planeacion$/.test(t)) return "2. Planeación";
+    if (/^a trabajar$/.test(t)) return "3. ¡A trabajar!";
+    if (/^(comunicamos|compartimos|comunicar) (nuestros )?logros$/.test(t)) return "4. Comunicamos nuestros logros";
+    if (/^reflexion(amos)? sobre (el )?aprendizaje$/.test(t)) return "5. Reflexión sobre el aprendizaje";
+    return String(f || "").trim();
+  }
   const sinAcentos = (t) => String(t || "").normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
   const ayudaDe = (fase) => { const f = sinAcentos(fase); const m = AYUDA_MOMENTO.find(([re]) => re.test(f)); return m ? m[1] : ""; };
   function fasesDe(plan) {
@@ -430,7 +441,7 @@ table.fmt td p:last-child { margin-bottom: 0; }
     const c = out.campos && typeof out.campos === "object" ? out.campos : {};
     out.campos = {};
     CAMPOS.forEach((k) => (out.campos[k] = (Array.isArray(c[k]) ? c[k] : []).map((x) => ({ contenido: String(x.contenido || ""), pdas: Array.isArray(x.pdas) ? x.pdas.map(String) : [] }))));
-    out.actividades = (Array.isArray(out.actividades) ? out.actividades : []).map((a) => Object.assign(emptyAct(), a));
+    out.actividades = (Array.isArray(out.actividades) ? out.actividades : []).map((a) => { const x = Object.assign(emptyAct(), a); x.fase = momentoOficial(x.fase); return x; });
     out.grado = ["1", "2", "3"].includes(String(out.grado)) ? String(out.grado) : "";
     return out;
   }
@@ -975,7 +986,7 @@ table.fmt td p:last-child { margin-bottom: 0; }
       }
       if (modo === "acts" && cols && cols.act != null) {
         const ac = colDe(row, cols.act); const get = (k) => { if (cols[k] == null) return ""; const c = colDe(row, cols[k]); return c && c !== ac ? c.text : ""; };
-        if (cols.fase != null) { const fc = colDe(row, cols.fase); if (fc && fc !== ac && !fc.cont && fc.text) fase = fc.lines[0].text; }
+        if (cols.fase != null) { const fc = colDe(row, cols.fase); if (fc && fc !== ac && !fc.cont && fc.text) fase = momentoOficial(fc.lines[0].text); }
         if (!ac || !ac.text) continue;
         const a = parseActividad(ac.lines, fase);
         const cons = get("cons"); if (cons && !/^no aplica$/i.test(cons.trim())) a.notas = (a.notas ? a.notas + "\n" : "") + "CONSIGNAS: " + cons.replace(/\s*\n\s*/g, " ");
