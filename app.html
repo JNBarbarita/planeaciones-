@@ -229,7 +229,8 @@ table.fmt td p:last-child { margin-bottom: 0; }
   .cell-input { border: 0; }
   .cell-area { border: 0; background: transparent; resize: none; padding: 0; }
   table.fmt td { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
-  table.fmt tr { break-inside: avoid; }
+  table.fmt thead { display: table-header-group; }
+  table.fmt tr, table.fmt td { break-inside: auto; page-break-inside: auto; }
 }
 </style>
 
@@ -628,7 +629,7 @@ table.fmt td p:last-child { margin-bottom: 0; }
     rows.push([H("PDA Permanentes", { span: 2, c: true }), H("Educación física", { c: true })]);
     rows.push([V(plan.pdaPermanentes, { span: 2, minH: true }), V(plan.educacionFisica, { minH: true })]);
     T.push({ w: [2300, 5000, 7000], rows });
-    T.push({ pageBreak: true });
+    T.push({ gap: true });
     const acts = plan.actividades.length ? plan.actividades : [emptyAct()];
     const arows = [[H("Estructura didáctica", { c: true }), H("Actividades", { c: true }), H("Organización", { c: true }), H("Recursos", { c: true }), H("Tiempo de la actividad", { c: true }), H("Evaluación", { c: true })]];
     for (let i = 0; i < acts.length; ) {
@@ -712,7 +713,9 @@ table.fmt td p:last-child { margin-bottom: 0; }
       if (t.firmas) { h += `<div class="firmas">${t.firmas.map((f) => `<div>${f.filter(Boolean).map(esc).join("<br>")}</div>`).join("")}</div>`; return; }
       const tot = t.w.reduce((s, x) => s + x, 0);
       h += `<table class="fmt"><colgroup>${t.w.map((w) => `<col style="width:${((w / tot) * 100).toFixed(3)}%">`).join("")}</colgroup>`;
-      h += t.rows.map((r) => `<tr>${r.map((c) => cellHtml(c, true)).join("")}</tr>`).join("") + "</table>";
+      const fila = (r) => `<tr>${r.map((c) => cellHtml(c, true)).join("")}</tr>`;
+      const nh = t.head || 0;
+      h += (nh ? `<thead>${t.rows.slice(0, nh).map(fila).join("")}</thead>` : "") + `<tbody>${t.rows.slice(nh).map(fila).join("")}</tbody></table>`;
     });
     $("#sheet").innerHTML = h;
     ajustaAlto($("#g-comunidad"));
