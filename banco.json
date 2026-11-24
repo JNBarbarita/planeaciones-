@@ -10587,6 +10587,229 @@
    "grado": "3",
    "creado": "2026-11-24T05:01:36.083Z",
    "actualizado": "2026-11-24T05:05:12Z"
+  },
+  {
+   "id": "feria-del-sabor-3",
+   "proyecto": "Feria del sabor",
+   "modalidad": [
+    "Proyecto"
+   ],
+   "problematica": "Las niñas y los niños consumen con frecuencia productos empacados con exceso de azúcar, grasa y sodio, y algunos rechazan frutas y verduras sin haberlas probado. Es necesario que exploren y reconozcan los alimentos que contribuyen a mantener su salud, sepan de dónde vienen y aprendan a leer los sellos de advertencia de los productos.\nPregunta detonadora: ¿Cómo sabemos si un alimento nos ayuda a crecer sanos o nos hace daño?",
+   "finalidad": "Que las niñas y los niños identifiquen la importancia de consumir alimentos y bebidas saludables de su contexto mediante la exploración de aromas, sabores y texturas, conozcan el origen de los alimentos y los sellos del etiquetado frontal, y compartan con sus familias una “Feria del sabor” con lo aprendido.",
+   "ejes": [
+    "Inclusión",
+    "Pensamiento crítico",
+    "Vida saludable",
+    "Apropiación de las culturas a través de la lectura y la escritura"
+   ],
+   "campos": {
+    "Lenguajes": [
+     {
+      "contenido": "L7. Producciones gráficas dirigidas a diversas destinatarias y diversos destinatarios, para establecer vínculos sociales y acercarse a la cultura escrita.",
+      "pdas": [
+       "Usa grafías para representar su nombre y otras palabras conocidas con diversos propósitos.",
+       "Planifica producciones gráficas, tales como avisos, recomendaciones de libros, recados, letreros, entre otros, de forma individual o en pequeños equipos."
+      ]
+     },
+     {
+      "contenido": "L1. Comunicación oral de necesidades, emociones, gustos, ideas y saberes, a través de los diversos lenguajes, desde una perspectiva comunitaria.",
+      "pdas": [
+       "Conversa y opina sobre diferentes temas y con varias personas interlocutoras."
+      ]
+     }
+    ],
+    "Saberes y pensamiento científico": [
+     {
+      "contenido": "SyPC 4. Los saberes numéricos como herramienta para resolver situaciones del entorno, en diversos contextos socioculturales.",
+      "pdas": [
+       "Construye colecciones y las compara mediante distintas estrategias para determinar cuál tiene más o menos elementos.",
+       "Organiza y registra información en tablas o cuadros sencillos."
+      ]
+     },
+     {
+      "contenido": "SyPC 7. Clasificación y experimentación con objetos y elementos del entorno que reflejan la diversidad de la comunidad o región.",
+      "pdas": [
+       "Recolecta objetos y elementos de su entorno para observarlos, hacer preguntas y explorar sus características y comportamiento."
+      ]
+     }
+    ],
+    "Ética, naturaleza y sociedades": [
+     {
+      "contenido": "ENyS 8. La cultura de paz como una forma de relacionarse con otras personas para promover la inclusión y el respeto a la diversidad.",
+      "pdas": [
+       "Reconoce los desacuerdos como oportunidades para construir un ambiente de equidad e inclusión."
+      ]
+     },
+     {
+      "contenido": "ENyS 2. Transformación responsable del entorno al satisfacer necesidades básicas de alimentación, vestido y vivienda.",
+      "pdas": [
+       "Asocia los recursos naturales de donde provienen algunos alimentos y explica con sus palabras, cómo cambia la naturaleza al obtenerlos y producirlos, así como al elaborar o fabricar prendas de vestir."
+      ]
+     }
+    ],
+    "De lo humano y lo comunitario": [
+     {
+      "contenido": "HyC 7. Consumo de alimentos y bebidas que benefician la salud, de acuerdo con los contextos socioculturales.",
+      "pdas": [
+       "Obtiene información de diversas fuentes, acerca de los factores que favorecen estilos de vida saludable, destacando el consumo de alimentos nutritivos y de agua simple potable, entre otros.",
+       "Promueve el consumo de alimentos sanos propios de su comunidad y la creación de huertos para la siembra y cosecha de frutas y verduras."
+      ]
+     },
+     {
+      "contenido": "HyC 6. Cuidado de la salud personal y colectiva, al llevar a cabo acciones de higiene, limpieza, y actividad física, desde los saberes prácticos de la comunidad y la información científica.",
+      "pdas": [
+       "Reconoce algunos factores que permiten conservar la salud y los que la perjudican."
+      ]
+     }
+    ]
+   },
+   "pdaPermanentes": "Lectura (L5): Expresa sus preferencias hacia ciertos textos e identifica algunas de sus funciones, como obtener información y disfrutar historias, entre otras. Rutina: lectura de cuentos de alimentación y de los sellos de las etiquetas.\nEscritura (L7): Usa grafías para representar su nombre y otras palabras conocidas con diversos propósitos. Rutina: pase de lista con su nombre y copia de nombres de alimentos.\nMatemáticas (SyPC 4): Dice la serie numérica en orden y amplía su rango de conteo. Rutina: fecha en el calendario y conteo de asistencia.",
+   "educacionFisica": "HyC 2. Posibilidades de movimiento en diferentes espacios, para favorecer las habilidades motrices.\n• Combina movimientos que implican el control, equilibrio y estabilidad del cuerpo al realizar acciones individuales, en parejas o en colectivo.\n• Incorpora en sus movimientos elementos de la estructura del espacio físico como la distancia, la dirección, la temporalidad, la velocidad, la posición y la lateralidad.\nSugerencia: Relevos para llevar alimentos al color correcto del semáforo y juegos de coordinación con pelota (papa caliente de frutas).",
+   "actividades": [
+    {
+     "fase": "1.Punto de Partida",
+     "titulo": "¿Qué trajimos de lonche?",
+     "inicio": "Platica cómo pasó el fin de semana. Observa imágenes de comida nutritiva y chatarra y dice cuál comería y por qué.",
+     "desarrollo": "Describe su lonche: cómo es, por qué le gusta y de dónde se obtiene. Se registra en una tabla en papel bond qué alimentos trajeron y se cuenta cuáles se repiten más y cuáles menos. Dialoga: ¿dónde compra mamá los alimentos? y observa el video “Secretos culinarios”.",
+     "cierre": "Pinta con acuarelas su alimento favorito; se registra “Lo que sabemos / Lo que queremos descubrir”.",
+     "notas": "",
+     "organizacion": "Grupal / individual",
+     "recursos": "Imágenes, papel bond, acuarelas, pinceles, video",
+     "tiempo": "6 oct 60 min",
+     "evaluacion": "Construye colecciones y las compara (SyPC 4); organiza datos en una tabla (SyPC 4).\nInstrumento: Diario de la educadora"
+    },
+    {
+     "fase": "2.Planeación",
+     "titulo": "Rosalía y nuestro plan de chefs exploradores",
+     "inicio": "Escucha el cuento “Rosalía y las verduras que no se comía” y responde: ¿por qué no se las comía?, ¿qué hizo para empezar a comerlas?",
+     "desarrollo": "Hace un listado de lo que desea conocer sobre la alimentación saludable y arma con la educadora el organizador de actividades; colorea la ficha con las actividades del proyecto.",
+     "cierre": "Vota el nombre del proyecto y escribe su nombre en su ficha de “chef explorador”.",
+     "notas": "",
+     "organizacion": "Asamblea",
+     "recursos": "Cuento, ficha del proyecto, crayolas, cartulina",
+     "tiempo": "7 oct 50 min",
+     "evaluacion": "Conversa y opina sobre el tema con sus pares (L1).\nInstrumento: Portafolio / diario"
+    },
+    {
+     "fase": "3.A Trabajar",
+     "titulo": "¿Qué le pasa a mi cuerpo con la comida chatarra?",
+     "inicio": "Responde: ¿cómo sabemos cuáles alimentos no son saludables?, ¿qué pasa si comemos solo chatarra?",
+     "desarrollo": "Con la papa caliente comparte su investigación; observa el video “Comida chatarra” y compara lo que comía Lalo con lo que comían los otros niños.",
+     "cierre": "Realiza la ficha de portafolio: une los alimentos saludables y no saludables con los efectos que tienen en el cuerpo.",
+     "notas": "",
+     "organizacion": "Círculo / individual",
+     "recursos": "Pelota, video, hojas, crayolas",
+     "tiempo": "8 oct 50 min",
+     "evaluacion": "Reconoce factores que conservan o perjudican la salud (HyC 6).\nInstrumento: Diario de la educadora"
+    },
+    {
+     "fase": "3.A Trabajar",
+     "titulo": "Detectives de sellos",
+     "inicio": "Revisa el organizador y retoma: ¿los alimentos saludables vienen en bolsas o botellas?",
+     "desarrollo": "Conoce el etiquetado frontal: los sellos negros avisan exceso de azúcar, grasa o sodio. En equipos revisa envolturas reales, cuenta cuántos sellos tiene cada una y las ordena de menos a más sellos; discute con respeto cuando no están de acuerdo.",
+     "cierre": "Elabora con palitos y envolturas un “detector de sellos” para revisar su lonche en casa.",
+     "notas": "",
+     "organizacion": "Equipos",
+     "recursos": "Envolturas de alimentos, palitos de madera, silicón, tijeras, video",
+     "tiempo": "9 oct 60 min",
+     "evaluacion": "Compara colecciones (SyPC 4); reconoce los desacuerdos como oportunidad para dialogar (ENyS 8).\nInstrumento: Diario de la educadora"
+    },
+    {
+     "fase": "3.A Trabajar",
+     "titulo": "El plato del buen comer",
+     "inicio": "Observa la imagen del plato del buen comer: ¿qué colores tiene?, ¿qué alimentos hay en cada grupo?",
+     "desarrollo": "Observa el video y clasifica alimentos reales en el plato dibujado en una lona; en equipo cuenta cuántos alimentos hay en cada grupo y compara cuál tiene más.",
+     "cierre": "Realiza la ficha de portafolio del plato del buen comer.",
+     "notas": "",
+     "organizacion": "Equipos",
+     "recursos": "Lona del plato, alimentos, recortes, pegamento",
+     "tiempo": "10 oct 50 min",
+     "evaluacion": "Obtiene información sobre alimentos nutritivos (HyC 7).\nInstrumento: Portafolio / diario"
+    },
+    {
+     "fase": "3.A Trabajar",
+     "titulo": "¿De dónde viene la comida?",
+     "inicio": "Responde: ¿de dónde viene el pan, la leche, el huevo, el chocolate? Se registran sus ideas.",
+     "desarrollo": "Observa el video “¿De dónde viene la comida?” y coloca sus tarjetas en la lámina del origen (planta, animal, mar). Con el libro Explorar e imaginar recorre los pasos del proceso de la leche.",
+     "cierre": "Realiza la ficha de portafolio sobre el origen de los alimentos.",
+     "notas": "",
+     "organizacion": "Grupal / individual",
+     "recursos": "Láminas del origen, tarjetas, libro Explorar e imaginar",
+     "tiempo": "13 oct 50 min",
+     "evaluacion": "Reconoce cómo se obtienen los alimentos que satisfacen necesidades básicas (ENyS 2).\nInstrumento: Diario de la educadora"
+    },
+    {
+     "fase": "3.A Trabajar",
+     "titulo": "El laboratorio de las frutas",
+     "inicio": "Juega a la papa caliente mencionando su fruta favorita y baila la canción de las frutas.",
+     "desarrollo": "Clasifica imágenes de frutas por color y registra cuántas hay de cada una. Con los ojos cubiertos prueba un trozo de fruta e intenta adivinar cuál es por su sabor y aroma; describe si es dulce, ácida o jugosa.",
+     "cierre": "Modela con plastilina su fruta favorita y la muestra a sus compañeros. Tarea: porciones pequeñas de verduras.",
+     "notas": "",
+     "organizacion": "Semicírculo / individual",
+     "recursos": "Frutas, pañuelos, imágenes, plastilina",
+     "tiempo": "14 oct 60 min",
+     "evaluacion": "Organiza y registra información (SyPC 4); explora características de los alimentos (SyPC 7).\nInstrumento: Rúbrica"
+    },
+    {
+     "fase": "3.A Trabajar",
+     "titulo": "Las verduras tienen superpoderes",
+     "inicio": "Comparte qué son las verduras y de dónde provienen.",
+     "desarrollo": "Manipula verduras reales: describe color, tamaño, forma y textura; descubre que unas se comen crudas y otras cocidas, y que todas se lavan antes de comerlas. Prueba algunas y dice su sabor.",
+     "cierre": "Colorea las verduras que le gustan y elige una “verdura valiente” para probar en casa.",
+     "notas": "",
+     "organizacion": "Grupal",
+     "recursos": "Verduras, video “Aprende con las verduras”, hojas, crayolas",
+     "tiempo": "15 oct 60 min",
+     "evaluacion": "Obtiene información sobre alimentos nutritivos (HyC 7).\nInstrumento: Rúbrica"
+    },
+    {
+     "fase": "3.A Trabajar",
+     "titulo": "El semáforo de la alimentación",
+     "inicio": "Recuerda lo que hizo ayer con el organizador.",
+     "desarrollo": "Elige imágenes de alimentos saludables, las pega en una hoja y copia su nombre del pizarrón. Observa la lámina del semáforo y decide en qué color va cada alimento según la frecuencia con que debemos comerlo.",
+     "cierre": "Realiza la ficha de portafolio del semáforo y prepara la invitación para la feria.",
+     "notas": "",
+     "organizacion": "Individual / grupal",
+     "recursos": "Imágenes, hojas, lápiz, lámina del semáforo",
+     "tiempo": "16 oct 50 min",
+     "evaluacion": "Usa grafías para representar palabras conocidas (L7).\nInstrumento: Portafolio / diario"
+    },
+    {
+     "fase": "4.Compartimos nuestros logros",
+     "titulo": "Feria del sabor con las familias",
+     "inicio": "Se lava las manos y organiza los ingredientes que trajeron las familias para el taller de cocina.",
+     "desarrollo": "Con las madres y padres de familia prepara una receta sencilla y saludable (brochetas de fruta o agua fresca sin azúcar), siguiendo los pasos de una receta ilustrada. Explica a su familia qué significan los sellos y el semáforo.",
+     "cierre": "Participa en la inauguración del jardín sensorial y comparte lo preparado.",
+     "notas": "",
+     "organizacion": "Grupal / familias",
+     "recursos": "Ingredientes, recipientes, vasos, cucharas, receta ilustrada",
+     "tiempo": "17 oct Mañana",
+     "evaluacion": "Promueve el consumo de alimentos sanos (HyC 7); planifica avisos y letreros (L7).\nInstrumento: Diario de la educadora"
+    },
+    {
+     "fase": "5.Reflexión sobre el aprendizaje",
+     "titulo": "Mi compromiso de chef saludable",
+     "inicio": "Recuerda con el organizador las actividades del proyecto.",
+     "desarrollo": "En semicírculo responde: ¿qué aprendí?, ¿qué alimento nuevo probé?, ¿cómo uso mi detector de sellos? Completa “Lo que descubrimos” en el papelógrafo.",
+     "cierre": "Dibuja su compromiso saludable para la semana y lo firma con su nombre; coevaluación en binas.",
+     "notas": "",
+     "organizacion": "Asamblea / binas",
+     "recursos": "Organizador, papelógrafo, hojas, crayolas",
+     "tiempo": "17 oct 30 min",
+     "evaluacion": "Reconoce lo que aprendió y propone acciones para cuidar su salud (HyC 6).\nInstrumento: Autoevaluación"
+    }
+   ],
+   "ajustes": "",
+   "programasExternos": "",
+   "musica": "",
+   "udei": "",
+   "pmc": "",
+   "coevaluacion": "",
+   "retroalimentacion": "",
+   "observaciones": "",
+   "grado": "3",
+   "creado": "2026-11-24T05:03:44.762Z",
+   "actualizado": "2026-11-24T05:06:34Z"
   }
  ],
  "pmc": {
