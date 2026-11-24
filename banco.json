@@ -10041,6 +10041,552 @@
    "grado": "3",
    "creado": "2026-11-24T05:03:55.845Z",
    "actualizado": "2026-11-24T05:04:23Z"
+  },
+  {
+   "id": "explorando-la-naturaleza-3",
+   "proyecto": "Explorando la naturaleza",
+   "modalidad": [
+    "Proyecto"
+   ],
+   "problematica": "Las niñas y los niños muestran gran interés por explorar la naturaleza y por comprender los cambios que suceden en las plantas, pero a veces arrancan hojas y flores o no riegan las plantas del jardín. Es necesario que aprendan a observar, formular sus propias hipótesis y comprobarlas, y que conozcan medidas para cuidar y aprovechar su entorno natural.\nPregunta detonadora: ¿Qué necesitan las plantas para vivir y cómo podemos cuidarlas?",
+   "finalidad": "Que las niñas y los niños observen su entorno natural, identifiquen las partes y necesidades de las plantas mediante la investigación, la comparación y la experimentación, registren el crecimiento de su propia semilla y compartan con sus familias un “Museo vivo de las plantas” con compromisos para cuidar la naturaleza.",
+   "ejes": [
+    "Inclusión",
+    "Pensamiento crítico",
+    "Vida saludable",
+    "Apropiación de las culturas a través de la lectura y la escritura",
+    "Artes y experiencias estéticas"
+   ],
+   "campos": {
+    "Lenguajes": [
+     {
+      "contenido": "L5. Representación gráfica de ideas y descubrimientos, al explorar los diversos textos que hay en su comunidad y otros lugares.",
+      "pdas": [
+       "Utiliza distintos textos (carteles, avisos, periódico mural, revistas, hojas, cuadernos) para representar gráficamente ideas que descubre del entorno de manera vivencial y al consultar libros, revistas y otras fuentes impresas y digitales.",
+       "Expresa sus preferencias hacia ciertos textos e identifica algunas de sus funciones, como obtener información y disfrutar historias, entre otras.",
+       "Interpreta y elabora algunas señalizaciones, símbolos y letreros a partir de entender sus características, elementos gráficos y contexto."
+      ]
+     }
+    ],
+    "Saberes y pensamiento científico": [
+     {
+      "contenido": "SyPC 7. Clasificación y experimentación con objetos y elementos del entorno que reflejan la diversidad de la comunidad o región.",
+      "pdas": [
+       "Recolecta objetos y elementos de su entorno para observarlos, hacer preguntas y explorar sus características y comportamiento.",
+       "Dialoga con sus pares para definir criterios de clasificación de objetos y elementos del entorno natural y sociocultural, que respondan a distintos propósitos.",
+       "Elabora e interpreta registros para organizar objetos y elementos del entorno mediante dibujos, tablas, símbolos o pictogramas; los explica a otras personas, en su lengua materna y con sus palabras.",
+       "Experimenta, de manera colaborativa, con elementos y objetos del entorno y reconoce si hay cambios o transformaciones en ellos, manteniendo normas de seguridad.",
+       "Usa herramientas diversas en situaciones experimentales: lupas, microscopios, goteros, vasos medidores, balanzas, termómetro, lámparas, cernidores, entre otros."
+      ]
+     },
+     {
+      "contenido": "SyPC 3. Los seres vivos: elementos, procesos y fenómenos naturales que ofrecen oportunidades para entender y explicar hechos cotidianos, desde distintas perspectivas.",
+      "pdas": [
+       "Explica con sus palabras y en su lengua materna, la importancia del aire, el agua, el suelo y el sol para todos los seres vivos."
+      ]
+     }
+    ],
+    "Ética, naturaleza y sociedades": [
+     {
+      "contenido": "ENyS 1. Interacción, cuidado, conservación y regeneración de la naturaleza, que favorece la construcción de una conciencia socioambiental.",
+      "pdas": [
+       "Interactúa con respeto y empatía en la naturaleza, e identifica algunos elementos y cuidados que necesitan los seres vivos.",
+       "Manifiesta interés por cuidar a la naturaleza y encuentra formas creativas de resolver problemas socioambientales de su comunidad, como la contaminación, la deforestación, el cambio climático, el deshielo o la sobreexplotación de los recursos naturales.",
+       "Reconoce algunas condiciones ambientales de su comunidad y dice cómo afectan a plantas, animales y personas; en colaboración, hace propuestas para mejorarlas."
+      ]
+     }
+    ],
+    "De lo humano y lo comunitario": [
+     {
+      "contenido": "HyC 7. Consumo de alimentos y bebidas que benefician la salud, de acuerdo con los contextos socioculturales.",
+      "pdas": [
+       "Promueve el consumo de alimentos sanos propios de su comunidad y la creación de huertos para la siembra y cosecha de frutas y verduras."
+      ]
+     }
+    ]
+   },
+   "pdaPermanentes": "Lectura (L5): Expresa sus preferencias hacia ciertos textos e identifica algunas de sus funciones, como obtener información y disfrutar historias, entre otras. Rutina: lectura de cuentos y textos informativos sobre plantas.\nEscritura (L7): Usa grafías para representar su nombre y otras palabras conocidas con diversos propósitos. Rutina: pase de lista con su nombre y escritura del nombre en su vaso-semillero y en los registros.\nMatemáticas (SyPC 4): Dice la serie numérica en orden y amplía su rango de conteo. Rutina: fecha en el calendario y conteo de días de crecimiento de la semilla.",
+   "educacionFisica": "HyC 2. Posibilidades de movimiento en diferentes espacios, para favorecer las habilidades motrices.\n• Combina movimientos que implican el control, equilibrio y estabilidad del cuerpo al realizar acciones individuales, en parejas o en colectivo.\n• Coordina movimientos con control y equilibrio al resolver situaciones cotidianas, participar en juegos tradicionales y representaciones individuales o colectivas en igualdad de oportunidades y sin distinción de género.\nSugerencia: Juego “De semilla a planta” (agacharse, estirarse, girar como el girasol) y recorrido de exploración con obstáculos naturales.",
+   "actividades": [
+    {
+     "fase": "1.Punto de Partida",
+     "titulo": "Caminata de exploradores de la naturaleza",
+     "inicio": "Conversa: ¿qué es la naturaleza?, ¿qué la forma?, ¿te gusta?, ¿por qué?",
+     "desarrollo": "Camina tranquilamente por el patio observando, tocando con cuidado y oliendo las plantas: ¿qué colores ves?, ¿la hoja es lisa o rugosa? Recolecta hojas y flores caídas en una bolsa de explorador.",
+     "cierre": "Dibuja lo que más le llamó la atención y se registra “Lo que sabemos / Lo que queremos descubrir” de las plantas.",
+     "notas": "",
+     "organizacion": "Grupal / patio",
+     "recursos": "Bolsas, hojas de árboles, flores, hojas, crayolas",
+     "tiempo": "2 mar 60 min",
+     "evaluacion": "Recolecta elementos de su entorno para observarlos y hacer preguntas (SyPC 7).\nInstrumento: Diario de la educadora"
+    },
+    {
+     "fase": "2.Planeación",
+     "titulo": "¿Las plantas están vivas? Armamos nuestro plan",
+     "inicio": "Recuerda lo que vio ayer y responde qué le gustaría conocer de las plantas.",
+     "desarrollo": "Observa un video sobre si las plantas tienen vida; registra sus ideas en el pizarrón y construye con la educadora el organizador de actividades del proyecto; acuerda sembrar una semilla cada quien y armar al final un “Museo vivo de las plantas”.",
+     "cierre": "Elabora un paisaje con recortes de plantas y lo comenta.",
+     "notas": "",
+     "organizacion": "Asamblea / individual",
+     "recursos": "Video, pizarrón, cartulina, recortes, pegamento",
+     "tiempo": "3 mar 50 min",
+     "evaluacion": "Expresa sus preferencias hacia ciertos textos e identifica sus funciones (L5).\nInstrumento: Diario de la educadora"
+    },
+    {
+     "fase": "3.A Trabajar",
+     "titulo": "¿Qué necesita una planta? Experimento",
+     "inicio": "Observa el video “Cómo cuidamos la naturaleza” y comenta en lluvia de ideas.",
+     "desarrollo": "Formula hipótesis: ¿qué pasará con una planta sin agua, sin luz o sin aire? En equipos prepara tres vasos con plantitas en condiciones diferentes (con todo, sin agua, en la oscuridad) para observarlos durante la semana.",
+     "cierre": "Dibuja su predicción en su hoja de registro.",
+     "notas": "",
+     "organizacion": "Equipos",
+     "recursos": "Vasos, tierra, agua, lámpara, abanico, plantitas, hojas",
+     "tiempo": "4 mar 60 min",
+     "evaluacion": "Explica la importancia del aire, el agua, el suelo y el sol para los seres vivos (SyPC 3).\nInstrumento: Diario de la educadora"
+    },
+    {
+     "fase": "3.A Trabajar",
+     "titulo": "Soy una semillita",
+     "inicio": "Se acuesta en el suelo hecho “semillita” y, al escuchar “agua”, “sol” o “aire”, se estira lentamente hasta crecer con música suave.",
+     "desarrollo": "Comenta lo que sintió al crecer y clasifica con su equipo los elementos de la “naturaleza muerta” recolectada (hojas, ramas, piedras) con criterios que acuerdan.",
+     "cierre": "Elabora una composición con los elementos recolectados para su portafolio.",
+     "notas": "",
+     "organizacion": "Grupal / equipos",
+     "recursos": "Música, naturaleza muerta, tierra, pegamento, hojas",
+     "tiempo": "5 mar 50 min",
+     "evaluacion": "Dialoga con sus pares para definir criterios de clasificación (SyPC 7).\nInstrumento: Portafolio"
+    },
+    {
+     "fase": "3.A Trabajar",
+     "titulo": "La semillita dormilona: sembramos",
+     "inicio": "Canta “La naturaleza” y observa semillas: ¿qué pasará si les pongo agua o tierra?",
+     "desarrollo": "Escucha el cuento “La semillita dormilona” y representa con gestos cómo crece una semilla. Coloca un frijol con algodón húmedo en una bolsa ziploc y la pega en la ventana con su nombre.",
+     "cierre": "Anota en el calendario el día de siembra para contar los días.",
+     "notas": "",
+     "organizacion": "Individual",
+     "recursos": "Bolsas ziploc, algodón, agua, semillas, cinta, marcador",
+     "tiempo": "6 mar 50 min",
+     "evaluacion": "Experimenta con elementos del entorno y reconoce cambios (SyPC 7).\nInstrumento: Diario de la educadora"
+    },
+    {
+     "fase": "3.A Trabajar",
+     "titulo": "Raíz, tallo, hojas y flor",
+     "inicio": "Baila “Sol solecito”.",
+     "desarrollo": "Observa una planta real del patio y nombra sus partes; observa el video “Partes de una planta” y, con un abatelenguas, desentierra con cuidado una plantita para ver su raíz y luego la vuelve a plantar.",
+     "cierre": "Elabora con su equipo letreros para las plantas del jardín (“riégame”, “no me pises”).",
+     "notas": "",
+     "organizacion": "Grupal / equipos",
+     "recursos": "Planta real, video, abatelenguas, cartulina, marcadores",
+     "tiempo": "9 mar 50 min",
+     "evaluacion": "Interpreta y elabora señalizaciones y letreros (L5).\nInstrumento: Diario de la educadora"
+    },
+    {
+     "fase": "3.A Trabajar",
+     "titulo": "Hacemos florecer el salón",
+     "inicio": "Imagina un jardín lleno de flores hechas por el grupo.",
+     "desarrollo": "Decora su plantilla de flor con papel crepé, hojas secas, lentejuela, algodón, fomi y escarcha, y forma con todas el jardín del salón.",
+     "cierre": "Explica qué materiales usó y cuidados que necesitan las flores reales.",
+     "notas": "",
+     "organizacion": "Individual / grupal",
+     "recursos": "Plantillas, papel crepé, hojas secas, fomi, escarcha, pegamento",
+     "tiempo": "10 mar 50 min",
+     "evaluacion": "Interactúa con respeto en la naturaleza e identifica cuidados de los seres vivos (ENyS 1).\nInstrumento: Diario de la educadora"
+    },
+    {
+     "fase": "3.A Trabajar",
+     "titulo": "Galería de plantas aromáticas",
+     "inicio": "Recuerda lo aprendido ayer.",
+     "desarrollo": "Explora en la “galería de plantas” un cactus, romero, albahaca, bugambilia y plantas secas: las toca, huele y observa con lupa; las riega con cuidado.",
+     "cierre": "Elige su favorita y dice por qué.",
+     "notas": "",
+     "organizacion": "Equipos",
+     "recursos": "Plantas, lupas, regaderas, toallitas húmedas",
+     "tiempo": "11 mar 50 min",
+     "evaluacion": "Usa herramientas en situaciones experimentales, como lupas (SyPC 7).\nInstrumento: Diario de la educadora"
+    },
+    {
+     "fase": "3.A Trabajar",
+     "titulo": "Diario de mi frijol",
+     "inicio": "Revisa su frijol: ¿cómo estaba cuando lo sembramos?, ¿cómo está ahora?",
+     "desarrollo": "Compara con cuidado: ¿hay raíz?, ¿salió el tallo?, ¿tiene hojitas? Revisa también los tres vasos del experimento y comprueba sus predicciones.",
+     "cierre": "Dibuja los cambios en su hoja de registro y los explica a un compañero.",
+     "notas": "",
+     "organizacion": "Individual / binas",
+     "recursos": "Bolsas con frijol, vasos del experimento, hoja de registro",
+     "tiempo": "12 mar 45 min",
+     "evaluacion": "Elabora e interpreta registros y los explica a otras personas (SyPC 7).\nInstrumento: Diario de la educadora"
+    },
+    {
+     "fase": "3.A Trabajar",
+     "titulo": "Póster: ¿cómo crece una planta?",
+     "inicio": "Se sienta alrededor de una cartulina grande en el piso.",
+     "desarrollo": "Construye en grupo un póster que explica cómo crece una planta, desde la semilla hasta la flor, ordenando imágenes y flechas; comenta qué condiciones del ambiente ayudan o dañan a las plantas de su comunidad.",
+     "cierre": "Propone en colaboración una acción para mejorarlas (regar, no tirar basura).",
+     "notas": "",
+     "organizacion": "Grupal",
+     "recursos": "Cartulina, papel lustrina, imágenes, semillas, marcadores",
+     "tiempo": "13 mar 50 min",
+     "evaluacion": "Reconoce condiciones ambientales y hace propuestas para mejorarlas (ENyS 1).\nInstrumento: Portafolio"
+    },
+    {
+     "fase": "3.A Trabajar",
+     "titulo": "Árboles, arbustos y hierbas",
+     "inicio": "Observa qué sucedió con las semillas de la semana pasada.",
+     "desarrollo": "Observa imágenes de árboles, arbustos y hierbas y dialoga con sus pares para clasificarlos según su tamaño y forma; elabora un collage con recortes, ramas y algodón.",
+     "cierre": "Explica su collage al grupo.",
+     "notas": "",
+     "organizacion": "Equipos",
+     "recursos": "Imágenes, revistas, tijeras, ramas secas, algodón, papel crepé",
+     "tiempo": "19 mar 50 min",
+     "evaluacion": "Dialoga con sus pares para definir criterios de clasificación (SyPC 7).\nInstrumento: Diario de la educadora"
+    },
+    {
+     "fase": "3.A Trabajar",
+     "titulo": "¿Para qué nos sirven las plantas?",
+     "inicio": "Observa un video de la naturaleza.",
+     "desarrollo": "Observa láminas donde las plantas dan sombra, casa a los animales, alimento y aire limpio; elabora en equipos carteles con dibujos y palabras para el museo.",
+     "cierre": "Comparte su cartel con el grupo.",
+     "notas": "",
+     "organizacion": "Equipos",
+     "recursos": "Video, láminas, cartulinas, papel kraft, marcadores",
+     "tiempo": "23 mar 50 min",
+     "evaluacion": "Utiliza distintos textos para representar ideas que descubre (L5).\nInstrumento: Portafolio"
+    },
+    {
+     "fase": "3.A Trabajar",
+     "titulo": "¿Qué parte de la planta me como?",
+     "inicio": "Explora una mesa con zanahoria, espinaca, lechuga, papa, elote, fresa y jitomate: los toca, huele y nombra.",
+     "desarrollo": "Clasifica qué se come de la raíz, de la hoja, del tallo y del fruto; prueba algunos con higiene y propone qué podríamos sembrar en un pequeño huerto escolar.",
+     "cierre": "Registra en una tabla cuántos alimentos hay de cada parte.",
+     "notas": "",
+     "organizacion": "Grupal / equipos",
+     "recursos": "Vegetales y frutas, tabla en cartulina, música suave",
+     "tiempo": "24 mar 50 min",
+     "evaluacion": "Experimenta y reconoce transformaciones (SyPC 7); promueve el consumo de alimentos sanos y la creación de huertos (HyC 7).\nInstrumento: Diario de la educadora"
+    },
+    {
+     "fase": "3.A Trabajar",
+     "titulo": "Pulseras de la naturaleza",
+     "inicio": "Retoma el organizador de actividades.",
+     "desarrollo": "Crea una pulsera con cinta adhesiva al revés pegando hojas secas, ramitas y pétalos recolectados.",
+     "cierre": "Explica qué elementos eligió y por qué solo usamos lo que ya cayó al suelo.",
+     "notas": "",
+     "organizacion": "Individual",
+     "recursos": "Cinta adhesiva, hojas secas, pétalos, estambre, limpiapipas",
+     "tiempo": "25 mar 45 min",
+     "evaluacion": "Encuentra formas creativas de cuidar la naturaleza (ENyS 1).\nInstrumento: Diario de la educadora"
+    },
+    {
+     "fase": "4.Compartimos nuestros logros",
+     "titulo": "Museo vivo de las plantas",
+     "inicio": "Monta con su grupo el museo: frijoles en crecimiento, experimento de los tres vasos, póster, carteles, jardín de flores y pulseras.",
+     "desarrollo": "Recibe a las familias y les explica con sus palabras qué descubrió; cada familia escribe con su hijo o hija un compromiso para cuidar una planta en casa.",
+     "cierre": "Se lleva a casa su frijol para trasplantarlo.",
+     "notas": "",
+     "organizacion": "Grupal / familias",
+     "recursos": "Producciones del proyecto, letreros, hojas de compromiso",
+     "tiempo": "26 mar 70 min",
+     "evaluacion": "Explica sus registros a otras personas (SyPC 7); utiliza textos para representar ideas (L5).\nInstrumento: Diario de la educadora"
+    },
+    {
+     "fase": "5.Reflexión sobre el aprendizaje",
+     "titulo": "Lo que aprendimos de las plantas",
+     "inicio": "En semicírculo recuerda qué hicimos durante el proyecto.",
+     "desarrollo": "Responde: ¿qué actividad te gustó más?, ¿qué descubriste con el experimento?, ¿cómo cuidarás tu planta? Completa “Lo que descubrimos”.",
+     "cierre": "Se autoevalúa coloreando las partes de una flor por cada reto logrado; coevaluación en binas.",
+     "notas": "",
+     "organizacion": "Semicírculo / binas",
+     "recursos": "Organizador, cartulinas, flor de autoevaluación",
+     "tiempo": "26 mar 30 min",
+     "evaluacion": "Manifiesta interés por cuidar la naturaleza (ENyS 1).\nInstrumento: Autoevaluación"
+    }
+   ],
+   "ajustes": "",
+   "programasExternos": "",
+   "musica": "",
+   "udei": "",
+   "pmc": "",
+   "coevaluacion": "",
+   "retroalimentacion": "",
+   "observaciones": "",
+   "grado": "3",
+   "creado": "2026-11-24T05:01:24.952Z",
+   "actualizado": "2026-11-24T05:05:12Z"
+  },
+  {
+   "id": "practiquemos-el-amor-la-gratitud-y-la-empatia-3",
+   "proyecto": "Practiquemos el amor, la gratitud y la empatía",
+   "modalidad": [
+    "Proyecto"
+   ],
+   "problematica": "En la temporada navideña, las niñas y los niños suelen centrarse en los regalos que reciben. Es necesario que descubran el valor de dar afecto y ayuda a otras personas, sobre todo a las más vulnerables como los adultos mayores, y comprendan que todas las personas son importantes sin importar su edad y que un pequeño detalle puede hacer felices a los demás.\nPregunta detonadora: ¿Cómo podemos regalar amor y alegría a las personas de nuestra comunidad en esta Navidad?",
+   "finalidad": "Que las niñas y los niños practiquen valores como la empatía, la gratitud y la generosidad, conozcan tradiciones navideñas de México y otros países, y organicen junto con sus familias una visita al asilo para compartir villancicos, cartas y regalos con los adultos mayores.",
+   "ejes": [
+    "Inclusión",
+    "Pensamiento crítico",
+    "Interculturalidad crítica",
+    "Apropiación de las culturas a través de la lectura y la escritura",
+    "Artes y experiencias estéticas"
+   ],
+   "campos": {
+    "Lenguajes": [
+     {
+      "contenido": "L7. Producciones gráficas dirigidas a diversas destinatarias y diversos destinatarios, para establecer vínculos sociales y acercarse a la cultura escrita.",
+      "pdas": [
+       "Planifica producciones gráficas, tales como avisos, recomendaciones de libros, recados, letreros, entre otros, de forma individual o en pequeños equipos.",
+       "Recurre a diversos textos para copiar palabras, combinar letras del nombre propio, el de sus pares o dicta a alguna persona adulta, para establecer vínculos con las familias, la escuela y la comunidad.",
+       "Usa grafías para representar su nombre y otras palabras conocidas con diversos propósitos."
+      ]
+     }
+    ],
+    "Saberes y pensamiento científico": [
+     {
+      "contenido": "SyPC 2. Saberes familiares y comunitarios que resuelven situaciones y necesidades en el hogar y la comunidad.",
+      "pdas": [
+       "Propone algunos saberes familiares y comunitarios, para resolver necesidades y situaciones en su hogar, escuela y comunidad."
+      ]
+     },
+     {
+      "contenido": "SyPC 4. Los saberes numéricos como herramienta para resolver situaciones del entorno, en diversos contextos socioculturales.",
+      "pdas": [
+       "Cuenta objetos y elementos de su entorno en su lengua materna con diversos propósitos.",
+       "Construye colecciones y las compara mediante distintas estrategias para determinar cuál tiene más o menos elementos."
+      ]
+     }
+    ],
+    "Ética, naturaleza y sociedades": [
+     {
+      "contenido": "ENyS 5. Labores y servicios que contribuyen al bien común de las distintas familias y comunidades.",
+      "pdas": [
+       "Aprecia las labores y servicios que existen en la comunidad y valora el impacto que tienen para el bienestar común.",
+       "Utiliza lo que sabe de los trabajos y servicios que existen en su comunidad, para proponer nuevas formas de colaborar y contribuir al bienestar de todas las personas."
+      ]
+     },
+     {
+      "contenido": "ENyS 7. La diversidad de personas y familias en la comunidad y su convivencia, en un ambiente de equidad, libertad, inclusión y respeto a los derechos humanos.",
+      "pdas": [
+       "Conversa con sus pares acerca de lo que significa pertenecer a una familia, los cuidados que reciben, las reglas que deben seguir, algunas de sus costumbres, y reconoce que se conforman de diferente manera, sin que una tenga más valor que otra."
+      ]
+     },
+     {
+      "contenido": "ENyS 3. Construcción de la identidad y pertenencia a una comunidad y país a partir del conocimiento de su historia, sus celebraciones, conmemoraciones tradicionales y obras del patrimonio artístico y cultural.",
+      "pdas": [
+       "Se interesa, junto con sus pares, por conocer la diversidad cultural y artística de otras regiones del país, así como otras costumbres y tradiciones que enriquecen su visión del país y del mundo."
+      ]
+     }
+    ],
+    "De lo humano y lo comunitario": [
+     {
+      "contenido": "HyC 4. Las emociones en la interacción con diversas personas y situaciones.",
+      "pdas": [
+       "Establece vínculos afectivos y de empatía con sus pares y otras personas, a partir de la convivencia cotidiana.",
+       "Intercambia experiencias y vivencias con sus pares y otras personas, acerca de las diferentes formas de actuar, expresar, nombrar y controlar las emociones.",
+       "Dice lo que le molesta o incomoda para evitar reaccionar con gritos o agresión; dialoga y respeta las reglas para una mejor convivencia."
+      ]
+     },
+     {
+      "contenido": "HyC 5. Interacción con personas de diversos contextos, que contribuyan al establecimiento de relaciones positivas y a una convivencia basada en la aceptación de la diversidad.",
+      "pdas": [
+       "Asume actitudes prosociales como compartir, ayudar y colaborar, al participar y mejorar las relaciones de convivencia con las demás personas."
+      ]
+     }
+    ]
+   },
+   "pdaPermanentes": "Lectura (L5): Expresa sus preferencias hacia ciertos textos e identifica algunas de sus funciones, como obtener información y disfrutar historias, entre otras. Rutina: lectura de cuentos navideños y de valores.\nEscritura (L7): Usa grafías para representar su nombre y otras palabras conocidas con diversos propósitos. Rutina: pase de lista con su nombre y escritura de nombres en cartas y tarjetas.\nMatemáticas (SyPC 4): Dice la serie numérica en orden y amplía su rango de conteo. Rutina: fecha en el calendario navideño, días de la semana y conteo de asistencia.",
+   "educacionFisica": "HyC 2. Posibilidades de movimiento en diferentes espacios, para favorecer las habilidades motrices.\n• Combina movimientos que implican el control, equilibrio y estabilidad del cuerpo al realizar acciones individuales, en parejas o en colectivo.\n• Coordina movimientos con control y equilibrio al resolver situaciones cotidianas, participar en juegos tradicionales y representaciones individuales o colectivas en igualdad de oportunidades y sin distinción de género.\nSugerencia: Juegos de destreza de la posada (romper la piñata por turnos, carrera de renos, lanzar esferas a la canasta).",
+   "actividades": [
+    {
+     "fase": "1.Punto de Partida",
+     "titulo": "El calendario de diciembre y el niño descalzo",
+     "inicio": "Saluda, escribe la fecha y canta los días de la semana; habla del clima y decora su calendario de diciembre.",
+     "desarrollo": "Observa el video “El niño descalzo” sobre la solidaridad y la empatía; en círculo comenta qué hizo el niño y cómo se sintieron los personajes.",
+     "cierre": "Inicia en una cartulina la lista de “palabras del corazón” (empatía, generosidad, gratitud) y responde: ¿qué podemos regalar que no se compra?",
+     "notas": "",
+     "organizacion": "Grupal / círculo",
+     "recursos": "Calendarios, materiales para decorar, video, cartulina",
+     "tiempo": "1 dic 50 min",
+     "evaluacion": "Planifica producciones gráficas (L7); intercambia vivencias sobre las emociones (HyC 4).\nInstrumento: Diario de la educadora"
+    },
+    {
+     "fase": "1.Punto de Partida",
+     "titulo": "El árbol de los valores",
+     "inicio": "Recuerda el video de ayer y conversa sobre la empatía, la unión familiar, la generosidad, la gratitud, la paz y el amor.",
+     "desarrollo": "Escucha cuentos de Navidad e identifica qué valor practican los personajes.",
+     "cierre": "Elabora una esfera que representa un valor y la cuelga en el “Árbol de los valores” diciendo cuándo lo practica.",
+     "notas": "",
+     "organizacion": "Grupal / individual",
+     "recursos": "Cuentos, esferas de papel, colores, tijeras",
+     "tiempo": "2 dic 50 min",
+     "evaluacion": "Establece vínculos afectivos y de empatía (HyC 4).\nInstrumento: Diario de la educadora"
+    },
+    {
+     "fase": "2.Planeación",
+     "titulo": "¿Visitamos a los abuelitos?",
+     "inicio": "Observa el video de la visita al asilo del año pasado y comenta qué vio y cómo se veían los abuelitos.",
+     "desarrollo": "En lluvia de ideas propone qué podemos hacer para alegrarlos (cantar, llevar cartas, regalos, jugar lotería) y lo registra en el organizador de actividades; reparte responsabilidades por equipos.",
+     "cierre": "Continúa decorando el árbol con esferas de regalo y dibujos de la empatía, la amistad, el amor y la paz.",
+     "notas": "",
+     "organizacion": "Asamblea / equipos",
+     "recursos": "Video, organizador, cartulina, esferas de papel, crayolas",
+     "tiempo": "3 dic 50 min",
+     "evaluacion": "Propone nuevas formas de colaborar para el bienestar de las personas (ENyS 5).\nInstrumento: Diario de la educadora"
+    },
+    {
+     "fase": "2.Planeación",
+     "titulo": "Lo que mi familia aporta a la comunidad",
+     "inicio": "Realiza la actividad del libro Explorar e imaginar, págs. 30 y 31: los servicios de mi comunidad y lo que mi familia aporta y necesita.",
+     "desarrollo": "Conoce el asilo y la casa hogar Color Esperanza: qué hacen y quiénes trabajan ahí. Propone qué saberes de su familia (cocinar, coser, cantar) pueden servir para ayudar.",
+     "cierre": "Actualiza el organizador y elabora la lista de donaciones con dibujos.",
+     "notas": "",
+     "organizacion": "Grupal",
+     "recursos": "Libro Explorar e imaginar, organizador, cartulina",
+     "tiempo": "4 dic 50 min",
+     "evaluacion": "Aprecia las labores y servicios de la comunidad (ENyS 5); propone saberes familiares (SyPC 2).\nInstrumento: Rúbrica"
+    },
+    {
+     "fase": "3.A Trabajar",
+     "titulo": "Así celebra mi familia la Navidad",
+     "inicio": "Realiza la actividad del libro Explorar e imaginar, pág. 36 “Convivir en familia”.",
+     "desarrollo": "Conversa sobre las reglas, cuidados y costumbres de su familia en esta época; compara con las de sus compañeros.",
+     "cierre": "Dibuja para su portafolio cómo celebra la Navidad su familia.",
+     "notas": "",
+     "organizacion": "Grupal / individual",
+     "recursos": "Libro Explorar e imaginar, hoja de registro, crayolas",
+     "tiempo": "5 dic 50 min",
+     "evaluacion": "Conversa sobre lo que significa pertenecer a una familia y sus costumbres (ENyS 7).\nInstrumento: Portafolio"
+    },
+    {
+     "fase": "3.A Trabajar",
+     "titulo": "Encendido del pino",
+     "inicio": "Revisa el organizador: ¿qué hemos cumplido?, ¿queremos agregar algo?",
+     "desarrollo": "Escucha una lectura de Navidad y contesta preguntas en su ficha de portafolio.",
+     "cierre": "Participa en el encendido del pino y en el concurso de villas navideñas del jardín.",
+     "notas": "",
+     "organizacion": "Grupal / plantel",
+     "recursos": "Hoja de registro, crayolas, lápiz",
+     "tiempo": "8 dic Mañana",
+     "evaluacion": "Recurre a textos para copiar palabras y responder (L7).\nInstrumento: Portafolio"
+    },
+    {
+     "fase": "3.A Trabajar",
+     "titulo": "Matemáticas navideñas",
+     "inicio": "Cuenta cuántos alumnos asistieron.",
+     "desarrollo": "Recibe en partes iguales tarjetas navideñas con números, esferas y regalos; juega a clasificarlas, contarlas y armar colecciones del número que se indique. Calcula cuántos regalos necesitamos para los abuelitos del asilo.",
+     "cierre": "Realiza la ficha de conteo y reconocimiento de números.",
+     "notas": "",
+     "organizacion": "Equipos / individual",
+     "recursos": "Tarjetas navideñas, hoja de registro, crayolas",
+     "tiempo": "9 dic 50 min",
+     "evaluacion": "Cuenta y construye colecciones con diversos propósitos (SyPC 4).\nInstrumento: Portafolio"
+    },
+    {
+     "fase": "3.A Trabajar",
+     "titulo": "Cartas para los abuelitos",
+     "inicio": "Recuerda para quién son las cartas y qué le gustaría decirles.",
+     "desarrollo": "Elabora una tarjeta navideña para los abuelitos del asilo con técnicas de arte; escribe su nombre y dicta a la educadora un buen deseo que luego copia.",
+     "cierre": "Guarda la tarjeta en el buzón del grupo.",
+     "notas": "",
+     "organizacion": "Individual",
+     "recursos": "Hojas, crayolas, pegamento, tijeras, materiales de arte",
+     "tiempo": "10 dic 50 min",
+     "evaluacion": "Recurre a textos para copiar palabras o dicta a un adulto para establecer vínculos (L7).\nInstrumento: Rúbrica"
+    },
+    {
+     "fase": "3.A Trabajar",
+     "titulo": "Regalos hechos con el corazón",
+     "inicio": "Observa un video sobre la unión familiar en estas fechas.",
+     "desarrollo": "Elabora con material reciclado una corona navideña y un portarretrato para regalar a su familia.",
+     "cierre": "Comenta cómo se siente al regalar algo hecho por él o ella.",
+     "notas": "",
+     "organizacion": "Individual",
+     "recursos": "Video, cartulina, pintura, pegamento, palitos de madera",
+     "tiempo": "11 dic 50 min",
+     "evaluacion": "Intercambia experiencias sobre sus emociones (HyC 4).\nInstrumento: Diario de la educadora"
+    },
+    {
+     "fase": "3.A Trabajar",
+     "titulo": "Rompecabezas de tradiciones mexicanas",
+     "inicio": "Busca piezas de rompecabezas escondidas en el salón.",
+     "desarrollo": "Por equipos arma los rompecabezas con imágenes de posadas, piñatas, nacimientos y villancicos; comenta cuáles hace su familia y cuáles nunca había visto.",
+     "cierre": "En su ficha registra qué tradición realiza y qué emociones siente.",
+     "notas": "",
+     "organizacion": "Equipos / individual",
+     "recursos": "Rompecabezas, cinta, hoja de registro",
+     "tiempo": "15 dic 50 min",
+     "evaluacion": "Intercambia vivencias y emociones (HyC 4).\nInstrumento: Portafolio"
+    },
+    {
+     "fase": "3.A Trabajar",
+     "titulo": "La Navidad alrededor del mundo",
+     "inicio": "Observa videos sobre tradiciones navideñas en México y en otros países.",
+     "desarrollo": "Compara las semejanzas y diferencias con las de su familia y aprende a decir “Feliz Navidad” en otros idiomas.",
+     "cierre": "Canta y baila villancicos.",
+     "notas": "",
+     "organizacion": "Grupal",
+     "recursos": "Videos, bocina",
+     "tiempo": "16 dic 45 min",
+     "evaluacion": "Se interesa por conocer costumbres de otras regiones y del mundo (ENyS 3).\nInstrumento: Diario de la educadora"
+    },
+    {
+     "fase": "3.A Trabajar",
+     "titulo": "Mi carta de buenos deseos",
+     "inicio": "Comparte cómo celebra la Navidad y si escribe una carta a Santa.",
+     "desarrollo": "Escribe una carta con su nombre, la fecha y lo que desea; quien no tiene esta tradición escribe a un familiar o amigo sus buenos deseos.",
+     "cierre": "Participa en la entrega de regalos a la casa hogar Color Esperanza.",
+     "notas": "",
+     "organizacion": "Individual",
+     "recursos": "Hojas, crayolas, lápiz",
+     "tiempo": "17 dic 45 min",
+     "evaluacion": "Planifica producciones gráficas con distintos propósitos (L7).\nInstrumento: Rúbrica"
+    },
+    {
+     "fase": "3.A Trabajar",
+     "titulo": "Posada del jardín",
+     "inicio": "Recuerda los acuerdos para convivir en la posada.",
+     "desarrollo": "Convive con los grupos de 2° y 3° en juegos de destreza, cantos y bailes.",
+     "cierre": "Comenta qué hizo para que todos la pasaran bien.",
+     "notas": "",
+     "organizacion": "Plantel",
+     "recursos": "Música, bocina, comida, juegos",
+     "tiempo": "18 dic Mañana",
+     "evaluacion": "Asume actitudes prosociales como compartir y colaborar (HyC 5).\nInstrumento: Diario de la educadora"
+    },
+    {
+     "fase": "4.Compartimos nuestros logros",
+     "titulo": "Visita al asilo: regalamos alegría",
+     "inicio": "Repasa los villancicos y revisa que lleven las cartas, regalos y donaciones.",
+     "desarrollo": "Con sus familias visita el asilo: canta villancicos, baila, entrega sus cartas y juega lotería con los abuelitos; comparten un almuerzo y entregan insumos de higiene, alimentos y ropa.",
+     "cierre": "Se despide de los abuelitos con un abrazo o un saludo.",
+     "notas": "",
+     "organizacion": "Grupal / familias / comunidad",
+     "recursos": "Tarjetas, regalos, bocina, donaciones",
+     "tiempo": "12 dic Mañana",
+     "evaluacion": "Establece vínculos afectivos y de empatía con otras personas (HyC 4); colabora para el bienestar común (ENyS 5).\nInstrumento: Diario de la educadora"
+    },
+    {
+     "fase": "5.Reflexión sobre el aprendizaje",
+     "titulo": "¿Cómo nos sentimos al dar?",
+     "inicio": "En círculo observa fotos y videos de la visita al asilo, los villancicos y las donaciones.",
+     "desarrollo": "Responde: ¿cómo se sintieron los abuelitos?, ¿cómo te sentiste tú?, ¿qué te gustaría seguir haciendo por los demás? Dice qué hacer cuando algo le molesta en la convivencia.",
+     "cierre": "Cada quien cuelga en el árbol una estrella con un compromiso de bondad para las vacaciones; coevaluación grupal.",
+     "notas": "",
+     "organizacion": "Círculo",
+     "recursos": "Videos, fotografías, estrellas de papel",
+     "tiempo": "19 dic 45 min",
+     "evaluacion": "Dice lo que le molesta y dialoga para una mejor convivencia (HyC 4).\nInstrumento: Diario de la educadora"
+    }
+   ],
+   "ajustes": "",
+   "programasExternos": "",
+   "musica": "",
+   "udei": "",
+   "pmc": "",
+   "coevaluacion": "",
+   "retroalimentacion": "",
+   "observaciones": "",
+   "grado": "3",
+   "creado": "2026-11-24T05:01:36.083Z",
+   "actualizado": "2026-11-24T05:05:12Z"
   }
  ],
  "pmc": {
