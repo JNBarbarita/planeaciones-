@@ -84,6 +84,9 @@ main { max-width: 1240px; margin: 0 auto; padding-block: 16px 48px;
 .sheet-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; border-radius: 6px; }
 .sheet { background: var(--paper); color: var(--paper-ink); width: 100%; min-width: 960px; padding: 22px 26px 30px; font-family: var(--f-doc); font-size: 11px; line-height: 1.35;
   box-shadow: var(--shadow); color-scheme: light; }
+/* Al imprimir, el encabezado de .hoja se repite en cada hoja */
+table.hoja { width: 100%; border-collapse: collapse; }
+table.hoja > thead > tr > td, table.hoja > tbody > tr > td { padding: 0; border: 0; vertical-align: top; }
 .sheet-head { position: relative; display: flex; align-items: flex-start; justify-content: space-between; min-height: 112px; margin-bottom: 10px; }
 .sheet-head .l { height: 52px; margin-top: 8px; }
 .sheet-head .r { height: 62px; }
@@ -229,7 +232,7 @@ table.fmt td p:last-child { margin-bottom: 0; }
   .cell-input { border: 0; }
   .cell-area { border: 0; background: transparent; resize: none; padding: 0; }
   table.fmt td { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
-  table.fmt thead { display: table-header-group; }
+  table.fmt thead, table.hoja > thead { display: table-header-group; }
   table.fmt tr, table.fmt td { break-inside: auto; page-break-inside: auto; }
 }
 </style>
@@ -706,7 +709,7 @@ table.fmt td p:last-child { margin-bottom: 0; }
   function renderSheet() {
     const plan = current() ? current() : normalize(emptyPlan());
     const T = layout(plan, general);
-    let h = sheetHeadHtml();
+    let h = "";
     T.forEach((t) => {
       if (t.pageBreak) { h += '<div class="pb"><span>Nueva hoja</span></div>'; return; }
       if (t.gap) { h += '<div class="gap"></div>'; return; }
@@ -717,7 +720,7 @@ table.fmt td p:last-child { margin-bottom: 0; }
       const nh = t.head || 0;
       h += (nh ? `<thead>${t.rows.slice(0, nh).map(fila).join("")}</thead>` : "") + `<tbody>${t.rows.slice(nh).map(fila).join("")}</tbody></table>`;
     });
-    $("#sheet").innerHTML = h;
+    $("#sheet").innerHTML = `<table class="hoja"><thead><tr><td>${sheetHeadHtml()}</td></tr></thead><tbody><tr><td>${h}</td></tr></tbody></table>`;
     ajustaAlto($("#g-comunidad"));
     $("#btnEditCur").disabled = !current();
     $("#btnWord").disabled = !current();
