@@ -14,6 +14,9 @@ Jardín de Niños “Barbarita Barrera de González” (ciclo 2026-2027).
 - **PMC**: las actividades del Programa de Mejora Continua 2026-2027 por mes. En el formato, “Actividades de PMC”
   se llena sola con las del mes del *Periodo de tiempo* (o de las fechas de las actividades). Se puede marcar
   qué actividades van en las planeaciones y, en una planeación específica, escribirlas a mano.
+- **Analítico**: el Programa Analítico 2026-2027 del jardín, solo de consulta. *Por mes* muestra los contenidos y PDA
+  jerarquizados de 2° o 3° en los cuatro campos formativos; *Todo el ciclo* los muestra de septiembre a junio en una
+  tabla; *Programa analítico* tiene los tres planos (lectura de la realidad, territorialización y formulación).
 - **Avance**: muestra qué PDA del grado ya tienen planeación en el banco y cuáles faltan.
 
 ## Subir planeaciones que ya tienes en Word
@@ -49,6 +52,7 @@ En el iPhone: abre el sitio en Safari → Compartir → **Agregar a pantalla de 
 | `app.html` | La misma app en la versión que se publica dentro de Claude. |
 | `banco.json` | El banco compartido de planeaciones y el PMC. |
 | `catalogo.js` | Contenidos y PDA de los 4 campos formativos (Programa Sintético Fase 2, SEP 2024). |
+| `analitico.js` | Programa Analítico 2026-2027 y jerarquización de contenidos de 2° y 3° por mes. |
 | `plantilla.js` | Plantilla Word del formato (encabezado, logos, hoja horizontal). |
 | `manifest.webmanifest`, `img/icono-*.png` | Nombre e ícono al agregarla a la pantalla de inicio. |
 | `img/` | Logos del encabezado. |

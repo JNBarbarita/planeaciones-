@@ -218,16 +218,48 @@ table.fmt td p:last-child { margin-bottom: 0; }
 .guia summary small { font-weight: 500; color: var(--muted); }
 .guia ul { margin: 10px 0 0; padding-left: 20px; display: grid; gap: 4px; font-size: .9rem; }
 @media (max-width: 640px) { .av-row { grid-template-columns: minmax(0, 1fr); } }
+
+/* Programa analítico: consulta por mes, ciclo completo y documento */
+.seg { display: flex; flex-wrap: wrap; gap: 4px; background: var(--surface); border: 1px solid var(--line); padding: 3px; border-radius: 10px; justify-self: start; max-width: 100%; }
+.seg button { border: 0; background: transparent; padding: 7px 14px; border-radius: 8px; cursor: pointer; font: 600 .88rem var(--f-ui); color: var(--muted); }
+.seg button[aria-pressed="true"] { background: var(--accent); color: var(--accent-ink); }
+.an-mes { display: grid; gap: 12px; grid-template-columns: repeat(auto-fill, minmax(min(440px, 100%), 1fr)); align-items: start; }
+.an-item { padding: 10px 0 4px; border-top: 1px solid var(--line); }
+.an-item:first-of-type { border-top: 0; padding-top: 0; }
+.an-item > p { margin: 0 0 6px; font-size: .92rem; }
+.an-item ul { margin: 0; padding-left: 18px; display: grid; gap: 5px; font-size: .88rem; }
+.an-item li::marker { color: var(--muted); }
+.cod { font-size: .74rem; font-weight: 600; color: var(--muted); margin-right: 5px; white-space: nowrap; font-variant-numeric: tabular-nums; }
+.an-wrap { overflow-x: auto; background: var(--surface); border: 1px solid var(--line); border-radius: 12px; }
+table.an-tabla { border-collapse: collapse; width: 100%; min-width: 860px; font-size: .8rem; }
+table.an-tabla th, table.an-tabla td { padding: 8px 10px; text-align: left; vertical-align: top; border-bottom: 1px solid var(--line); }
+table.an-tabla thead th { border-top: 5px solid var(--cf, var(--line)); font-size: .84rem; }
+table.an-tabla tbody th { width: 7.5rem; }
+table.an-tabla td p { margin: 0 0 6px; }
+table.an-tabla td p:last-child { margin: 0; }
+table.an-tabla tr.hoy > * { background: var(--accent-soft); }
+table.an-tabla tbody tr:last-child > * { border-bottom: 0; }
+.an-mesbtn { border: 0; background: none; padding: 0; font: 700 .86rem var(--f-ui); color: var(--accent); cursor: pointer; text-align: left; text-decoration: underline; text-underline-offset: 3px; }
+.sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+.an-doc { max-width: 80ch; }
+.an-doc h3:first-of-type { margin-top: 12px; }
+.an-doc p, .an-doc li { line-height: 1.55; font-size: .93rem; }
+.an-doc p { margin: 0 0 8px; }
+.an-doc ul { margin: 0 0 8px; padding-left: 20px; }
 .toast { position: fixed; left: 50%; bottom: calc(18px + env(safe-area-inset-bottom, 0px)); transform: translateX(-50%) translateY(20px); background: var(--ink); color: var(--bg);
   padding: 10px 16px; border-radius: 10px; opacity: 0; transition: .2s; pointer-events: none; max-width: calc(100% - 32px); z-index: 20; font-size: .9rem; }
 .toast.show { opacity: 1; transform: translateX(-50%); }
 @media (prefers-reduced-motion: reduce) { .toast { transition: none; } }
 
 @media (max-width: 640px) {
-  .tabs { width: 100%; }
-  .tab { flex: 1; padding: 7px 6px; }
+  .tabs { width: 100%; gap: 2px; overflow-x: auto; scrollbar-width: none; }
+  .tabs::-webkit-scrollbar { display: none; }
+  .tab { flex: 1 1 auto; padding: 7px 4px; font-size: .84rem; }
   .editor-bar { top: calc(env(safe-area-inset-top, 0px) + 104px); }
   .swipe { display: block; }
+}
+@media (max-width: 370px) {
+  .tab { padding: 6px 2px; font-size: .74rem; }
 }
 
 @media print {
@@ -260,6 +292,7 @@ table.fmt td p:last-child { margin-bottom: 0; }
       <button class="tab" role="tab" id="tab-editar" data-view="editar" aria-selected="false">Editar</button>
       <button class="tab" role="tab" id="tab-banco" data-view="banco" aria-selected="false">Banco</button>
       <button class="tab" role="tab" id="tab-pmc" data-view="pmc" aria-selected="false">PMC</button>
+      <button class="tab" role="tab" id="tab-analitico" data-view="analitico" aria-selected="false">Analítico</button>
       <button class="tab" role="tab" id="tab-avance" data-view="avance" aria-selected="false">Avance</button>
     </nav>
   </div>
@@ -321,6 +354,23 @@ table.fmt td p:last-child { margin-bottom: 0; }
   <section class="view" id="v-pmc" hidden></section>
 
   <!-- AVANCE -->
+  <!-- PROGRAMA ANALÍTICO (solo consulta) -->
+  <section class="view" id="v-analitico" hidden>
+    <div class="toolbar">
+      <p class="hint">Programa analítico 2026-2027 del jardín, solo de consulta: la <b>jerarquización de contenidos</b> de cada mes del ciclo escolar.</p>
+      <div class="row" role="radiogroup" aria-label="Grado" id="anGradoBox">
+        <label class="chk"><input type="radio" name="ang" value="2"> 2°</label>
+        <label class="chk"><input type="radio" name="ang" value="3"> 3°</label>
+      </div>
+    </div>
+    <div class="seg" role="group" aria-label="Vista">
+      <button data-anv="mes" aria-pressed="true">Por mes</button>
+      <button data-anv="ciclo" aria-pressed="false">Todo el ciclo</button>
+      <button data-anv="doc" aria-pressed="false">Programa analítico</button>
+    </div>
+    <div id="anBody"></div>
+  </section>
+
   <section class="view" id="v-avance" hidden>
     <div class="toolbar">
       <p class="hint">Avance de programa: los PDA del Programa Sintético que ya tienen al menos una planeación en tu banco. Te ayuda a ver qué falta para cubrir todos los PDA del grado en el ciclo (cuadernillo, p. 42).</p>
@@ -337,6 +387,7 @@ table.fmt td p:last-child { margin-bottom: 0; }
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
 <script src="catalogo.js"></script>
+<script src="analitico.js"></script>
 <script src="plantilla.js"></script>
 <script>
 (function () {
@@ -1461,12 +1512,67 @@ table.fmt td p:last-child { margin-bottom: 0; }
     a.actividad = ev.target.value; savePmcSoon();
   });
 
+  // ------------------------------------------------------------------ Programa analítico (solo consulta)
+  // analitico.js: jerarquizacion[grado][campo][mes] = [{ n: contenido, pdas: [índice del PDA del grado en el catálogo] }]
+  const AN = window.ANALITICO || null;
+  let anGrado = null, anVista = "mes", anMes = null;
+  const anCont = (campo, n) => ((CAT[campo] || [])[n - 1] || {});
+  function anItemHtml(campo, it, g) {
+    const c = anCont(campo, it.n), pdas = (c.pda && c.pda[g]) || [];
+    return `<div class="an-item"><p><b>${esc(codeCont(campo, it.n - 1))}.</b> ${esc(c.contenido || "")}</p><ul>${it.pdas.map((p) => typeof p === "number"
+      ? `<li><span class="cod">${esc(codePda(campo, it.n - 1, p))}</span>${esc(pdas[p] || "")}</li>` : `<li>${esc(p)}</li>`).join("")}</ul></div>`;
+  }
+  function renderAnalitico() {
+    const v = $("#anBody"); if (!v) return;
+    document.querySelectorAll("#v-analitico [data-anv]").forEach((b) => { if (b.closest(".seg")) b.setAttribute("aria-pressed", String(b.dataset.anv === anVista)); });
+    if (!AN) { v.innerHTML = '<div class="empty"><b>No se pudo cargar el programa analítico</b>Revisa tu conexión y recarga la página.</div>'; return; }
+    if (!anGrado) anGrado = ["2", "3"].includes(general.grado) ? general.grado : "3";
+    if (!anMes) anMes = mesActual();
+    document.querySelectorAll('input[name="ang"]').forEach((r) => (r.checked = r.value === anGrado));
+    $("#anGradoBox").hidden = anVista === "doc";
+    const J = AN.jerarquizacion[anGrado] || {}, hoy = mesActual();
+    let h = "";
+    if (anVista === "mes") {
+      h += `<div class="card"><h2>${esc(nombreMes(anMes))} · ${esc(anGrado)}° grado${anMes === hoy ? ' <span class="meta">(este mes)</span>' : ""}</h2>
+        <p class="sub">Contenidos y PDA jerarquizados para este mes en los cuatro campos formativos.</p>
+        <div class="row">${MESES_PMC.map(([k, n]) => `<button class="mes-chip" data-anmes="${k}" aria-pressed="${k === anMes}">${n.slice(0, 3)}</button>`).join("")}</div></div>`;
+      h += `<div class="an-mes">${CAMPOS.map((campo) => {
+        const col = CAMPO_COLOR[campo], items = (J[campo] || {})[anMes] || [];
+        return `<section class="av-campo" style="--cf:#${col.fill};--cfi:#${col.ink}"><header><b>${esc(campo)}</b></header>${items.length
+          ? items.map((it) => anItemHtml(campo, it, anGrado)).join("") : '<p class="meta" style="margin:0">Sin contenidos jerarquizados para este mes.</p>'}</section>`;
+      }).join("")}</div>`;
+    } else if (anVista === "ciclo") {
+      h += `<p class="swipe">Desliza a los lados para ver los cuatro campos.</p><div class="an-wrap"><table class="an-tabla"><caption class="sr-only">Jerarquización de contenidos de ${esc(anGrado)}° grado por mes</caption>
+        <thead><tr><th>Mes</th>${CAMPOS.map((c) => `<th style="--cf:#${CAMPO_COLOR[c].fill}">${esc(c)}</th>`).join("")}</tr></thead><tbody>`;
+      MESES_PMC.forEach(([k, n]) => {
+        h += `<tr${k === hoy ? ' class="hoy"' : ""}><th><button class="an-mesbtn" data-anv="mes" data-anmes="${k}" title="Ver los PDA de ${esc(n.toLowerCase())}">${esc(n)}</button>${k === hoy ? '<div class="meta">este mes</div>' : ""}</th>${CAMPOS.map((campo) =>
+          `<td>${((J[campo] || {})[k] || []).map((it) => `<p><b>${esc(codeCont(campo, it.n - 1))}.</b> ${esc(anCont(campo, it.n).contenido || "")}</p>`).join("")}</td>`).join("")}</tr>`;
+      });
+      h += `</tbody></table></div><p class="meta">Toca un mes para ver sus PDA.</p>`;
+    } else {
+      h += AN.planos.map((pl) => `<div class="card an-doc"><h2>${esc(pl.titulo)}</h2>${pl.secciones.map((s) => `<h3>${esc(s.titulo)}</h3>${(s.parrafos || []).map((p) => `<p>${esc(p)}</p>`).join("")}${s.lista ? `<ul>${s.lista.map((x) => `<li>${esc(x)}</li>`).join("")}</ul>` : ""}`).join("")}</div>`).join("");
+      h += `<div class="card an-doc"><h2>Jerarquización de contenidos</h2><p class="sub">Los contenidos y PDA de 2° y 3° que se trabajan en cada mes del ciclo escolar ${esc(AN.ciclo || "")}.</p>
+        <div class="row"><button class="btn sm primary" data-anv="mes">Ver por mes</button><button class="btn sm" data-anv="ciclo">Ver todo el ciclo</button></div></div>`;
+    }
+    v.innerHTML = h;
+  }
+  $("#v-analitico").addEventListener("click", (ev) => {
+    const b = ev.target.closest("[data-anv], [data-anmes]"); if (!b) return;
+    const cambiaVista = b.dataset.anv && b.dataset.anv !== anVista;
+    if (b.dataset.anmes) anMes = b.dataset.anmes;
+    if (b.dataset.anv) anVista = b.dataset.anv;
+    renderAnalitico();
+    if (cambiaVista) window.scrollTo(0, 0);
+  });
+  $("#v-analitico").addEventListener("change", (ev) => { if (ev.target.name === "ang") { anGrado = ev.target.value; renderAnalitico(); } });
+
   // ------------------------------------------------------------------ pestañas
   function showView(name) {
-    ["formato", "editar", "banco", "pmc", "avance"].forEach((n) => { $("#v-" + n).hidden = n !== name; $("#tab-" + n).setAttribute("aria-selected", String(n === name)); });
+    ["formato", "editar", "banco", "pmc", "analitico", "avance"].forEach((n) => { $("#v-" + n).hidden = n !== name; $("#tab-" + n).setAttribute("aria-selected", String(n === name)); });
     if (name === "editar" && !$("#v-editar").innerHTML.trim()) renderEditor();
     if (name === "avance") renderAvance();
     if (name === "pmc") renderPmc();
+    if (name === "analitico") { if (["2", "3"].includes(general.grado)) anGrado = general.grado; renderAnalitico(); }
     try { localStorage.setItem("bancoPlaneaciones.vista", name); } catch (e) { /* opcional */ }
     window.scrollTo(0, 0);
   }
