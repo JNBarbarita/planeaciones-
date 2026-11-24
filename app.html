@@ -421,6 +421,8 @@ table.fmt td p:last-child { margin-bottom: 0; }
     return out;
   }
   const current = () => plans.find((p) => p.id === currentId) || null;
+  // Para ordenar por nombre sin contar signos iniciales: "¡Bienvenidos…" va en la B, "¿En qué…" en la E.
+  const ordenNombre = (t) => String(t || "").replace(/^[^\p{L}\p{N}]+/u, "");
 
   // ------------------------------------------------------------------ almacenamiento (nube del artifact o este dispositivo)
   const LKEY = "bancoPlaneaciones.v2", GKEY = "bancoPlaneaciones.general.v2", CKEY = "bancoPlaneaciones.actual", HKEY = "bancoPlaneaciones.ocultas";
@@ -591,7 +593,7 @@ table.fmt td p:last-child { margin-bottom: 0; }
       MODALIDADES.map((m) => { const on = plan.modalidad.includes(m); return { p: [[{ t: m + (on ? " ✓" : ""), b: on }]], c: true, fill: on ? SEL : null }; }),
     ] });
     T.push({ w: [2300, 12000], rows: [
-      [H("Nombre del proyecto:", { fill: HDR2 }), V(plan.proyecto ? "“" + plan.proyecto + "”" : "", { select: true, bold: true })],
+      [H("Nombre del proyecto:", { fill: HDR2 }), V(plan.proyecto ? (/^[“"«]/.test(plan.proyecto) ? plan.proyecto : "“" + plan.proyecto + "”") : "", { select: true, bold: true })],
       [H("Problemática asociada:", { fill: HDR2 }), V(plan.problematica)],
       [H("Finalidad:", { fill: HDR2 }), V(plan.finalidad)],
     ] });
@@ -658,7 +660,7 @@ table.fmt td p:last-child { margin-bottom: 0; }
   const delGrado = (p, g) => !g || gradoDe(p) === g;
   function projectSelectHtml() {
     const g = general.grado || "";
-    const lista = plans.filter((p) => delGrado(p, g)).sort((a, b) => a.proyecto.localeCompare(b.proyecto, "es"));
+    const lista = plans.filter((p) => delGrado(p, g)).sort((a, b) => ordenNombre(a.proyecto).localeCompare(ordenNombre(b.proyecto), "es"));
     const op = (p) => `<option value="${esc(p.id)}"${p.id === currentId ? " selected" : ""}>${esc(p.proyecto || "(sin nombre)")}</option>`;
     const opts = g ? lista.map(op).join("")
       : ["1", "2", "3", ""].map((k) => { const ps = lista.filter((p) => gradoDe(p) === k); return ps.length ? `<optgroup label="${k ? k + "° grado" : "Sin grado"}">${ps.map(op).join("")}</optgroup>` : ""; }).join("");
@@ -848,7 +850,8 @@ table.fmt td p:last-child { margin-bottom: 0; }
     }));
     return rows;
   }
-  const quitaComillas = (t) => String(t || "").trim().replace(/^[“"«]\s*/, "").replace(/\s*[”"»]$/, "").trim();
+  // Quita las comillas solo si encierran todo el texto: "“Mi proyecto”" → "Mi proyecto"; "“Emocionados” con las letras" se queda igual.
+  const quitaComillas = (t) => { const x = String(t || "").trim(); return /^[“"«]/.test(x) && /[”"»]$/.test(x) ? x.slice(1, -1).trim() : x; };
   const CAMPO_DE = (t) => { const n = N(t); return /lenguaj/.test(n) ? CAMPOS[0] : /saberes|matematic/.test(n) ? CAMPOS[1] : /etica|naturaleza|exploracion/.test(n) ? CAMPOS[2] : /humano|comunitario|socioemocional|fisica/.test(n) ? CAMPOS[3] : /artes/.test(n) ? CAMPOS[0] : null; };
   const ABAJO_RE = [["ajustes", /^ajustes/], ["programasExternos", /^programas externos/], ["musica", /musica/], ["udei", /udei/], ["pmc", /pmc/], ["coevaluacion", /^coevaluacion/], ["retroalimentacion", /^retroalimentacion/], ["observaciones", /^observaciones/]];
   function matchCont(text, campo) {
@@ -1128,7 +1131,7 @@ table.fmt td p:last-child { margin-bottom: 0; }
   }
   async function doSave(asCopy) {
     const d = normalize(draft);
-    d.proyecto = d.proyecto.trim().replace(/^[“"]|[”"]$/g, "");
+    d.proyecto = quitaComillas(d.proyecto);
     if (!d.proyecto) { toast("Escribe el nombre del proyecto antes de guardar."); const el = $('[data-path="proyecto"]'); if (el) el.focus(); return; }
     if (!d.grado) { toast("Elige el grado de la planeación antes de guardar."); const el = $('[data-dgrado]'); if (el) { el.scrollIntoView({ block: "center" }); el.focus(); } return; }
     if (asCopy || !d.id) { d.id = slug(d.proyecto); if (asCopy) d.proyecto += " (copia)"; d.creado = new Date().toISOString(); }
@@ -1220,7 +1223,7 @@ table.fmt td p:last-child { margin-bottom: 0; }
     if (!plans.length) { el.innerHTML = '<div class="empty"><b>Tu banco está vacío</b>Pulsa “Subir Word” para agregar una planeación que ya tengas en Word, “Nueva planeación” para capturarla aquí, o “Cargar banco” si tienes un archivo banco.json.</div>'; return; }
     const q = $("#q").value.trim().toLowerCase(), fc = $("#fCampo").value, fe = $("#fEje").value, fg = $("#fGrado").value;
     const list = plans.filter((p) => (!q || planText(p).includes(q)) && (!fg || gradoDe(p) === fg) && (!fc || (p.campos[fc] || []).some((e) => e.contenido || e.pdas.length)) && (!fe || p.ejes.includes(fe)))
-      .sort((a, b) => a.proyecto.localeCompare(b.proyecto, "es"));
+      .sort((a, b) => ordenNombre(a.proyecto).localeCompare(ordenNombre(b.proyecto), "es"));
     if (!list.length) { el.innerHTML = '<div class="empty"><b>Sin resultados</b>Prueba con otra palabra o quita los filtros.</div>'; return; }
     el.innerHTML = `<div class="cards">${list.map((p) => {
       const cs = CAMPOS.filter((c) => (p.campos[c] || []).some((e) => e.contenido || e.pdas.length));
