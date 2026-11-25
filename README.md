@@ -11,6 +11,11 @@ Jardín de Niños “Barbarita Barrera de González” (ciclo 2026-2027).
 - **Editar**: captura o modifica una planeación (cada planeación lleva su grado). Los contenidos y PDA se eligen del Programa Sintético
   de la Fase 2 (1°, 2° y 3°) con las claves del cuadernillo; los momentos cambian según la modalidad.
 - **Banco**: busca, filtra por campo formativo o eje, duplica, elimina, descarga o carga el banco.
+- **Revisión de la planeación**: al subir un Word (o con el botón *Revisar planeación* del editor) la app revisa la
+  estructura con el Cuadernillo de planeación (pp. 69 y 79-81) y el Programa Sintético de la Fase 2: datos del proyecto,
+  que los PDA sean del grado y de su contenido, los 5 momentos en orden y lo que pide cada uno, inicio/desarrollo/cierre,
+  organización, materiales, tiempo, evaluación ligada al PDA, vínculo con el programa analítico y fechas del calendario
+  2026-2027. Cada tarjeta del banco dice “✓ Bien estructurada” o “⚠ N por revisar”. No revisa la redacción.
 - **PMC**: las actividades del Programa de Mejora Continua 2026-2027 por mes. En el formato, “Actividades de PMC”
   se llena sola con las del mes del *Periodo de tiempo* (o de las fechas de las actividades). Se puede marcar
   qué actividades van en las planeaciones y, en una planeación específica, escribirlas a mano.
