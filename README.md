@@ -16,6 +16,9 @@ Jardín de Niños “Barbarita Barrera de González” (ciclo 2026-2027).
   que los PDA sean del grado y de su contenido, los 5 momentos en orden y lo que pide cada uno, inicio/desarrollo/cierre,
   organización, materiales, tiempo, evaluación ligada al PDA, vínculo con el programa analítico y fechas del calendario
   2026-2027. Cada tarjeta del banco dice “✓ Bien estructurada” o “⚠ N por revisar”. No revisa la redacción.
+- **Revisar redacción con IA** (en la tarjeta de revisión): copia la planeación con instrucciones basadas en el
+  cuadernillo y la Fase 2 para pegarla en Claude (claude.ai o la app; basta una cuenta gratis). La app no se conecta
+  a ninguna IA ni tiene costo.
 - **PMC**: las actividades del Programa de Mejora Continua 2026-2027 por mes. En el formato, “Actividades de PMC”
   se llena sola con las del mes del *Periodo de tiempo* (o de las fechas de las actividades). Se puede marcar
   qué actividades van en las planeaciones y, en una planeación específica, escribirlas a mano.

@@ -244,6 +244,12 @@ table.fmt td p:last-child { margin-bottom: 0; }
 .rev-nota .rev-i { color: var(--accent); }
 .rev-bien > summary { cursor: pointer; font-weight: 600; font-size: .88rem; margin: 14px 0 6px; }
 .rev-pie { display: flex; flex-wrap: wrap; gap: 8px 14px; align-items: center; justify-content: space-between; margin-top: 12px; }
+.rev-ia { margin-top: 12px; padding: 12px 14px; border-radius: 10px; background: var(--accent-soft); font-size: .9rem; }
+.rev-ia p { margin: 0 0 6px; }
+.rev-ia ol { margin: 6px 0 10px; padding-left: 20px; display: grid; gap: 3px; }
+.rev-ia textarea { width: 100%; min-height: 150px; margin: 6px 0 8px; border: 1px solid var(--line); border-radius: 8px; padding: 8px; background: var(--surface); color: var(--ink); font: .82rem/1.45 var(--f-ui); resize: vertical; }
+.rev-ia a.btn { text-decoration: none; display: inline-block; }
+.rev-ia details summary { cursor: pointer; font-size: .84rem; color: var(--muted); margin-top: 8px; }
 .rev-chip { align-self: flex-start; font: 600 .76rem var(--f-ui); padding: 3px 10px; border-radius: 999px; border: 1.5px solid currentColor; background: transparent; cursor: pointer; }
 .rev-chip.ok { color: var(--ok); }
 .rev-chip.warn { color: var(--warm); background: var(--warm-soft); }
@@ -1305,6 +1311,8 @@ table.an-tabla tbody tr:last-child > * { border-bottom: 0; }
     const act = b.dataset.act, i = +b.dataset.i, campo = b.dataset.campo, A = draft && draft.actividades;
     switch (act) {
       case "new": startEdit(null); return;
+      case "copiarIA": copiarParaIA(); return;
+      case "selIA": { const ta = $("#revIA textarea"); if (ta) { ta.focus(); ta.select(); ta.setSelectionRange(0, ta.value.length); try { if (document.execCommand("copy")) toast("Copiado. Ahora pégalo en Claude."); } catch (e) { /* la maestra copia a mano */ } } return; }
       case "revisar": {
         revVisible = true; revCache.clear();
         const old = $("#revBox"), html = revisionHtml(draft, true);
@@ -1778,6 +1786,69 @@ table.an-tabla tbody tr:last-child > * { border-bottom: 0; }
     if (!revCache.has(k)) revCache.set(k, revisarPlan(p).filter((x) => x.nivel === "aviso").length);
     return revCache.get(k);
   }
+  // "Revisar redacción con IA": copia la planeación con instrucciones basadas en el cuadernillo y la Fase 2,
+  // para pegarla en Claude. La app no se conecta a ninguna IA: la maestra decide dónde pegarla.
+  function textoParaIA(plan) {
+    const p = normalize(plan), g = p.grado ? p.grado + "°" : "", L = [];
+    const esProyecto = !p.modalidad.length || p.modalidad.includes("Proyecto");
+    const avisos = revisarPlan(p).filter((x) => x.nivel === "aviso");
+    L.push(`Hola. Soy educadora de preescolar en México (Nueva Escuela Mexicana, Fase 2). Te comparto mi planeación${esProyecto ? " por proyecto" : " (modalidad " + p.modalidad.join(", ") + ")"}${g ? " de " + g + " grado" : ""} para que la revises.`, "");
+    L.push("Revísala con base en el Cuadernillo de planeación y el Programa Sintético de la Fase 2:");
+    L.push("1. Redacción: que la problemática, la finalidad y las actividades sean claras, estén bien escritas y sin errores de ortografía.");
+    L.push("2. Coherencia: que la problemática, la finalidad, las actividades, la producción final y la evaluación estén ligadas entre sí.");
+    if (esProyecto) {
+      L.push("3. Momentos del proyecto: que cada actividad corresponda a lo que pide su momento:");
+      MOMENTOS["Proyecto"].forEach((f) => L.push(`   - ${f}: ${ayudaDe(f)}`));
+    } else L.push(`3. Momentos: que las actividades sigan los momentos de la modalidad (${MODALIDADES.filter((m) => p.modalidad.includes(m)).flatMap((m) => MOMENTOS[m] || []).join(", ")}).`);
+    L.push("4. PDA: que las actividades realmente favorezcan los PDA elegidos y que cada evaluación diga qué se evalúa, ligado al PDA y a la actividad.");
+    L.push(`5. Que las actividades sean adecuadas para niñas y niños${g ? " de " + g : ""} de preescolar, vivenciales e inclusivas.`, "");
+    L.push("Responde en español. Primero dime en 2 o 3 líneas qué tan lista está la planeación. Después, por cada punto: qué está bien, qué conviene mejorar y una propuesta de redacción concreta que pueda copiar. Si propones cambiar algún PDA, usa solo PDA del Programa Sintético de la Fase 2 del mismo grado.", "");
+    if (avisos.length) { L.push("La revisión automática de mi app ya encontró estos puntos de estructura:"); avisos.forEach((x) => L.push(`- ${x.texto} ${x.detalle}`.trim())); L.push(""); }
+    L.push("PLANEACIÓN", "");
+    const campo = (k, v) => { v = String(v || "").trim(); if (v) L.push(`${k}: ${v}`); };
+    campo("Nombre del proyecto", p.proyecto); campo("Grado", g); campo("Modalidad", p.modalidad.join(", "));
+    campo("Problemática", p.problematica); campo("Finalidad", p.finalidad); campo("Ejes articuladores", p.ejes.join(", "));
+    const conts = CAMPOS.flatMap((c) => (p.campos[c] || []).filter((e) => e.contenido.trim() || e.pdas.length).map((e) => [c, e]));
+    if (conts.length) {
+      L.push("Contenidos y PDA:");
+      conts.forEach(([c, e]) => { L.push(`• ${c}: ${e.contenido.trim() || "(sin contenido)"}`); e.pdas.forEach((x) => L.push(`   - PDA: ${x}`)); });
+    }
+    campo("PDA permanentes", p.pdaPermanentes);
+    if (p.actividades.length) {
+      L.push("", "ACTIVIDADES");
+      p.actividades.forEach((a, i) => {
+        const extra = [a.tiempo && "Tiempo: " + a.tiempo, a.organizacion && "Organización: " + a.organizacion].filter(Boolean).join(" · ");
+        L.push("", `Actividad ${i + 1}${a.fase ? " · " + a.fase : ""}${a.titulo ? " · «" + a.titulo + "»" : ""}${extra ? " (" + extra + ")" : ""}`);
+        [["Inicio", a.inicio], ["Desarrollo", a.desarrollo], ["Cierre", a.cierre], ["Notas", a.notas], ["Materiales", a.recursos], ["Evaluación", a.evaluacion]].forEach(([k, v]) => campo(k, String(v || "").replace(/\s*\n\s*/g, " ")));
+      });
+    }
+    L.push(""); campo("Ajustes razonables", p.ajustes);
+    return L.join("\n").replace(/\n{3,}/g, "\n\n").trim() + "\n";
+  }
+  async function copiarTexto(txt) {
+    try { if (navigator.clipboard && window.isSecureContext) { await navigator.clipboard.writeText(txt); return true; } } catch (e) { /* se intenta de otra forma */ }
+    try {
+      const ta = document.createElement("textarea"); ta.value = txt; ta.setAttribute("readonly", ""); ta.style.position = "fixed"; ta.style.top = "0"; ta.style.opacity = "0";
+      document.body.appendChild(ta); ta.select(); ta.setSelectionRange(0, txt.length); const ok = document.execCommand("copy"); ta.remove(); return ok;
+    } catch (e) { return false; }
+  }
+  async function copiarParaIA() {
+    const box = $("#revIA"); if (!box || !draft) return;
+    const txt = textoParaIA(draft), ok = await copiarTexto(txt);
+    const abrir = '<a class="btn sm primary" href="https://claude.ai/new" target="_blank" rel="noopener">Abrir Claude</a>';
+    box.hidden = false;
+    box.innerHTML = ok
+      ? `<p><b>Listo: la planeación se copió con las instrucciones para revisarla.</b></p>
+        <ol><li>Abre Claude (claude.ai o la app de Claude; basta una cuenta gratis).</li><li>Pega el texto en el mensaje (mantén presionado y elige “Pegar”, o Ctrl+V) y envíalo.</li><li>Claude te responde con sugerencias de redacción. Corrige aquí en el editor y pulsa “Guardar en el banco”.</li></ol>
+        <div class="row">${abrir}<button class="btn sm" data-act="copiarIA">Copiar otra vez</button></div>
+        <details><summary>Ver el texto que se copió</summary><textarea readonly aria-label="Texto para revisar con IA"></textarea></details>`
+      : `<p><b>Tu navegador no dejó copiar automáticamente.</b> Selecciona el texto de abajo, cópialo y pégalo en Claude.</p>
+        <textarea readonly aria-label="Texto para revisar con IA"></textarea>
+        <div class="row"><button class="btn sm" data-act="selIA">Seleccionar todo</button>${abrir}</div>`;
+    box.querySelector("textarea").value = txt;
+    if (ok) toast("Planeación copiada. Ahora pégala en Claude.");
+  }
+
   // Lleva a la revisión sin que la tapen la barra superior ni la barra fija del editor.
   function irARevision(suave) {
     const box = $("#revBox"); if (!box) return;
@@ -1795,7 +1866,9 @@ table.an-tabla tbody tr:last-child > * { border-bottom: 0; }
       <p class="sub">Revisión automática con el Cuadernillo de planeación (pp. 69 y 79-81) y el Programa Sintético de la Fase 2. Revisa la estructura, no la redacción.</p>
       ${av.length ? "<h3>Por revisar</h3>" + ul(av) : ""}${no.length ? "<h3>Sugerencias</h3>" + ul(no) : ""}
       <details class="rev-bien"${av.length ? "" : " open"}><summary>Lo que está bien (${ok.length})</summary>${ul(ok)}</details>
-      <div class="rev-pie"><span class="meta">Corrige en el editor y pulsa “Volver a revisar”.</span><button class="btn sm" data-act="revisar">Volver a revisar</button></div></details>`;
+      <div class="rev-pie"><span class="meta">Corrige en el editor y pulsa “Volver a revisar”. Para revisar la redacción, usa la IA.</span>
+        <div class="row"><button class="btn sm" data-act="revisar">Volver a revisar</button><button class="btn sm primary" data-act="copiarIA">Revisar redacción con IA</button></div></div>
+      <div class="rev-ia" id="revIA" hidden></div></details>`;
   }
 
   // ------------------------------------------------------------------ Programa analítico (solo consulta)
