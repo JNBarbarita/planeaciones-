@@ -25,9 +25,11 @@ def escribe(nombre, texto):
     print(nombre, len(texto))
 
 
-escribe("index.html", pagina("manifest.webmanifest", "Planeaciones"))
+# firebase-config.js: datos del proyecto de Firebase (bancos de las maestras en línea). Solo en el sitio, no en Claude.
+FB = '<script src="firebase-config.js"></script>\n'
+escribe("index.html", pagina("manifest.webmanifest", "Planeaciones", FB))
 
-personal = pagina("manifest-maestras.webmanifest", "Mi banco", "<script>window.BANCO_PERSONAL = true;</script>\n")
+personal = pagina("manifest-maestras.webmanifest", "Mi banco", FB + "<script>window.BANCO_PERSONAL = true;</script>\n")
 for a, b in (("<title>Banco de Planeaciones</title>", "<title>Mi banco de planeaciones</title>"),
              ("<b>Banco de Planeaciones</b>", "<b>Mi banco de planeaciones</b>")):
     assert personal.count(a) == 1, a

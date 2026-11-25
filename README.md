@@ -48,6 +48,20 @@ Comparte este link: **https://jnbarbarita.github.io/planeaciones-/maestras.html*
   (correo o WhatsApp) y *Cargar banco* en el otro. Si se borran los datos del navegador, se borra el banco; con la copia
   se recupera.
 
+## Bancos de las maestras en línea (Firebase)
+
+Con un proyecto gratuito de Firebase, cada maestra entra en `maestras.html` con Google o con correo y contraseña,
+y su banco se guarda en línea (el mismo en su celular y su laptop). La directora, en `index.html` → Banco →
+**Bancos de las maestras**, entra con su cuenta de Google, ve la lista de maestras y copia las planeaciones que
+quiera (con la misma lista para elegir que *Cargar banco*).
+
+- `firebase-config.js`: los datos de la app web del proyecto. Mientras diga `null`, el sitio funciona sin cuentas.
+- `firestore.rules`: reglas de seguridad para pegar en Firestore → Reglas (con el correo de la directora): cada
+  maestra solo lee y escribe su banco; la directora puede leerlos todos, pero no modificarlos.
+- En Firebase: Authentication con Google y Correo/contraseña habilitados, y `jnbarbarita.github.io` en
+  *Dominios autorizados*; Firestore creado en modo de producción.
+- Lo que una maestra ya tenía guardado en su dispositivo se sube solo a su cuenta la primera vez que entra.
+
 ## Traer planeaciones de las maestras a este banco
 
 - **Una planeación:** la maestra pulsa *Descargar Word* y te manda el archivo; aquí pulsas *Subir Word*. Se abre con
@@ -93,6 +107,7 @@ En el iPhone: abre el sitio en Safari → Compartir → **Agregar a pantalla de 
 | `app.html` | La misma app en la versión que se publica dentro de Claude. |
 | `banco.json` | El banco compartido de planeaciones y el PMC. |
 | `catalogo.js` | Contenidos y PDA de los 4 campos formativos (Programa Sintético Fase 2, SEP 2024). |
+| `firebase-config.js`, `firestore.rules` | Proyecto de Firebase y reglas de seguridad para los bancos en línea de las maestras. |
 | `analitico.js` | Programa Analítico 2026-2027 y jerarquización de contenidos de 2° y 3° por mes. |
 | `plantilla.js` | Plantilla Word del formato (encabezado, logos, hoja horizontal). |
 | `manifest.webmanifest`, `img/icono-*.png` | Nombre e ícono al agregarla a la pantalla de inicio. |

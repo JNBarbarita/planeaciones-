@@ -1,0 +1,27 @@
+rules_version = '2';
+// Reglas de Firestore del Banco de Planeaciones. Se pegan en Firebase → Firestore Database → Reglas → Publicar.
+// Cada maestra solo puede leer y escribir su propio banco. La directora (por su correo de Google) puede LEER
+// los bancos de todas para copiar planeaciones al banco del jardín, pero no puede modificarlos.
+service cloud.firestore {
+  match /databases/{database}/documents {
+    function esDirectora() {
+      return request.auth != null
+        && request.auth.token.email_verified == true
+        && request.auth.token.email.lower() in ['CORREO_DE_LA_DIRECTORA@gmail.com'];
+    }
+    function esDuena(uid) {
+      return request.auth != null && request.auth.uid == uid;
+    }
+    match /maestras/{uid} {
+      allow read: if esDuena(uid) || esDirectora();
+      allow create, update: if esDuena(uid);
+      match /planeaciones/{id} {
+        allow read: if esDuena(uid) || esDirectora();
+        allow write: if esDuena(uid);
+      }
+      match /config/{doc} {
+        allow read, write: if esDuena(uid);
+      }
+    }
+  }
+}

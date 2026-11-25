@@ -10,6 +10,7 @@
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-title" content="Planeaciones">
 <meta name="theme-color" content="#1f4e79">
+<script src="firebase-config.js"></script>
 <title>Banco de Planeaciones</title>
 <meta name="claude:viewport-fit-sides" content="cover">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -249,6 +250,21 @@ table.fmt td p:last-child { margin-bottom: 0; }
 .rev-ia textarea { width: 100%; min-height: 150px; margin: 6px 0 8px; border: 1px solid var(--line); border-radius: 8px; padding: 8px; background: var(--surface); color: var(--ink); font: .82rem/1.45 var(--f-ui); resize: vertical; }
 .rev-ia a.btn { text-decoration: none; display: inline-block; }
 .rev-ia details summary { cursor: pointer; font-size: .84rem; color: var(--muted); margin-top: 8px; }
+/* Cuenta en línea (Firebase): banco de cada maestra y "Bancos de las maestras" para la directora */
+#cuenta { margin-bottom: 14px; }
+.cuenta { border-color: var(--accent); }
+.cuenta-correo { margin-top: 12px; }
+.cuenta-correo summary { cursor: pointer; font-weight: 600; font-size: .9rem; color: var(--accent); }
+.cuenta-form { display: grid; gap: 0; margin-top: 10px; max-width: 420px; }
+.cuenta-form input { width: 100%; min-width: 0; border: 1px solid var(--line); background: var(--bg); border-radius: 8px; padding: 8px 10px; font-size: 1rem; }
+.cuenta-msg { margin: 10px 0 0; font-size: .88rem; color: var(--danger); }
+.cuenta-msg.ok { color: var(--ok); }
+.cuenta-on { display: flex; flex-wrap: wrap; gap: 8px 14px; align-items: center; justify-content: space-between; font-size: .9rem; padding: 10px 14px; }
+.cuenta-on span { min-width: 0; overflow-wrap: anywhere; }
+.maestras-list { list-style: none; margin: 10px 0; padding: 0; display: grid; gap: 6px; }
+.maestras-list li { display: flex; flex-wrap: wrap; gap: 6px 12px; align-items: center; justify-content: space-between; padding: 10px 12px; border: 1px solid var(--line); border-radius: 8px; background: var(--bg); }
+.maestras-list li > div { min-width: 0; }
+.maestras-list b { display: block; overflow-wrap: anywhere; }
 .carga { border-color: var(--accent); }
 .carga-list { list-style: none; margin: 10px 0; padding: 0; display: grid; gap: 6px; max-height: 60vh; overflow: auto; }
 .carga-list li label { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 2px 10px; align-items: start; padding: 8px 10px; border: 1px solid var(--line); border-radius: 8px; background: var(--bg); cursor: pointer; }
@@ -346,6 +362,7 @@ table.an-tabla tbody tr:last-child > * { border-bottom: 0; }
 </header>
 
 <main>
+  <div id="cuenta" hidden></div>
   <!-- FORMATO -->
   <section class="view" id="v-formato">
     <div class="toolbar">
@@ -389,12 +406,15 @@ table.an-tabla tbody tr:last-child > * { border-bottom: 0; }
         <button class="btn warm" id="btnWordIn">Subir Word</button>
         <input type="file" id="fileWordIn" accept=".docx,application/vnd.openxmlformats-officedocument.wordprocessingml.document" multiple hidden>
         <button class="btn" id="btnEscuela" hidden>Copiar del banco del jardín</button>
+        <button class="btn" id="btnMaestras" hidden>Bancos de las maestras</button>
         <button class="btn" id="btnBackup">Descargar banco</button>
         <button class="btn" id="btnRestore">Cargar banco</button>
         <input type="file" id="fileRestore" accept=".json,application/json" hidden>
       </div>
     </div>
     <div class="card sync" id="syncNote" hidden></div>
+    <div id="cuentaInfo" hidden></div>
+    <div id="maestrasBox" hidden></div>
     <div id="cargaBox" hidden></div>
     <div id="bankList"></div>
   </section>
@@ -602,31 +622,236 @@ table.an-tabla tbody tr:last-child > * { border-bottom: 0; }
   };
   function setStatus(kind, text) { const s = $("#status"); s.className = "status " + (kind || ""); s.textContent = text; }
 
+  // ------------------------------------------------------------------ cuenta en línea (Firebase), solo en el sitio
+  // Banco de cada maestra en Firestore: maestras/{uid} (nombre, correo, total), maestras/{uid}/planeaciones/{id} y
+  // maestras/{uid}/config/{general|pmc}. Cada maestra solo lee y escribe el suyo; la directora (su correo está en las
+  // reglas de Firestore) puede leerlos todos para copiar planeaciones al banco del jardín. Sin firebase-config.js no se usa.
+  const FB_CFG = !inViewer && window.FIREBASE_CONFIG && window.FIREBASE_CONFIG.apiKey ? window.FIREBASE_CONFIG : null;
+  const FB_VER = "12.19.0", UKEY = KP + ".cuenta";
+  let fb = null, fbCargando = null, fbUser = null, nube = false, sinConexionNube = false, cuentaAbierta = false;
+  let pmcEscuela = null, pmcPropio = false, migrado = false, generalSubido = false, maestrasLista = [];
+  function cargarScript(src) {
+    return new Promise((ok, mal) => { const sc = document.createElement("script"); sc.src = src; sc.async = false; sc.onload = ok; sc.onerror = () => mal(new Error("sin-red")); document.head.appendChild(sc); });
+  }
+  function iniciarFirebase(conCache) {
+    if (fb) return Promise.resolve(fb);
+    if (!fbCargando) {
+      fbCargando = (async () => {
+        for (const m of ["app", "auth", "firestore"]) await cargarScript(`https://www.gstatic.com/firebasejs/${FB_VER}/firebase-${m}-compat.js`);
+        const app = firebase.initializeApp(FB_CFG), auth = app.auth(), fdb = app.firestore();
+        if (FB_CFG.emulador) { auth.useEmulator("http://127.0.0.1:9099"); fdb.useEmulator("127.0.0.1", 8085); }
+        if (conCache) { try { await fdb.enablePersistence({ synchronizeTabs: true }); } catch (e) { /* sin caché: funciona igual con conexión */ } }
+        fb = { auth, fdb }; return fb;
+      })();
+      fbCargando.catch(() => { fbCargando = null; });
+    }
+    return fbCargando;
+  }
+  const conLimite = (pr, ms) => Promise.race([pr, new Promise((_, mal) => setTimeout(() => mal(new Error("tiempo")), ms))]);
+  const primerUsuario = (auth) => new Promise((ok) => { const off = auth.onAuthStateChanged((u) => { off(); ok(u); }); });
+  // El banco de la maestra con la misma forma que la base de datos de Claude: collection("planeaciones"), doc("config/general").
+  function alcanceDe(fdb, uid) {
+    const raiz = fdb.collection("maestras").doc(uid);
+    return { raiz, collection: (n) => raiz.collection(n), doc: (ruta) => { const [c, d] = ruta.split("/"); return raiz.collection(c).doc(d); } };
+  }
+  async function cargarEscuela() {
+    const r = await fetch("banco.json", { cache: "no-cache" });
+    if (!r.ok) throw new Error(String(r.status));
+    const d = await r.json();
+    return { lista: (Array.isArray(d) ? d : d.planeaciones || []).filter((p) => p && p.id && p.proyecto).map(normalize), pmc: normPmc(d.pmc) };
+  }
+  function errorCuenta(e) {
+    const c = (e && e.code) || "", fuera = "Aquí no se pudo abrir la ventana de Google. Abre la página en Safari o Chrome, o usa “Entrar con correo y contraseña”.";
+    const M = {
+      "auth/popup-closed-by-user": "Se cerró la ventana de Google antes de terminar. Vuelve a intentarlo.",
+      "auth/cancelled-popup-request": "",
+      "auth/popup-blocked": "El navegador bloqueó la ventana de Google. Permite las ventanas emergentes o usa “Entrar con correo y contraseña”.",
+      "auth/operation-not-supported-in-this-environment": fuera, "auth/web-storage-unsupported": fuera,
+      "auth/unauthorized-domain": "Falta autorizar este sitio en Firebase (Authentication → Configuración → Dominios autorizados).",
+      "auth/operation-not-allowed": "Falta habilitar este método de acceso en Firebase (Authentication → Método de acceso).",
+      "auth/invalid-credential": "El correo o la contraseña no son correctos.", "auth/wrong-password": "La contraseña no es correcta.",
+      "auth/invalid-login-credentials": "El correo o la contraseña no son correctos.",
+      "auth/user-not-found": "No hay una cuenta con ese correo. Pulsa “Crear cuenta”.", "auth/invalid-email": "Escribe un correo válido.",
+      "auth/missing-email": "Escribe tu correo.", "auth/missing-password": "Escribe tu contraseña.",
+      "auth/email-already-in-use": "Ya existe una cuenta con ese correo. Pulsa “Entrar”.",
+      "auth/weak-password": "La contraseña debe tener al menos 6 caracteres.",
+      "auth/too-many-requests": "Demasiados intentos. Espera unos minutos y vuelve a intentar.",
+      "auth/network-request-failed": "No hay conexión a internet.",
+    };
+    return c in M ? M[c] : "No se pudo entrar" + (c ? " (" + c + ")" : "") + ".";
+  }
+  function cuentaHtml(dir) {
+    return `<div class="card cuenta"><h2>${dir ? "Bancos de las maestras" : "Guarda tu banco en línea"}</h2>
+      <p class="sub">${dir ? "Entra con tu cuenta de Google de directora para ver los bancos de las maestras y copiar sus planeaciones al banco del jardín."
+        : "Entra con tu cuenta y tu banco se guarda en línea: es el mismo en tu celular y en tu laptop, y no se pierde aunque se borren los datos del navegador. La directora puede ver las planeaciones de tu banco para compartirlas con el jardín."}</p>
+      <div class="row"><button class="btn primary" data-auth="google">Entrar con Google</button>${dir ? '<button class="btn ghost" data-dir="cerrar">Cerrar</button>' : '<button class="btn ghost" data-auth="sin">Seguir sin cuenta</button>'}</div>
+      ${dir ? "" : `<details class="cuenta-correo"><summary>Entrar con correo y contraseña</summary><div class="cuenta-form">
+        <label class="fld"><span>Correo</span><input type="email" data-auth-correo autocomplete="email" inputmode="email"></label>
+        <label class="fld"><span>Contraseña (mínimo 6 caracteres)</span><input type="password" data-auth-clave autocomplete="current-password"></label>
+        <div class="row"><button class="btn primary" data-auth="entrar">Entrar</button><button class="btn" data-auth="crear">Crear cuenta</button><button class="btn ghost" data-auth="olvido">Olvidé mi contraseña</button></div></div></details>`}
+      <p class="cuenta-msg" role="status" hidden></p></div>`;
+  }
+  function renderCuenta() {
+    const c = $("#cuenta"), info = $("#cuentaInfo"); if (!c || !info) return;
+    if (!PERSONAL || !FB_CFG) { c.hidden = true; info.hidden = true; return; }
+    if (nube) {
+      c.hidden = true; info.hidden = false;
+      info.innerHTML = `<div class="card cuenta-on"><span>Tu banco está guardado en línea con <b>${esc(fbUser.email || fbUser.displayName || "tu cuenta")}</b>: es el mismo en todos tus dispositivos.</span><button class="btn sm ghost" data-cuenta="salir">Cerrar sesión</button></div>`;
+      return;
+    }
+    info.hidden = true;
+    if (sinConexionNube) {
+      c.hidden = false;
+      c.innerHTML = `<div class="card sync"><b>No se pudo abrir tu banco en línea.</b><p>Revisa tu conexión a internet y vuelve a intentar. Mientras tanto ves el banco de este dispositivo.</p><div class="row" style="margin-top:8px"><button class="btn sm primary" data-cuenta="recargar">Volver a intentar</button></div></div>`;
+      return;
+    }
+    const ver = cuentaAbierta || !ls.get(UKEY + ".sin", false);
+    c.hidden = !ver;
+    if (ver && !c.querySelector(".cuenta")) c.innerHTML = cuentaHtml(false);
+  }
+  let perfilT = null, perfilUlt = "";
+  function actualizarPerfil() {
+    if (!nube || !fbUser) return;
+    clearTimeout(perfilT);
+    perfilT = setTimeout(() => {
+      const datos = { nombre: String(general.docente || "").trim() || fbUser.displayName || fbUser.email || "", email: fbUser.email || "", grupo: String(general.grupo || "").trim(), total: plans.length };
+      const k = JSON.stringify(datos); if (k === perfilUlt) return; perfilUlt = k;
+      db.raiz.set(Object.assign({ actualizado: new Date().toISOString() }, datos), { merge: true }).catch(() => { perfilUlt = ""; });
+    }, 1200);
+  }
+  // Al entrar por primera vez en un dispositivo, lo que ya estaba guardado en él se sube a su banco en línea.
+  function migrarLocal() {
+    if (migrado) return; migrado = true;
+    const locales = (ls.get(LKEY, []) || []).map(normalize); if (!locales.length) return;
+    const subir = locales.filter((lp) => { const c = plans.find((x) => x.id === lp.id); return !c || String(lp.actualizado || "") > String(c.actualizado || ""); });
+    subir.forEach((p) => { const b = clone(p); delete b.id; db.collection("planeaciones").doc(p.id).set(b).catch(() => {}); });
+    ls.set(LKEY + ".antes", locales); ls.set(LKEY, []);
+    if (subir.length) toast(`${subir.length === 1 ? "Se subió 1 planeación" : "Se subieron " + subir.length + " planeaciones"} de este dispositivo a tu banco en línea.`);
+  }
+  async function cerrarSesion() {
+    if (!fb) return;
+    try { await fb.auth.signOut(); } catch (e) { /* se recarga de todos modos */ }
+    try { await fb.fdb.terminate(); await fb.fdb.clearPersistence(); } catch (e) { /* la copia sin conexión se limpia al volver a entrar */ }
+    ls.set(UKEY, null); ls.set(UKEY + ".sin", null);
+    location.reload();
+  }
+  document.addEventListener("click", async (ev) => {
+    const cb = ev.target.closest("[data-cuenta]");
+    if (cb) {
+      const a = cb.dataset.cuenta;
+      if (a === "salir") cerrarSesion();
+      else if (a === "recargar") location.reload();
+      else if (a === "abrir") { cuentaAbierta = true; ls.set(UKEY + ".sin", null); renderCuenta(); iniciarFirebase(true).catch(() => {}); window.scrollTo({ top: 0 }); }
+      return;
+    }
+    const b = ev.target.closest("[data-auth]"); if (!b) return;
+    const box = b.closest(".cuenta"), msg = box.querySelector(".cuenta-msg"), dir = !!b.closest("#maestrasBox");
+    const decir = (t, bien) => { msg.hidden = !t; msg.textContent = t || ""; msg.classList.toggle("ok", !!bien); };
+    const a = b.dataset.auth;
+    if (a === "sin") { ls.set(UKEY + ".sin", true); cuentaAbierta = false; $("#cuenta").hidden = true; renderSync(); return; }
+    if (!fb) { decir("Conectando… vuelve a tocar el botón en un momento.", true); iniciarFirebase(!dir).then(() => decir("")).catch(() => decir("No se pudo conectar. Revisa tu conexión a internet.")); return; }
+    const correo = ((box.querySelector("[data-auth-correo]") || {}).value || "").trim(), clave = (box.querySelector("[data-auth-clave]") || {}).value || "";
+    decir(""); b.disabled = true;
+    try {
+      if (a === "google") { const pr = new firebase.auth.GoogleAuthProvider(); pr.setCustomParameters({ prompt: "select_account" }); await fb.auth.signInWithPopup(pr); }
+      else if (a === "entrar") await fb.auth.signInWithEmailAndPassword(correo, clave);
+      else if (a === "crear") await fb.auth.createUserWithEmailAndPassword(correo, clave);
+      else if (a === "olvido") {
+        if (!correo) { decir("Escribe tu correo y vuelve a tocar “Olvidé mi contraseña”."); return; }
+        await fb.auth.sendPasswordResetEmail(correo); decir("Te enviamos un correo para cambiar tu contraseña. Revisa también la carpeta de spam.", true); return;
+      } else return;
+      if (dir) listarMaestras(fb.auth.currentUser);
+      else { decir("¡Listo! Abriendo tu banco en línea…", true); location.reload(); }
+    } catch (e) { decir(errorCuenta(e)); }
+    finally { b.disabled = false; }
+  });
+  document.addEventListener("keydown", (ev) => {
+    if (ev.key === "Enter" && ev.target.matches && ev.target.matches("[data-auth-clave]")) { const e = ev.target.closest(".cuenta").querySelector('[data-auth="entrar"]'); if (e) e.click(); }
+  });
+
+  // "Bancos de las maestras" (solo la directora): lista de maestras y, de cada una, sus planeaciones para copiar.
+  async function abrirMaestras() {
+    const box = $("#maestrasBox"); box.hidden = false;
+    box.innerHTML = '<div class="card"><h2>Bancos de las maestras</h2><p class="sub">Conectando…</p></div>';
+    try { await conLimite(iniciarFirebase(false), 20000); }
+    catch (e) { box.innerHTML = '<div class="card"><h2>Bancos de las maestras</h2><p class="sub">No se pudo conectar. Revisa tu conexión a internet y vuelve a intentar.</p><div class="row"><button class="btn ghost" data-dir="cerrar">Cerrar</button></div></div>'; return; }
+    const u = await primerUsuario(fb.auth);
+    if (u) listarMaestras(u); else box.innerHTML = cuentaHtml(true);
+  }
+  async function listarMaestras(u) {
+    const box = $("#maestrasBox"); box.hidden = false;
+    box.innerHTML = '<div class="card"><h2>Bancos de las maestras</h2><p class="sub">Buscando los bancos…</p></div>';
+    let docs;
+    try { docs = (await fb.fdb.collection("maestras").get()).docs; }
+    catch (e) {
+      box.innerHTML = `<div class="card"><h2>Bancos de las maestras</h2><p class="sub">${e && e.code === "permission-denied"
+        ? `La cuenta <b>${esc(u.email || "")}</b> no tiene permiso de directora. Entra con el correo de Gmail que está en las reglas de Firebase.`
+        : "No se pudieron leer los bancos. Revisa tu conexión a internet." + (e && e.code ? " (" + esc(e.code) + ")" : "")}</p>
+        <div class="row"><button class="btn" data-dir="salir">Entrar con otra cuenta</button><button class="btn ghost" data-dir="cerrar">Cerrar</button></div></div>`;
+      return;
+    }
+    const fecha = (t) => { const d = new Date(t); return isNaN(d) ? "" : d.toLocaleDateString("es-MX", { day: "numeric", month: "long" }); };
+    maestrasLista = docs.map((d) => Object.assign({ uid: d.id }, d.data())).sort((a, b) => String(a.nombre || a.email || "").localeCompare(String(b.nombre || b.email || ""), "es"));
+    box.innerHTML = `<div class="card"><h2>Bancos de las maestras</h2>
+      <p class="sub">Entraste como ${esc(u.email || "")}. Elige una maestra para ver sus planeaciones y copiar las que quieras a tu banco.</p>
+      ${maestrasLista.length ? `<ul class="maestras-list">${maestrasLista.map((m) => `<li><div><b>${esc(m.nombre || m.email || "Sin nombre")}</b><span class="meta">${[m.grupo, m.email, m.total != null ? m.total + (m.total === 1 ? " planeación" : " planeaciones") : "", m.actualizado ? "actualizado el " + fecha(m.actualizado) : ""].filter(Boolean).map(esc).join(" · ")}</span></div>
+        <button class="btn sm primary" data-dir-ver="${esc(m.uid)}">Ver sus planeaciones</button></li>`).join("")}</ul>`
+        : '<p>Todavía ninguna maestra ha guardado su banco en línea.</p>'}
+      <div class="row"><button class="btn sm" data-dir="actualizar">Actualizar lista</button><button class="btn sm ghost" data-dir="salir">Cerrar sesión</button><button class="btn sm ghost" data-dir="cerrar">Cerrar</button></div></div>`;
+  }
+  async function verMaestra(uid, btn) {
+    const m = maestrasLista.find((x) => x.uid === uid) || {}, nombre = m.nombre || m.email || "la maestra", t = btn.textContent;
+    btn.disabled = true; btn.textContent = "Abriendo…";
+    try {
+      const snap = await fb.fdb.collection("maestras").doc(uid).collection("planeaciones").get();
+      prepararCarga({ titulo: "Planeaciones de " + nombre, de: "", lista: snap.docs.map((d) => Object.assign({}, d.data(), { id: d.id })), pmc: null,
+        vacio: `${nombre} todavía no tiene planeaciones en su banco.`, yaEstan: (n) => n === 1 ? `La planeación de ${nombre} ya está en tu banco.` : `Las ${n} planeaciones de ${nombre} ya están en tu banco.` });
+    } catch (e) { toast("No se pudieron abrir sus planeaciones" + (e && e.code ? " (" + e.code + ")" : "") + "."); }
+    finally { btn.disabled = false; btn.textContent = t; }
+  }
+
   async function initStore() {
     currentId = ls.get(CKEY, null);
     if (inViewer) {
       try { db = await window.claude.use("db"); } catch (e) { db = null; }
       try { downloadsNs = await window.claude.use("downloads"); } catch (e) { downloadsNs = null; }
     }
+    $("#btnPrint").hidden = inViewer;
+    $("#btnMaestras").hidden = !(FB_CFG && !PERSONAL);
+    // Maestra con cuenta: su banco vive en Firestore (con copia sin conexión en el dispositivo).
+    if (!db && PERSONAL && FB_CFG && !(ls.get(UKEY + ".sin", false) && !ls.get(UKEY, null))) {
+      setStatus("", "Conectando…");
+      try {
+        const F = await conLimite(iniciarFirebase(true), 20000), u = await conLimite(primerUsuario(F.auth), 15000);
+        if (u) { fbUser = u; db = alcanceDe(F.fdb, u.uid); nube = true; ls.set(UKEY, u.uid); }
+      } catch (e) { sinConexionNube = !!ls.get(UKEY, null); }
+    }
     if (db) {
       mode = "cloud"; setStatus("", "Conectando…");
+      const enLinea = nube ? "En línea · " + (fbUser.displayName || fbUser.email || "mi cuenta") : "Guardado en tu cuenta";
       const timer = setTimeout(() => { if (!loaded) setStatus("warn", "Sin conexión todavía"); }, 10000);
+      if (nube) cargarEscuela().then((e) => { escuela = e.lista; pmcEscuela = e.pmc; if (!pmcPropio) { pmc = e.pmc; renderSheet(); } $("#btnEscuela").hidden = !escuela.length; }).catch(() => {});
       db.collection("planeaciones").onSnapshot((snap) => {
-        if (!snap.metadata.fromCache) { clearTimeout(timer); setStatus("cloud", "Guardado en tu cuenta"); }
+        if (!snap.metadata.fromCache) { clearTimeout(timer); setStatus("cloud", enLinea); if (nube) migrarLocal(); }
         loaded = true;
         plans = snap.docs.map((d) => normalize(Object.assign({}, d.data(), { id: d.id })));
-        renderAll();
+        renderAll(); actualizarPerfil();
       }, () => { clearTimeout(timer); loaded = true; setStatus("warn", "No se pudo leer el banco"); renderAll(); });
       db.doc("config/general").onSnapshot((s) => {
         if (s.exists) { general = Object.assign(general, s.data()); gradoInicial(); renderGeneralInputs(); renderSheet(); }
+        else if (nube && !generalSubido && !s.metadata.fromCache) {
+          generalSubido = true; const g = ls.get(GKEY, null);
+          if (g && Object.keys(g).length) { general = Object.assign(general, g); gradoInicial(); renderGeneralInputs(); renderSheet(); db.doc("config/general").set(clone(general)).catch(() => {}); }
+        }
       }, () => {});
       db.doc("config/pmc").onSnapshot((s) => {
-        pmc = normPmc(s.exists ? s.data() : null); renderSheet();
+        pmcPropio = s.exists;
+        pmc = normPmc(s.exists ? s.data() : nube ? pmcEscuela : null); renderSheet();
         const v = $("#v-pmc"); if (!v.hidden && !v.contains(document.activeElement)) renderPmc();
       }, () => {});
+      renderCuenta();
     } else {
       mode = "local";
-      $("#btnPrint").hidden = inViewer;
       general = Object.assign(general, ls.get(GKEY, {})); gradoInicial();
       localPlans = (ls.get(LKEY, []) || []).map(normalize);
       hidden = ls.get(HKEY, []) || [];
@@ -647,7 +872,7 @@ table.an-tabla tbody tr:last-child > * { border-bottom: 0; }
       hidden = hidden.filter((id) => shared.some((x) => x.id === id));
       ls.set(LKEY, localPlans); ls.set(HKEY, hidden);
       $("#btnEscuela").hidden = !(PERSONAL && escuela.length);
-      loaded = true; rebuildLocal(); renderAll();
+      loaded = true; rebuildLocal(); renderAll(); renderCuenta();
     }
   }
   function rebuildLocal() {
@@ -676,6 +901,7 @@ table.an-tabla tbody tr:last-child > * { border-bottom: 0; }
   async function savePlan(p) {
     const body = clone(p); delete body.id; body.actualizado = new Date().toISOString();
     if (mode === "cloud") {
+      if (nube) { db.collection("planeaciones").doc(p.id).set(body).catch(() => toast("No se pudo guardar en línea. Revisa tu conexión y vuelve a intentar.")); return; }
       try { await db.collection("planeaciones").doc(p.id).set(body); }
       catch (e) { toast(e && e.code === "quota_exceeded" ? "Tu banco está lleno. Elimina alguna planeación y vuelve a intentar." : "No se pudo guardar. Revisa tu conexión y vuelve a intentar."); throw e; }
     } else {
@@ -689,7 +915,10 @@ table.an-tabla tbody tr:last-child > * { border-bottom: 0; }
     }
   }
   async function removePlan(id) {
-    if (mode === "cloud") { await db.collection("planeaciones").doc(id).delete(); return; }
+    if (mode === "cloud") {
+      if (nube) { db.collection("planeaciones").doc(id).delete().catch(() => toast("No se pudo eliminar en línea. Revisa tu conexión.")); return; }
+      await db.collection("planeaciones").doc(id).delete(); return;
+    }
     localPlans = localPlans.filter((p) => p.id !== id);
     if (shared.some((p) => p.id === id) && !hidden.includes(id)) hidden.push(id);
     ls.set(LKEY, localPlans); ls.set(HKEY, hidden);
@@ -699,7 +928,7 @@ table.an-tabla tbody tr:last-child > * { border-bottom: 0; }
   function saveGeneralSoon() {
     clearTimeout(gTimer);
     gTimer = setTimeout(async () => {
-      if (mode === "cloud") { try { await db.doc("config/general").set(clone(general)); } catch (e) { /* se reintenta con el siguiente cambio */ } }
+      if (mode === "cloud") { try { if (nube) actualizarPerfil(); await db.doc("config/general").set(clone(general)); } catch (e) { /* se reintenta con el siguiente cambio */ } }
       else ls.set(GKEY, general);
     }, 700);
   }
@@ -1365,11 +1594,13 @@ table.an-tabla tbody tr:last-child > * { border-bottom: 0; }
   function renderSync() {
     const box = $("#syncNote"); if (!box) return;
     if (PERSONAL) {
+      if (nube) { box.hidden = true; return; }
       const ult = ls.get(RKEY, ""), sinCopia = plans.some((p) => String(p.actualizado || "") > ult);
       box.hidden = !sinCopia;
       if (sinCopia) box.innerHTML = `<b>Tu banco se guarda solo en este dispositivo.</b>
         <p>Pulsa “Descargar banco” de vez en cuando y guarda el archivo en un lugar seguro (Archivos, Drive o tu correo). Con “Cargar banco” lo pasas a tu otro dispositivo o lo recuperas si se llega a borrar.
-        ${ult ? "Tu última copia es del " + esc(new Date(ult).toLocaleDateString("es-MX", { day: "numeric", month: "long" })) + " y desde entonces hay cambios." : "Todavía no has descargado ninguna copia."}</p>`;
+        ${ult ? "Tu última copia es del " + esc(new Date(ult).toLocaleDateString("es-MX", { day: "numeric", month: "long" })) + " y desde entonces hay cambios." : "Todavía no has descargado ninguna copia."}</p>
+        ${FB_CFG ? '<p>O mejor: entra con tu cuenta y tu banco se guarda en línea, sin descargar copias.</p><div class="row" style="margin-top:8px"><button class="btn sm primary" data-cuenta="abrir">Guardar mi banco en línea</button></div>' : ""}`;
       return;
     }
     const n = mode === "local" && sharedOk ? pendientes() : 0;
@@ -1432,11 +1663,22 @@ table.an-tabla tbody tr:last-child > * { border-bottom: 0; }
       setTimeout(() => { b.classList.remove("armed"); b.textContent = "Copiar del banco del jardín"; }, 4000); return;
     }
     b.classList.remove("armed"); b.textContent = "Copiar del banco del jardín";
+    const listo = `Se copiaron ${nuevas.length} planeaciones del jardín a tu banco. Elimina las que no uses.`;
+    if (mode === "cloud") { nuevas.forEach((p) => savePlan(clone(p))); toast(listo); return; }
     const ahora = new Date().toISOString();
     nuevas.forEach((p) => localPlans.push(normalize(Object.assign(clone(p), { actualizado: ahora }))));
     if (!ls.set(LKEY, localPlans)) toast("El navegador no permitió guardar. Usa “Descargar banco”.");
-    else toast(`Se copiaron ${nuevas.length} planeaciones del jardín a tu banco. Elimina las que no uses.`);
+    else toast(listo);
     rebuildLocal(); renderAll();
+  });
+  $("#btnMaestras").addEventListener("click", abrirMaestras);
+  $("#maestrasBox").addEventListener("click", async (ev) => {
+    const b = ev.target.closest("[data-dir], [data-dir-ver]"); if (!b) return;
+    const a = b.dataset.dir;
+    if (a === "cerrar") { $("#maestrasBox").hidden = true; return; }
+    if (a === "salir") { try { await fb.auth.signOut(); } catch (e) { /* ya estaba fuera */ } $("#maestrasBox").innerHTML = cuentaHtml(true); return; }
+    if (a === "actualizar") { if (fb && fb.auth.currentUser) listarMaestras(fb.auth.currentUser); return; }
+    if (b.dataset.dirVer) verMaestra(b.dataset.dirVer, b);
   });
   $("#btnWordIn").addEventListener("click", () => $("#fileWordIn").click());
   $("#fileWordIn").addEventListener("change", async (ev) => { const fs = Array.from(ev.target.files || []); ev.target.value = ""; if (fs.length) await importarWords(fs); });
@@ -1452,28 +1694,33 @@ table.an-tabla tbody tr:last-child > * { border-bottom: 0; }
     let d, list;
     try { d = JSON.parse(await f.text()); list = Array.isArray(d) ? d : d.planeaciones; if (!Array.isArray(list)) throw 0; }
     catch (e) { toast("Ese archivo no es un banco de planeaciones."); return; }
+    const docente = String((d && d.docente) || "").trim();
+    prepararCarga({ titulo: `Cargar planeaciones de “${f.name}”`, de: docente ? "Banco de " + docente : d && d.origen === "maestra" ? "Banco de una maestra" : "",
+      lista: list, pmc: d && d.pmc, vacio: "Ese archivo no tiene planeaciones.", yaEstan: (n) => n === 1 ? "La planeación de ese archivo ya está en tu banco." : `Las ${n} planeaciones de ese archivo ya están en tu banco.` });
+  });
+  function prepararCarga(o) {
     const items = []; let iguales = 0;
-    list.forEach((raw) => {
+    o.lista.forEach((raw) => {
       if (!raw || !raw.proyecto) return;
       const p = normalize(raw); if (!p.id || !/^[A-Za-z0-9_.~:@+-]{1,180}$/.test(p.id)) p.id = slug(p.proyecto);
       const mia = plans.find((x) => x.id === p.id) || plans.find((x) => claveNombre(x) === claveNombre(p));
       if (mia && firmaPlan(mia) === firmaPlan(p)) { iguales++; return; }
       items.push({ p, mia: mia || null, sel: !mia });
     });
-    const pmcArchivo = d && d.pmc && Array.isArray(d.pmc.actividades) && d.pmc.actividades.length ? normPmc(d.pmc) : null;
+    const pmcArchivo = o.pmc && Array.isArray(o.pmc.actividades) && o.pmc.actividades.length ? normPmc(o.pmc) : null;
     const pmcDistinto = !!pmcArchivo && JSON.stringify(Object.assign({}, pmcArchivo, { actualizado: "" })) !== JSON.stringify(Object.assign({}, normPmc(pmc), { actualizado: "" }));
-    carga = { archivo: f.name, docente: String((d && d.docente) || "").trim(), origen: (d && d.origen) || "", items, iguales, pmc: pmcDistinto ? pmcArchivo : null, conPmc: false };
-    if (!items.length && !carga.pmc) { carga = null; toast(iguales ? `Las ${iguales} planeaciones de ese archivo ya están en tu banco.` : "Ese archivo no tiene planeaciones."); return; }
+    carga = { titulo: o.titulo, de: o.de || "", items, iguales, pmc: pmcDistinto ? pmcArchivo : null, conPmc: false };
+    if (!items.length && !carga.pmc) { carga = null; renderCarga(); toast(iguales ? o.yaEstan(iguales) : o.vacio); return; }
     renderCarga();
     const box = $("#cargaBox"), tope = ($(".topbar") ? $(".topbar").offsetHeight : 0) + 12;
     window.scrollTo({ top: Math.max(0, box.getBoundingClientRect().top + window.scrollY - tope) });
-  });
+  }
   function renderCarga() {
     const box = $("#cargaBox"); if (!box) return;
     box.hidden = !carga; if (!carga) { box.innerHTML = ""; return; }
     const n = carga.items.filter((x) => x.sel).length;
-    const de = carga.docente ? `Banco de ${esc(carga.docente)} · ` : carga.origen === "maestra" ? "Banco de una maestra · " : "";
-    box.innerHTML = `<div class="card carga"><h2>Cargar planeaciones de “${esc(carga.archivo)}”</h2>
+    const de = carga.de ? esc(carga.de) + " · " : "";
+    box.innerHTML = `<div class="card carga"><h2>${esc(carga.titulo)}</h2>
       <p class="sub">${de}${carga.items.length} ${carga.items.length === 1 ? "planeación" : "planeaciones"} para elegir${carga.iguales ? ` · ${carga.iguales} ya ${carga.iguales === 1 ? "está" : "están"} igual en tu banco y no se repite${carga.iguales === 1 ? "" : "n"}` : ""}. Marca las que quieres agregar.</p>
       ${carga.items.length ? `<div class="row"><button class="btn sm" data-carga="todas">Marcar todas</button><button class="btn sm" data-carga="ninguna">Desmarcar todas</button></div>
       <ul class="carga-list">${carga.items.map((x, i) => { const av = x.av != null ? x.av : (x.av = revisarPlan(x.p).filter((r) => r.nivel === "aviso").length); return `<li><label><input type="checkbox" data-ci="${i}"${x.sel ? " checked" : ""}><b>${esc(x.p.proyecto)}</b>
