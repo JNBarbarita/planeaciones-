@@ -64,6 +64,7 @@ main { max-width: 1240px; margin: 0 auto; padding-block: 16px 48px;
 .btn.ghost { background: transparent; }
 .btn.danger { color: var(--danger); }
 .btn.danger.armed { background: var(--danger); border-color: var(--danger); color: #fff; }
+#btnEscuela.armed { background: var(--warm); border-color: var(--warm); color: #fff; }
 .btn.sm { padding: 5px 10px; font-size: .82rem; }
 .btn[disabled] { opacity: .5; cursor: default; }
 .row { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
@@ -327,6 +328,7 @@ table.an-tabla tbody tr:last-child > * { border-bottom: 0; }
         <button class="btn primary" id="btnNew2">Nueva planeación</button>
         <button class="btn warm" id="btnWordIn">Subir Word</button>
         <input type="file" id="fileWordIn" accept=".docx,application/vnd.openxmlformats-officedocument.wordprocessingml.document" multiple hidden>
+        <button class="btn" id="btnEscuela" hidden>Copiar del banco del jardín</button>
         <button class="btn" id="btnBackup">Descargar banco</button>
         <button class="btn" id="btnRestore">Cargar banco</button>
         <input type="file" id="fileRestore" accept=".json,application/json" hidden>
@@ -491,14 +493,18 @@ table.an-tabla tbody tr:last-child > * { border-bottom: 0; }
   const ordenNombre = (t) => String(t || "").replace(/^[^\p{L}\p{N}]+/u, "");
 
   // ------------------------------------------------------------------ almacenamiento (nube del artifact o este dispositivo)
-  const LKEY = "bancoPlaneaciones.v2", GKEY = "bancoPlaneaciones.general.v2", CKEY = "bancoPlaneaciones.actual", HKEY = "bancoPlaneaciones.ocultas";
+  // Banco personal (maestras.html): cada maestra tiene su propio banco en su dispositivo, con claves aparte;
+  // el banco del jardín (banco.json) no se mezcla, solo se puede copiar con "Copiar del banco del jardín".
+  const PERSONAL = !inViewer && !!window.BANCO_PERSONAL;
+  const KP = PERSONAL ? "miBanco" : "bancoPlaneaciones";
+  const LKEY = KP + ".v2", GKEY = KP + ".general.v2", CKEY = KP + ".actual", HKEY = KP + ".ocultas", RKEY = KP + ".respaldo";
   // Fuera de Claude (sitio propio): el banco compartido vive en banco.json; lo que se crea o cambia en un
   // dispositivo se guarda en ese navegador hasta que se sube un banco.json nuevo.
-  let shared = [], localPlans = [], hidden = [], sharedOk = false;
+  let shared = [], localPlans = [], hidden = [], sharedOk = false, escuela = [];
   const origen = {};
 
   // Programa de Mejora Continua: actividades por mes. "Actividades de PMC" se llena sola según el periodo de la planeación.
-  const PKEY = "bancoPlaneaciones.pmc";
+  const PKEY = KP + ".pmc";
   const MESES_PMC = [["sep", "Septiembre"], ["oct", "Octubre"], ["nov", "Noviembre"], ["dic", "Diciembre"], ["ene", "Enero"], ["feb", "Febrero"], ["mar", "Marzo"], ["abr", "Abril"], ["may", "Mayo"], ["jun", "Junio"]];
   const AMBITOS = { A: "Aprovechamiento académico y asistencia de los alumnos", B: "Prácticas docentes y directivas", C: "Formación docente", D: "Avance de los planes y programas educativos", E: "Participación de la comunidad", F: "Desempeño de la autoridad escolar", G: "Infraestructura y equipamiento", H: "Carga administrativa" };
   const MES_RE = [/\bsep(t(iembre)?)?\b|\bsetiembre\b/, /\boct(ubre)?\b/, /\bnov(iembre)?\b/, /\bdic(iembre)?\b/, /\bene(ro)?\b/, /\bfeb(rero)?\b/, /\bmar(zo)?\b/, /\babr(il)?\b/, /\bmayo?\b/, /\bjun(io)?\b/];
@@ -568,7 +574,8 @@ table.an-tabla tbody tr:last-child > * { border-bottom: 0; }
         const r = await fetch("banco.json", { cache: "no-cache" });
         if (!r.ok) throw new Error(String(r.status));
         const d = await r.json();
-        shared = (Array.isArray(d) ? d : d.planeaciones || []).filter((p) => p && p.id && p.proyecto).map(normalize);
+        const lista = (Array.isArray(d) ? d : d.planeaciones || []).filter((p) => p && p.id && p.proyecto).map(normalize);
+        if (PERSONAL) escuela = lista; else shared = lista;
         pmc = normPmc(d.pmc);
         sharedOk = true;
       } catch (e) { shared = []; sharedOk = false; }
@@ -578,6 +585,7 @@ table.an-tabla tbody tr:last-child > * { border-bottom: 0; }
       localPlans = localPlans.filter((lp) => { const sp = shared.find((x) => x.id === lp.id); return !sp || String(lp.actualizado || "") > String(sp.actualizado || ""); });
       hidden = hidden.filter((id) => shared.some((x) => x.id === id));
       ls.set(LKEY, localPlans); ls.set(HKEY, hidden);
+      $("#btnEscuela").hidden = !(PERSONAL && escuela.length);
       loaded = true; rebuildLocal(); renderAll();
     }
   }
@@ -585,10 +593,11 @@ table.an-tabla tbody tr:last-child > * { border-bottom: 0; }
     Object.keys(origen).forEach((k) => delete origen[k]);
     const out = [];
     shared.forEach((p) => { if (!hidden.includes(p.id) && !localPlans.some((l) => l.id === p.id)) { out.push(p); origen[p.id] = "banco"; } });
-    localPlans.forEach((p) => { out.push(p); origen[p.id] = shared.some((x) => x.id === p.id) ? "modificada" : "dispositivo"; });
+    localPlans.forEach((p) => { out.push(p); origen[p.id] = PERSONAL ? "mio" : shared.some((x) => x.id === p.id) ? "modificada" : "dispositivo"; });
     plans = out;
     const n = pendientes();
-    if (!sharedOk) setStatus("warn", "Guardado solo en este dispositivo");
+    if (PERSONAL) setStatus("", "Mi banco · este dispositivo");
+    else if (!sharedOk) setStatus("warn", "Guardado solo en este dispositivo");
     else if (n) setStatus("warn", n === 1 ? "1 cambio solo en este dispositivo" : n + " cambios solo en este dispositivo");
     else setStatus("cloud", "Banco al día");
   }
@@ -1279,6 +1288,14 @@ table.an-tabla tbody tr:last-child > * { border-bottom: 0; }
   }
   function renderSync() {
     const box = $("#syncNote"); if (!box) return;
+    if (PERSONAL) {
+      const ult = ls.get(RKEY, ""), sinCopia = plans.some((p) => String(p.actualizado || "") > ult);
+      box.hidden = !sinCopia;
+      if (sinCopia) box.innerHTML = `<b>Tu banco se guarda solo en este dispositivo.</b>
+        <p>Pulsa “Descargar banco” de vez en cuando y guarda el archivo en un lugar seguro (Archivos, Drive o tu correo). Con “Cargar banco” lo pasas a tu otro dispositivo o lo recuperas si se llega a borrar.
+        ${ult ? "Tu última copia es del " + esc(new Date(ult).toLocaleDateString("es-MX", { day: "numeric", month: "long" })) + " y desde entonces hay cambios." : "Todavía no has descargado ninguna copia."}</p>`;
+      return;
+    }
     const n = mode === "local" && sharedOk ? pendientes() : 0;
     box.hidden = !n;
     if (n) box.innerHTML = `<b>Tienes ${n === 1 ? "1 cambio" : n + " cambios"} guardados solo en este dispositivo.</b>
@@ -1288,7 +1305,7 @@ table.an-tabla tbody tr:last-child > * { border-bottom: 0; }
     renderSync();
     const el = $("#bankList");
     if (!loaded) { el.innerHTML = '<div class="empty"><b>Cargando tu banco…</b>Tus planeaciones aparecerán aquí.</div>'; return; }
-    if (!plans.length) { el.innerHTML = '<div class="empty"><b>Tu banco está vacío</b>Pulsa “Subir Word” para agregar una planeación que ya tengas en Word, “Nueva planeación” para capturarla aquí, o “Cargar banco” si tienes un archivo banco.json.</div>'; return; }
+    if (!plans.length) { el.innerHTML = `<div class="empty"><b>Tu banco está vacío</b>Pulsa “Subir Word” para agregar una planeación que ya tengas en Word, “Nueva planeación” para capturarla aquí, o “Cargar banco” si tienes un archivo de respaldo.${PERSONAL && escuela.length ? ` También puedes empezar con las ${escuela.length} planeaciones del jardín con “Copiar del banco del jardín”.` : ""}</div>`; return; }
     const q = $("#q").value.trim().toLowerCase(), fc = $("#fCampo").value, fe = $("#fEje").value, fg = $("#fGrado").value;
     const list = plans.filter((p) => (!q || planText(p).includes(q)) && (!fg || gradoDe(p) === fg) && (!fc || (p.campos[fc] || []).some((e) => e.contenido || e.pdas.length)) && (!fe || p.ejes.includes(fe)))
       .sort((a, b) => ordenNombre(a.proyecto).localeCompare(ordenNombre(b.proyecto), "es"));
@@ -1326,7 +1343,22 @@ table.an-tabla tbody tr:last-child > * { border-bottom: 0; }
   $("#btnBackup").addEventListener("click", () => {
     if (!plans.length) { toast("Tu banco está vacío."); return; }
     const data = JSON.stringify({ tipo: "banco-planeaciones", version: 2, fecha: new Date().toISOString(), planeaciones: plans.map((p) => clone(p)), pmc: clone(pmc) }, null, 1);
-    offerFile("banco.json", new Blob([data], { type: "application/json" }));
+    offerFile(PERSONAL ? "mi-banco-de-planeaciones.json" : "banco.json", new Blob([data], { type: "application/json" }));
+    if (PERSONAL) { ls.set(RKEY, new Date().toISOString()); renderSync(); }
+  });
+  $("#btnEscuela").addEventListener("click", (ev) => {
+    const b = ev.currentTarget, nuevas = escuela.filter((p) => !plans.some((x) => x.id === p.id));
+    if (!nuevas.length) { toast("Ya tienes todas las planeaciones del banco del jardín."); return; }
+    if (!b.classList.contains("armed")) {
+      b.classList.add("armed"); b.textContent = `¿Copiar ${nuevas.length} planeaciones? Toca otra vez`;
+      setTimeout(() => { b.classList.remove("armed"); b.textContent = "Copiar del banco del jardín"; }, 4000); return;
+    }
+    b.classList.remove("armed"); b.textContent = "Copiar del banco del jardín";
+    const ahora = new Date().toISOString();
+    nuevas.forEach((p) => localPlans.push(normalize(Object.assign(clone(p), { actualizado: ahora }))));
+    if (!ls.set(LKEY, localPlans)) toast("El navegador no permitió guardar. Usa “Descargar banco”.");
+    else toast(`Se copiaron ${nuevas.length} planeaciones del jardín a tu banco. Elimina las que no uses.`);
+    rebuildLocal(); renderAll();
   });
   $("#btnWordIn").addEventListener("click", () => $("#fileWordIn").click());
   $("#fileWordIn").addEventListener("change", async (ev) => { const fs = Array.from(ev.target.files || []); ev.target.value = ""; if (fs.length) await importarWords(fs); });

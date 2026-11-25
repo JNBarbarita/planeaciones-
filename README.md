@@ -19,6 +19,20 @@ Jardín de Niños “Barbarita Barrera de González” (ciclo 2026-2027).
   tabla; *Programa analítico* tiene los tres planos (lectura de la realidad, territorialización y formulación).
 - **Avance**: muestra qué PDA del grado ya tienen planeación en el banco y cuáles faltan.
 
+## Para las maestras: cada una con su propio banco
+
+Comparte este link: **https://jnbarbarita.github.io/planeaciones-/maestras.html**
+
+- Es la misma app (formato, Word, PMC, Analítico, Avance), pero el banco empieza **vacío** y es de cada maestra:
+  lo que ella sube o captura se guarda **solo en su dispositivo**. No cambia esta app ni el `banco.json` del jardín.
+- Con **Copiar del banco del jardín** (pestaña Banco) puede empezar con las planeaciones del jardín y luego
+  eliminar las que no use.
+- **Descargar banco** guarda una copia de su banco (`mi-banco-de-planeaciones.json`); con **Cargar banco** la pasa
+  a su otro dispositivo o la recupera si se borra.
+- En el iPhone conviene agregarla primero a la pantalla de inicio (Safari → Compartir → *Agregar a pantalla de inicio*)
+  y usarla siempre desde ese ícono: lo guardado en Safari y lo guardado en el ícono son bancos distintos, y Safari
+  puede borrar los datos de un sitio que no se abre en varios días.
+
 ## Subir planeaciones que ya tienes en Word
 
 En la pestaña **Banco** pulsa **Subir Word** y elige el archivo `.docx` (en el iPhone, desde *Archivos*).
@@ -48,7 +62,8 @@ En el iPhone: abre el sitio en Safari → Compartir → **Agregar a pantalla de 
 
 | Archivo | Qué es |
 |---|---|
-| `index.html` | La app (página del sitio). Se genera a partir de `app.html`. |
+| `index.html` | La app (página del sitio). Se genera a partir de `app.html` con `python3 build.py`. |
+| `maestras.html`, `manifest-maestras.webmanifest` | “Mi banco de planeaciones”: la app para las maestras, cada una con su banco en su dispositivo. También la genera `build.py`. |
 | `app.html` | La misma app en la versión que se publica dentro de Claude. |
 | `banco.json` | El banco compartido de planeaciones y el PMC. |
 | `catalogo.js` | Contenidos y PDA de los 4 campos formativos (Programa Sintético Fase 2, SEP 2024). |
