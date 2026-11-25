@@ -237,6 +237,13 @@ table.fmt td p:last-child { margin-bottom: 0; }
 .rev-ia textarea { width: 100%; min-height: 150px; margin: 6px 0 8px; border: 1px solid var(--line); border-radius: 8px; padding: 8px; background: var(--surface); color: var(--ink); font: .82rem/1.45 var(--f-ui); resize: vertical; }
 .rev-ia a.btn { text-decoration: none; display: inline-block; }
 .rev-ia details summary { cursor: pointer; font-size: .84rem; color: var(--muted); margin-top: 8px; }
+.carga { border-color: var(--accent); }
+.carga-list { list-style: none; margin: 10px 0; padding: 0; display: grid; gap: 6px; max-height: 60vh; overflow: auto; }
+.carga-list li label { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 2px 10px; align-items: start; padding: 8px 10px; border: 1px solid var(--line); border-radius: 8px; background: var(--bg); cursor: pointer; }
+.carga-list li label:has(input:checked) { border-color: var(--accent); background: var(--accent-soft); }
+.carga-list input { margin-top: 3px; accent-color: var(--accent); }
+.carga-list b { font-weight: 600; overflow-wrap: anywhere; }
+.carga-list .meta, .carga-list .solo { grid-column: 2; }
 .rev-chip { align-self: flex-start; font: 600 .76rem var(--f-ui); padding: 3px 10px; border-radius: 999px; border: 1.5px solid currentColor; background: transparent; cursor: pointer; }
 .rev-chip.ok { color: var(--ok); }
 .rev-chip.warn { color: var(--warm); background: var(--warm-soft); }
@@ -374,6 +381,7 @@ table.an-tabla tbody tr:last-child > * { border-bottom: 0; }
       </div>
     </div>
     <div class="card sync" id="syncNote" hidden></div>
+    <div id="cargaBox" hidden></div>
     <div id="bankList"></div>
   </section>
 
@@ -1398,7 +1406,7 @@ table.an-tabla tbody tr:last-child > * { border-bottom: 0; }
 
   $("#btnBackup").addEventListener("click", () => {
     if (!plans.length) { toast("Tu banco está vacío."); return; }
-    const data = JSON.stringify({ tipo: "banco-planeaciones", version: 2, fecha: new Date().toISOString(), planeaciones: plans.map((p) => clone(p)), pmc: clone(pmc) }, null, 1);
+    const data = JSON.stringify({ tipo: "banco-planeaciones", version: 2, fecha: new Date().toISOString(), origen: PERSONAL ? "maestra" : "jardin", docente: String(general.docente || "").trim(), planeaciones: plans.map((p) => clone(p)), pmc: clone(pmc) }, null, 1);
     offerFile(PERSONAL ? "mi-banco-de-planeaciones.json" : "banco.json", new Blob([data], { type: "application/json" }));
     if (PERSONAL) { ls.set(RKEY, new Date().toISOString()); renderSync(); }
   });
@@ -1419,18 +1427,68 @@ table.an-tabla tbody tr:last-child > * { border-bottom: 0; }
   $("#btnWordIn").addEventListener("click", () => $("#fileWordIn").click());
   $("#fileWordIn").addEventListener("change", async (ev) => { const fs = Array.from(ev.target.files || []); ev.target.value = ""; if (fs.length) await importarWords(fs); });
   $("#btnRestore").addEventListener("click", () => $("#fileRestore").click());
+  // "Cargar banco": muestra las planeaciones del archivo (un respaldo propio o el banco de una maestra) para elegir
+  // cuáles agregar. Las que ya están iguales no se repiten; las que tienen el mismo nombre y grado pero cambios solo
+  // reemplazan a la propia si se marcan. El PMC del archivo solo se carga si se pide.
+  let carga = null;
+  const firmaPlan = (p) => { const x = normalize(p); delete x.id; delete x.actualizado; delete x.creado; return JSON.stringify(x); };
+  const claveNombre = (p) => sinAcentos(ordenNombre(quitaComillas(p.proyecto))).replace(/\s+/g, " ").trim() + "|" + (p.grado || "");
   $("#fileRestore").addEventListener("change", async (ev) => {
     const f = ev.target.files[0]; ev.target.value = ""; if (!f) return;
-    let list;
-    try { const d = JSON.parse(await f.text()); list = Array.isArray(d) ? d : d.planeaciones; if (!Array.isArray(list)) throw 0; if (d.pmc && Array.isArray(d.pmc.actividades)) { pmc = normPmc(d.pmc); savePmcSoon(); } }
+    let d, list;
+    try { d = JSON.parse(await f.text()); list = Array.isArray(d) ? d : d.planeaciones; if (!Array.isArray(list)) throw 0; }
     catch (e) { toast("Ese archivo no es un banco de planeaciones."); return; }
-    let n = 0;
-    for (const raw of list) {
-      if (!raw || !raw.proyecto) continue;
+    const items = []; let iguales = 0;
+    list.forEach((raw) => {
+      if (!raw || !raw.proyecto) return;
       const p = normalize(raw); if (!p.id || !/^[A-Za-z0-9_.~:@+-]{1,180}$/.test(p.id)) p.id = slug(p.proyecto);
-      try { await savePlan(p); n++; } catch (e) { break; }
+      const mia = plans.find((x) => x.id === p.id) || plans.find((x) => claveNombre(x) === claveNombre(p));
+      if (mia && firmaPlan(mia) === firmaPlan(p)) { iguales++; return; }
+      items.push({ p, mia: mia || null, sel: !mia });
+    });
+    const pmcArchivo = d && d.pmc && Array.isArray(d.pmc.actividades) && d.pmc.actividades.length ? normPmc(d.pmc) : null;
+    const pmcDistinto = !!pmcArchivo && JSON.stringify(Object.assign({}, pmcArchivo, { actualizado: "" })) !== JSON.stringify(Object.assign({}, normPmc(pmc), { actualizado: "" }));
+    carga = { archivo: f.name, docente: String((d && d.docente) || "").trim(), origen: (d && d.origen) || "", items, iguales, pmc: pmcDistinto ? pmcArchivo : null, conPmc: false };
+    if (!items.length && !carga.pmc) { carga = null; toast(iguales ? `Las ${iguales} planeaciones de ese archivo ya están en tu banco.` : "Ese archivo no tiene planeaciones."); return; }
+    renderCarga();
+    const box = $("#cargaBox"), tope = ($(".topbar") ? $(".topbar").offsetHeight : 0) + 12;
+    window.scrollTo({ top: Math.max(0, box.getBoundingClientRect().top + window.scrollY - tope) });
+  });
+  function renderCarga() {
+    const box = $("#cargaBox"); if (!box) return;
+    box.hidden = !carga; if (!carga) { box.innerHTML = ""; return; }
+    const n = carga.items.filter((x) => x.sel).length;
+    const de = carga.docente ? `Banco de ${esc(carga.docente)} · ` : carga.origen === "maestra" ? "Banco de una maestra · " : "";
+    box.innerHTML = `<div class="card carga"><h2>Cargar planeaciones de “${esc(carga.archivo)}”</h2>
+      <p class="sub">${de}${carga.items.length} ${carga.items.length === 1 ? "planeación" : "planeaciones"} para elegir${carga.iguales ? ` · ${carga.iguales} ya ${carga.iguales === 1 ? "está" : "están"} igual en tu banco y no se repite${carga.iguales === 1 ? "" : "n"}` : ""}. Marca las que quieres agregar.</p>
+      ${carga.items.length ? `<div class="row"><button class="btn sm" data-carga="todas">Marcar todas</button><button class="btn sm" data-carga="ninguna">Desmarcar todas</button></div>
+      <ul class="carga-list">${carga.items.map((x, i) => { const av = x.av != null ? x.av : (x.av = revisarPlan(x.p).filter((r) => r.nivel === "aviso").length); return `<li><label><input type="checkbox" data-ci="${i}"${x.sel ? " checked" : ""}><b>${esc(x.p.proyecto)}</b>
+        <span class="meta">${x.p.grado ? x.p.grado + "° grado · " : ""}${x.p.actividades.length} actividades · ${av ? `⚠ ${av} por revisar` : "✓ Bien estructurada"}</span>
+        ${x.mia ? '<span class="solo">Ya tienes una con este nombre y grado, pero con cambios. Si la marcas, reemplaza la tuya.</span>' : ""}</label></li>`; }).join("")}</ul>` : ""}
+      ${carga.pmc ? `<label class="chk" style="margin:4px 0 10px"><input type="checkbox" data-carga-pmc${carga.conPmc ? " checked" : ""}> También cargar el PMC de este archivo (reemplaza el tuyo)</label>` : ""}
+      <div class="row"><button class="btn primary" data-carga="ok"${n || carga.conPmc ? "" : " disabled"}>${n ? `Agregar ${n} ${n === 1 ? "planeación" : "planeaciones"}` : carga.conPmc ? "Cargar el PMC" : "Agregar"}</button><button class="btn ghost" data-carga="cancel">Cancelar</button></div></div>`;
+  }
+  $("#cargaBox").addEventListener("change", (ev) => {
+    if (!carga) return;
+    if (ev.target.dataset.ci != null) carga.items[+ev.target.dataset.ci].sel = ev.target.checked;
+    else if (ev.target.hasAttribute("data-carga-pmc")) carga.conPmc = ev.target.checked;
+    renderCarga();
+  });
+  $("#cargaBox").addEventListener("click", async (ev) => {
+    const b = ev.target.closest("[data-carga]"); if (!b || !carga) return;
+    const a = b.dataset.carga;
+    if (a === "cancel") { carga = null; renderCarga(); return; }
+    if (a === "todas" || a === "ninguna") { carga.items.forEach((x) => (x.sel = a === "todas")); renderCarga(); return; }
+    if (a !== "ok") return;
+    const elegidas = carga.items.filter((x) => x.sel); let n = 0, rep = 0, conAvisos = 0;
+    for (const x of elegidas) {
+      const p = clone(x.p); if (x.mia) { p.id = x.mia.id; rep++; }
+      try { await savePlan(p); n++; if (x.av) conAvisos++; } catch (e) { break; }
     }
-    toast(`Banco cargado: ${n} planeaciones.`);
+    if (carga.conPmc && carga.pmc) { pmc = carga.pmc; savePmcSoon(); }
+    const pmcTxt = carga.conPmc && carga.pmc ? " PMC actualizado." : "";
+    carga = null; renderCarga(); renderAll();
+    toast(n ? `${n === 1 ? "Se agregó 1 planeación" : `Se agregaron ${n} planeaciones`} a tu banco${rep ? ` (${rep} ${rep === 1 ? "reemplazó" : "reemplazaron"} a la tuya)` : ""}${conAvisos ? `; ${conAvisos} con puntos por revisar` : ""}.${pmcTxt}` : pmcTxt.trim() || "No se agregó nada.");
   });
 
   // ------------------------------------------------------------------ formato: eventos

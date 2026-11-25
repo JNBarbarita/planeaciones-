@@ -48,6 +48,17 @@ Comparte este link: **https://jnbarbarita.github.io/planeaciones-/maestras.html*
   (correo o WhatsApp) y *Cargar banco* en el otro. Si se borran los datos del navegador, se borra el banco; con la copia
   se recupera.
 
+## Traer planeaciones de las maestras a este banco
+
+- **Una planeación:** la maestra pulsa *Descargar Word* y te manda el archivo; aquí pulsas *Subir Word*. Se abre con
+  su revisión y la guardas. (El Word que genera la app se vuelve a leer completo.)
+- **Varias:** la maestra pulsa *Descargar banco* y te manda `mi-banco-de-planeaciones.json`; aquí pulsas
+  *Cargar banco*. Aparece la lista para **elegir cuáles agregar**: las que ya están iguales no se repiten, las que
+  tienen el mismo nombre y grado pero con cambios salen sin marcar (si las marcas, reemplazan la tuya) y el PMC
+  del archivo solo se carga si lo pides.
+- En el sitio, lo que agregues queda primero en tu dispositivo: para compartirlo, *Descargar banco* y sube
+  `banco.json` a este repositorio, como siempre. Así también les aparece a las maestras en *Copiar del banco del jardín*.
+
 ## Subir planeaciones que ya tienes en Word
 
 En la pestaña **Banco** pulsa **Subir Word** y elige el archivo `.docx` (en el iPhone, desde *Archivos*).
