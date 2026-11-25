@@ -40,6 +40,13 @@ Comparte este link: **https://jnbarbarita.github.io/planeaciones-/maestras.html*
 - En el iPhone conviene agregarla primero a la pantalla de inicio (Safari → Compartir → *Agregar a pantalla de inicio*)
   y usarla siempre desde ese ícono: lo guardado en Safari y lo guardado en el ícono son bancos distintos, y Safari
   puede borrar los datos de un sitio que no se abre en varios días.
+- En la laptop conviene abrirla en Chrome o Edge, guardarla en favoritos (o *Instalar*, si el navegador lo ofrece)
+  y usarla siempre en el mismo navegador, nunca en ventana de incógnito: el banco se guarda en ese navegador.
+  *Subir Word* acepta varios archivos a la vez (Ctrl o Cmd al elegirlos) y *Descargar Word* lo deja en Descargas.
+  En Mac también funciona Safari, pero conviene descargar la copia del banco más seguido.
+- El banco del celular y el de la laptop son distintos: para pasarlo, *Descargar banco* en uno, enviarse el archivo
+  (correo o WhatsApp) y *Cargar banco* en el otro. Si se borran los datos del navegador, se borra el banco; con la copia
+  se recupera.
 
 ## Subir planeaciones que ya tienes en Word
 
